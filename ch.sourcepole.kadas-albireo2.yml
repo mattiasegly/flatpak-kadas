@@ -399,3 +399,60 @@ modules:
       - "-DWITH_GLOBE=OFF" #fails on osgearth Style if ON, removes dependencies on osg and osgearth
       - "-DINSTALL_DEMO_DATA=ON"
 #
+  - name: pypi-lxml #required by kadas-gpkg-plugin
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/89/9c/be3ebeb6053c6625c0497f282e0d8acc36c309212d47201e9cb1198ffb54/lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
+        sha256: 1ab8f1f932e8f82355e75dda5413a57612c6ea448069d4fb2e217e9a4bed13d4
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --no-index --prefix /app lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
+#
+  - name: kadas-about-plugin
+    sources:
+      - type: git
+        url: https://github.com/kadas-albireo/kadas-about-plugin.git
+        branch: master
+        commit: faeca163cd2b6d1f1d0bd7247dfca6ddea412c3a
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - mkdir -p /app/share/kadas/python/plugins
+      - cp -r kadas_* /app/share/kadas/python/plugins
+#
+  - name: kadas-help-plugin
+    sources:
+      - type: git
+        url: https://github.com/kadas-albireo/kadas-help-plugin.git
+        branch: master
+        commit: c8592efa8d4a3ad495853bfad2a25fb7d8e89183
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - mkdir -p /app/share/kadas/python/plugins
+      - cp -r kadas_* /app/share/kadas/python/plugins
+#
+  - name: kadas-gpkg-plugin
+    sources:
+      - type: git
+        url: https://github.com/kadas-albireo/kadas-gpkg-plugin.git
+        branch: master
+        commit: 7e40559c86bfe7479782095cb07941c10d4505a2
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - mkdir -p /app/share/kadas/python/plugins
+      - cp -r kadas_* /app/share/kadas/python/plugins
+#
+  - name: kadas-print-plugin
+    sources:
+      - type: git
+        url: https://github.com/kadas-albireo/kadas-print-plugin.git
+        branch: master
+        commit: 1cdc570b65db8f7df1fdc616885ee0bab3b74faa
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - mkdir -p /app/share/kadas/python/plugins
+      - cp -r kadas_* /app/share/kadas/python/plugins
+#
