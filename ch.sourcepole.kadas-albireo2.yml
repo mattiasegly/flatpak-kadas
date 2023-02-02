@@ -25,6 +25,33 @@ modules:
     build-commands:
       - pip3 install --verbose --no-index --prefix /app numpy-1.24.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 #
+  - name: libzip
+    sources:
+      - type: git
+        url: https://github.com/nih-at/libzip.git
+        tag: v1.9.2
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DCMAKE_INSTALL_PREFIX=/app"
+      - "-DCMAKE_PREFIX_PATH=/app;/usr"
+      - "-DBUILD_REGRESS=OFF"
+      - "-DBUILD_EXAMPLES=OFF"
+      - "-DBUILD_DOC=OFF"
+#
+  - name: quazip
+    sources:
+      - type: git
+        url: https://github.com/stachenov/quazip.git
+        tag: v1.4
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DCMAKE_INSTALL_PREFIX=/app"
+      - "-DCMAKE_PREFIX_PATH=/app;/usr"
+#
   - name: qtkeychain
     sources:
       - type: git
@@ -131,21 +158,6 @@ modules:
       - ./configure --prefix=/app --enable-minizip=no
       - make
       - make install
-#
-  - name: libzip
-    sources:
-      - type: git
-        url: https://github.com/nih-at/libzip.git
-        tag: v1.9.2
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_REGRESS=OFF"
-      - "-DBUILD_EXAMPLES=OFF"
-      - "-DBUILD_DOC=OFF"
 #
   - name: gdal
     sources:
@@ -322,18 +334,6 @@ modules:
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
 #
-  - name: quazip
-    sources:
-      - type: git
-        url: https://github.com/stachenov/quazip.git
-        tag: v1.4
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-#
   - name: svg2svgt
     sources:
       - type: git
@@ -374,30 +374,6 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
-#
-  - name: kadas-albireo2
-    sources:
-      - type: git
-        url: https://github.com/kadas-albireo/kadas-albireo2.git
-        #tag: v2.1.0
-        branch: master
-        commit: 03644d3ac1ec8ec4f2f661d71d83500f134474f3
-      - type: shell
-        commands:
-          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/FindPyQt5.cmake
-          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/SIPMacros.cmake
-          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' python/CMakeLists.txt
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DQGIS_PREFIX_PATH=/app"
-      - "-DQGIS_PLUGIN_DIR=/app/lib/qgis/plugins" #fails finding file, libplugin_offlineediting.so = libofflineeditingplugin.so ?
-      - "-DQGIS_SIP_DIR=/app/share/sip/qgis"
-      - "-DWITH_GLOBE=OFF" #fails on osgearth Style if ON, removes dependencies on osg and osgearth
-      - "-DINSTALL_DEMO_DATA=ON"
 #
   - name: pypi-lxml #required by kadas-gpkg-plugin
     sources:
@@ -455,4 +431,28 @@ modules:
     build-commands:
       - mkdir -p /app/share/kadas/python/plugins
       - cp -r kadas_* /app/share/kadas/python/plugins
+#
+  - name: kadas-albireo2
+    sources:
+      - type: git
+        url: https://github.com/kadas-albireo/kadas-albireo2.git
+        #tag: v2.1.0
+        branch: master
+        commit: 03644d3ac1ec8ec4f2f661d71d83500f134474f3
+      - type: shell
+        commands:
+          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/FindPyQt5.cmake
+          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/SIPMacros.cmake
+          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' python/CMakeLists.txt
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DCMAKE_INSTALL_PREFIX=/app"
+      - "-DCMAKE_PREFIX_PATH=/app;/usr"
+      - "-DQGIS_PREFIX_PATH=/app"
+      - "-DQGIS_PLUGIN_DIR=/app/lib/qgis/plugins" #fails finding file, libplugin_offlineediting.so = libofflineeditingplugin.so ?
+      - "-DQGIS_SIP_DIR=/app/share/sip/qgis"
+      - "-DWITH_GLOBE=OFF" #fails on osgearth Style if ON, removes dependencies on osg and osgearth
+      - "-DINSTALL_DEMO_DATA=ON"
 #
