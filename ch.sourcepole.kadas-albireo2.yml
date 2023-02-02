@@ -326,7 +326,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/stachenov/quazip.git
-        tag: v1.3
+        tag: v1.4
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
