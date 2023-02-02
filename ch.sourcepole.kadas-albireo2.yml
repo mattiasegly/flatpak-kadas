@@ -40,6 +40,21 @@ modules:
       - "-DBUILD_EXAMPLES=OFF"
       - "-DBUILD_DOC=OFF"
 #
+  - name: minizip #required by quazip and libspatialite?
+    sources:
+      - type: git
+        url: https://github.com/madler/zlib.git
+        tag: v1.2.13
+    buildsystem: simple
+    builddir: true
+    subdir: contrib/minizip
+    build-commands:
+      - rm -f Makefile
+      - autoreconf -fiv
+      - ./configure --prefix=/app
+      - make
+      - make install
+#
   - name: quazip
     sources:
       - type: git
@@ -155,7 +170,7 @@ modules:
     buildsystem: simple
     builddir: true
     build-commands:
-      - ./configure --prefix=/app --enable-minizip=no
+      - ./configure --prefix=/app #--enable-minizip=no if minizip isn't installed
       - make
       - make install
 #
