@@ -453,7 +453,7 @@ modules:
         url: https://github.com/kadas-albireo/kadas-albireo2.git
         #tag: v2.1.0
         branch: master
-        commit: 03644d3ac1ec8ec4f2f661d71d83500f134474f3
+        #commit: 1ef3f4cb76654ec1cdd95a5fe86b89694eb6a322 #last working commit
       - type: shell
         commands:
           - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/FindPyQt5.cmake
