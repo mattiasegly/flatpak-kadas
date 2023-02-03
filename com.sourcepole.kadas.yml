@@ -1,4 +1,4 @@
-app-id: ch.sourcepole.kadas-albireo2
+app-id: com.sourcepole.kadas
 branch: development
 runtime: org.kde.Platform
 runtime-version: "5.15-22.08"
