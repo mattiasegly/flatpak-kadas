@@ -14,6 +14,7 @@ finish-args:
   - --socket=fallback-x11
   - --share=ipc
   - --device=dri
+  - --filesystem=home #easier to work with local layers
 #
 modules:
   - name: pypi-numpy #for cmake function findpython, makes gdal find python and modules
