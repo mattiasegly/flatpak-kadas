@@ -6,6 +6,7 @@ base: io.qt.qtwebkit.BaseApp
 base-version: "5.15-22.08"
 sdk: org.kde.Sdk
 command: kadas
+rename-icon: kadas
 #
 separate-locales: false
 finish-args:
