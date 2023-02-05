@@ -27,6 +27,33 @@ modules:
     build-commands:
       - pip3 install --verbose --no-index --prefix /app numpy-1.24.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 #
+  - name: libzip
+    sources:
+      - type: git
+        url: https://github.com/nih-at/libzip.git
+        tag: v1.9.2
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DCMAKE_INSTALL_PREFIX=/app"
+      - "-DCMAKE_PREFIX_PATH=/app;/usr"
+      - "-DBUILD_REGRESS=OFF"
+      - "-DBUILD_EXAMPLES=OFF"
+      - "-DBUILD_DOC=OFF"
+#
+  - name: quazip
+    sources:
+      - type: git
+        url: https://github.com/stachenov/quazip.git
+        tag: v1.3
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DCMAKE_INSTALL_PREFIX=/app"
+      - "-DCMAKE_PREFIX_PATH=/app;/usr"
+#
   - name: qtkeychain
     sources:
       - type: git
@@ -134,20 +161,17 @@ modules:
       - make
       - make install
 #
-  - name: libzip
+  - name: libspatialindex
     sources:
       - type: git
-        url: https://github.com/nih-at/libzip.git
-        tag: v1.9.2
+        url: https://github.com/libspatialindex/libspatialindex.git
+        tag: 1.9.3
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_REGRESS=OFF"
-      - "-DBUILD_EXAMPLES=OFF"
-      - "-DBUILD_DOC=OFF"
 #
   - name: gdal
     sources:
@@ -270,18 +294,6 @@ modules:
     buildsystem: qmake
     builddir: true
 #
-  - name: libspatialindex
-    sources:
-      - type: git
-        url: https://github.com/libspatialindex/libspatialindex.git
-        tag: 1.9.3
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-#
   - name: qca
     sources:
       - type: git
@@ -315,18 +327,6 @@ modules:
       - type: git
         url: https://github.com/geographiclib/geographiclib.git
         tag: v2.1.2
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-#
-  - name: quazip
-    sources:
-      - type: git
-        url: https://github.com/stachenov/quazip.git
-        tag: v1.3
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
