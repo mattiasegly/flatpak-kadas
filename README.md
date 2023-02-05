@@ -1,5 +1,8 @@
 # flatpak-kadas
-Build:<BR>
-clear && flatpak-builder --jobs=3 --ccache --disable-rofiles-fuse --force-clean build-dir ch.sourcepole.kadas-albireo2.yml<BR>
-Install:<BR>
-clear && flatpak-builder --user --install --jobs=3 --ccache --disable-rofiles-fuse --force-clean build-dir ch.sourcepole.kadas-albireo2.yml
+<BR>Flatpak builds of Kadas Albireo 2 from git https://github.com/kadas-albireo/kadas-albireo2
+<BR>
+<BR>Build:
+<BR>clear && flatpak-builder --jobs=3 --ccache --disable-rofiles-fuse --force-clean build-dir com.sourcepole.kadas.yml
+<BR>
+<BR>Build & Install:
+<BR>clear && flatpak-builder --user --install --jobs=3 --ccache --disable-rofiles-fuse --force-clean build-dir com.sourcepole.kadas.yml
