@@ -21,11 +21,20 @@ modules:
   - name: pypi-numpy #for cmake function findpython, makes gdal find python and modules
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/43/55/fea3342371187dea4044521c0ba82b90fb5a42fb92446be019b316dd3320/numpy-1.24.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-        sha256: ef85cf1f693c88c1fd229ccd1055570cb41cdf4875873b7728b6301f12cd05bf
+        url: https://files.pythonhosted.org/packages/f4/f4/45e6e3f7a23b9023554903a122c95585e9787f9403d386bafb7a95d24c9b/numpy-1.24.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: f64bb98ac59b3ea3bf74b02f13836eb2e24e48e0ab0145bbda646295769bd780
     buildsystem: simple
     build-commands:
-      - pip3 install --verbose --no-index --prefix /app numpy-1.24.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      - pip3 install --verbose --no-index --prefix /app numpy-1.24.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+#
+  - name: pypi-lxml #required by kadas-gpkg-plugin
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/95/79/450c6284d26f7f2abd1ec3506f494b6d848eed3ff7233be60220fef70c85/lxml-4.9.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
+        sha256: 5b4545b8a40478183ac06c073e81a5ce4cf01bf1734962577cf2bb569a5b3bbf
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --no-index --prefix /app lxml-4.9.2-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
 #
   - name: libzip
     sources:
@@ -42,17 +51,45 @@ modules:
       - "-DBUILD_EXAMPLES=OFF"
       - "-DBUILD_DOC=OFF"
 #
+  - name: minizip #required by quazip and libspatialite?
+    sources:
+      - type: git
+        url: https://github.com/madler/zlib.git
+        tag: v1.2.13
+    buildsystem: simple
+    builddir: true
+    subdir: contrib/minizip
+    build-commands:
+      - rm -f Makefile
+      - autoreconf -fiv
+      - ./configure --prefix=/app
+      - make
+      - make install
+#
   - name: quazip
     sources:
       - type: git
         url: https://github.com/stachenov/quazip.git
-        tag: v1.3
+        tag: v1.4
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
+#
+  - name: gsl
+    sources:
+      - type: git
+        url: https://git.savannah.gnu.org/git/gsl.git
+        tag: release-2-7
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - ./autogen.sh
+      - ./configure --prefix=/app
+      - make
+      - make install
 #
   - name: qtkeychain
     sources:
@@ -157,7 +194,7 @@ modules:
     buildsystem: simple
     builddir: true
     build-commands:
-      - ./configure --prefix=/app --enable-minizip=no
+      - ./configure --prefix=/app --enable-examples=no #--enable-minizip=no if minizip isn't installed
       - make
       - make install
 #
@@ -214,18 +251,6 @@ modules:
       - "-DBUILD_WITH_CCACHE=ON"
       - "-DEXIV2_BUILD_SAMPLES=OFF"
       - "-DEXIV2_BUILD_UNIT_TESTS=OFF"
-#
-  - name: gsl
-    sources:
-      - type: git
-        url: https://github.com/ampl/gsl.git
-        tag: v2.7.0
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
 #
   - name: sip
     sources:
@@ -340,6 +365,7 @@ modules:
         url: https://github.com/manisandro/svg2svgt.git
         #tag: v0.9.6
         branch: master #fixes error with ‘QPainterPath roundedRect’
+        commit: cc180f65001b3859015e29589897b2412ac01042
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -353,6 +379,7 @@ modules:
         url: https://github.com/manisandro/GdbCrashHandler.git
         #tag: 0.3.0
         branch: master #works with quazip 1.x
+        commit: ea2e7b677c4e33a1f2ce554c620d0b7b9b6242f3
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -360,12 +387,59 @@ modules:
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
 #
+  - name: kadas-about-plugin
+    sources:
+      - type: git
+        url: https://github.com/kadas-albireo/kadas-about-plugin.git
+        branch: master
+        commit: faeca163cd2b6d1f1d0bd7247dfca6ddea412c3a
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - mkdir -p /app/share/kadas/python/plugins
+      - cp -r kadas_* /app/share/kadas/python/plugins
+#
+  - name: kadas-help-plugin
+    sources:
+      - type: git
+        url: https://github.com/kadas-albireo/kadas-help-plugin.git
+        branch: master
+        commit: c8592efa8d4a3ad495853bfad2a25fb7d8e89183
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - mkdir -p /app/share/kadas/python/plugins
+      - cp -r kadas_* /app/share/kadas/python/plugins
+#
+  - name: kadas-gpkg-plugin
+    sources:
+      - type: git
+        url: https://github.com/kadas-albireo/kadas-gpkg-plugin.git
+        branch: master
+        commit: 7e40559c86bfe7479782095cb07941c10d4505a2
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - mkdir -p /app/share/kadas/python/plugins
+      - cp -r kadas_* /app/share/kadas/python/plugins
+#
+  - name: kadas-print-plugin
+    sources:
+      - type: git
+        url: https://github.com/kadas-albireo/kadas-print-plugin.git
+        branch: master
+        commit: 1cdc570b65db8f7df1fdc616885ee0bab3b74faa
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - mkdir -p /app/share/kadas/python/plugins
+      - cp -r kadas_* /app/share/kadas/python/plugins
+#
   - name: kadas-albireo2
     sources:
       - type: git
         url: https://github.com/kadas-albireo/kadas-albireo2.git
         tag: v2.1.0
-        #branch: master
       - type: shell
         commands:
           - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.9\/site-packages/g' cmake/FindPyQt5.cmake
