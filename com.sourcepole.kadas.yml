@@ -27,6 +27,15 @@ modules:
     build-commands:
       - pip3 install --verbose --no-index --prefix /app numpy-1.24.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 #
+  - name: pypi-lxml #required by kadas-gpkg-plugin
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/89/9c/be3ebeb6053c6625c0497f282e0d8acc36c309212d47201e9cb1198ffb54/lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
+        sha256: 1ab8f1f932e8f82355e75dda5413a57612c6ea448069d4fb2e217e9a4bed13d4
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --no-index --prefix /app lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
+#
   - name: libzip
     sources:
       - type: git
@@ -68,6 +77,19 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
+#
+  - name: gsl
+    sources:
+      - type: git
+        url: https://git.savannah.gnu.org/git/gsl.git
+        tag: release-2-7
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - ./autogen.sh
+      - ./configure --prefix=/app
+      - make
+      - make install
 #
   - name: qtkeychain
     sources:
@@ -188,6 +210,47 @@ modules:
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
 #
+  - name: hdf5
+    sources:
+      - type: git
+        url: https://github.com/HDFGroup/hdf5.git
+        tag: hdf5-1_13_2 #works with netcdf-c 4.9.0
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DCMAKE_INSTALL_PREFIX=/app"
+      - "-DCMAKE_PREFIX_PATH=/app;/usr"
+      - "-DHDF5_ENABLE_Z_LIB_SUPPORT=ON" #for netcdf-c
+      - "-DHDF5_BUILD_CPP_LIB=ON" #for gdal
+      - "-DBUILD_TESTING=OFF"
+      - "-DHDF5_BUILD_EXAMPLES=OFF"
+#
+  - name: netcdf-c
+    sources:
+      - type: git
+        url: https://github.com/Unidata/netcdf-c.git
+        tag: v4.9.0 #works with hdf5 1.13.2
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DCMAKE_INSTALL_PREFIX=/app"
+      - "-DCMAKE_PREFIX_PATH=/app;/usr"
+#
+  - name: swig #gdal recommended
+    sources:
+      - type: git
+        url: https://github.com/swig/swig.git
+        tag: v4.1.1
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - ./autogen.sh
+      - ./configure --prefix=/app --with-tclconfig=/app/lib
+      - make
+      - make install
+#
   - name: gdal
     sources:
       - type: git
@@ -229,19 +292,6 @@ modules:
       - "-DBUILD_WITH_CCACHE=ON"
       - "-DEXIV2_BUILD_SAMPLES=OFF"
       - "-DEXIV2_BUILD_UNIT_TESTS=OFF"
-#
-  - name: gsl
-    sources:
-      - type: git
-        url: https://git.savannah.gnu.org/git/gsl.git
-        tag: release-2-7
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - ./autogen.sh
-      - ./configure --prefix=/app
-      - make
-      - make install
 #
   - name: sip
     sources:
@@ -393,15 +443,6 @@ modules:
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
 #
-  - name: pypi-lxml #required by kadas-gpkg-plugin
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/89/9c/be3ebeb6053c6625c0497f282e0d8acc36c309212d47201e9cb1198ffb54/lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
-        sha256: 1ab8f1f932e8f82355e75dda5413a57612c6ea448069d4fb2e217e9a4bed13d4
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --no-index --prefix /app lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
-#
   - name: kadas-about-plugin
     sources:
       - type: git
@@ -459,7 +500,7 @@ modules:
         commit: 0465d084bb53870fda2184f305005ba06d505931
       - type: shell
         commands:
-          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/FindPyQt5.cmake
+          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/FindPyQt5.cmake #prevent installing to /usr/...
           - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/SIPMacros.cmake
           - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' python/CMakeLists.txt
     buildsystem: cmake-ninja
