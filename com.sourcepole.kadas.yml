@@ -534,12 +534,14 @@ modules:
     sources:
       - type: git
         url: https://github.com/kadas-albireo/kadas-albireo2.git
-        #tag: v2.1.0
         branch: master
         commit: 0465d084bb53870fda2184f305005ba06d505931
-      - type: shell
+      - type: shell #quick and ugly fix for versioning
         commands:
-          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/FindPyQt5.cmake #prevent installing to /usr/...
+          - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml
+      - type: shell #prevent installing to site-packages in /usr
+        commands:
+          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/FindPyQt5.cmake
           - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/SIPMacros.cmake
           - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' python/CMakeLists.txt
     buildsystem: cmake-ninja
