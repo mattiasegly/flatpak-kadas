@@ -17,8 +17,14 @@ finish-args:
   - --device=dri
   - --filesystem=home #easier to work with local layers
 #
+build-options:
+  env:
+    PYTHONPATH: "/app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages" #fix "attempting to install a package to a directory that is not on PYTHONPATH and which Python does not read ".pth" files from."
 modules:
-  - name: pypi-numpy #for cmake function findpython, makes gdal find python and modules
+#
+# KADAS QGIS
+#
+  - name: pypi-numpy
     sources:
       - type: file
         url: https://files.pythonhosted.org/packages/c5/21/275cfa7731ee2e121b1bf85ddb21b8712fe2f409f02a8b61521af6e4993d/numpy-1.24.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
@@ -27,14 +33,23 @@ modules:
     build-commands:
       - pip3 install --verbose --no-index --prefix /app numpy-1.24.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 #
-  - name: pypi-lxml #required by kadas-gpkg-plugin
+  - name: pypi-jinja2
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/89/9c/be3ebeb6053c6625c0497f282e0d8acc36c309212d47201e9cb1198ffb54/lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
-        sha256: 1ab8f1f932e8f82355e75dda5413a57612c6ea448069d4fb2e217e9a4bed13d4
+        url: https://files.pythonhosted.org/packages/bc/c3/f068337a370801f372f2f8f6bad74a5c140f6fda3d9de154052708dd3c65/Jinja2-3.1.2-py3-none-any.whl
+        sha256: 6088930bfe239f0e6710546ab9c19c9ef35e29792895fed6e6e31a023a182a61
     buildsystem: simple
     build-commands:
-      - pip3 install --verbose --no-index --prefix /app lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
+      - pip3 install --verbose --no-index --prefix /app Jinja2-3.1.2-py3-none-any.whl
+#
+  - name: pypi-pyyaml
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/02/25/6ba9f6bb50a3d4fbe22c1a02554dc670682a07c8701d1716d19ddea2c940/PyYAML-6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+        sha256: f84fbc98b019fef2ee9a1cb3ce93e3187a6df0b2538a651bfb890254ba9f90b5
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --no-index --prefix /app PyYAML-6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
 #
   - name: libzip
     sources:
@@ -51,7 +66,7 @@ modules:
       - "-DBUILD_EXAMPLES=OFF"
       - "-DBUILD_DOC=OFF"
 #
-  - name: minizip #required by quazip and libspatialite?
+  - name: minizip
     sources:
       - type: git
         url: https://github.com/madler/zlib.git
@@ -62,31 +77,6 @@ modules:
     build-commands:
       - rm -f Makefile
       - autoreconf -fiv
-      - ./configure --prefix=/app
-      - make
-      - make install
-#
-  - name: quazip
-    sources:
-      - type: git
-        url: https://github.com/stachenov/quazip.git
-        tag: v1.4
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-#
-  - name: glu #for grass opengl
-    sources:
-      - type: git
-        url: https://gitlab.freedesktop.org/mesa/glu.git
-        tag: glu-9.0.2
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - ./autogen.sh
       - ./configure --prefix=/app
       - make
       - make install
@@ -135,7 +125,6 @@ modules:
       - type: git
         url: https://github.com/libgeos/geos.git
         tag: 3.11.1
-        #tag: 3.8.3 #works with osgearth-2.10.x
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -159,6 +148,27 @@ modules:
       - make install
     post-install:
       - chmod 755 /app/lib/libtcl*.so
+#
+  - name: postgresql
+    sources:
+      - type: git
+        url: https://git.postgresql.org/git/postgresql.git
+        tag: REL_15_2
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - ./configure --prefix=/app --with-tcl --with-perl --with-python -with-libxml --with-libxslt -with-lz4 --with-zstd --with-openssl
+      - make
+      - make install
+#
+  - name: pypi-psycopg2-binary #no whl for psychopg2
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/72/29/e16ac3d2722f2a3bc20823e6acc30d9ad56136652cce1324502adf94da1f/psycopg2_binary-2.9.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: 5cbc554ba47ecca8cd3396ddaca85e1ecfe3e48dd57dc5e415e59551affe568e
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --no-index --prefix /app psycopg2_binary-2.9.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 #
   - name: sqlite3
     sources:
@@ -219,7 +229,7 @@ modules:
     buildsystem: simple
     builddir: true
     build-commands:
-      - ./configure --prefix=/app --enable-examples=no #--enable-minizip=no if minizip isn't installed
+      - ./configure --prefix=/app --enable-examples=no
       - make
       - make install
 #
@@ -290,23 +300,11 @@ modules:
       - "-DGDAL_USE_OPENCL=ON"
       - "-DBUILD_TESTING=OFF"
 #
-  - name: grass
-    sources:
-      - type: git
-        url: https://github.com/OSGeo/grass.git
-        tag: 8.2.1
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - ./configure --prefix=/app --with-proj-share=/app/share/proj --with-nls --with-readline --with-pthread --with-opencl --with-bzlib --with-gdal --with-netcdf --with-geos
-      - make
-      - make install
-#
   - name: protobuf
     sources:
       - type: git
         url: https://github.com/protocolbuffers/protobuf.git
-        tag: v21.12
+        tag: v22.0
     buildsystem: cmake-ninja
     builddir: true #recommended
     config-opts:
@@ -425,9 +423,22 @@ modules:
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
       - "-DUSE_CCACHE=ON"
-      - "-DGRASS_PREFIX8=/app/grass82"
       - "-DSIP_GLOBAL_INSTALL=TRUE"
       - "-DENABLE_TESTS=FALSE"
+#
+# KADAS ALBIREO
+#
+  - name: quazip
+    sources:
+      - type: git
+        url: https://github.com/stachenov/quazip.git
+        tag: v1.4
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DCMAKE_INSTALL_PREFIX=/app"
+      - "-DCMAKE_PREFIX_PATH=/app;/usr"
 #
   - name: geographiclib
     sources:
@@ -482,6 +493,15 @@ modules:
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
 #
+  - name: pypi-lxml #required by kadas-gpkg-plugin
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/89/9c/be3ebeb6053c6625c0497f282e0d8acc36c309212d47201e9cb1198ffb54/lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
+        sha256: 1ab8f1f932e8f82355e75dda5413a57612c6ea448069d4fb2e217e9a4bed13d4
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --no-index --prefix /app lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
+#
   - name: kadas-about-plugin
     sources:
       - type: git
@@ -535,7 +555,7 @@ modules:
       - type: git
         url: https://github.com/kadas-albireo/kadas-albireo2.git
         branch: master
-        commit: 9c1f14d06b11b61c87994e4192de8930782a2387
+        commit: 57f087e330a03d9d307f4570754d24b6249d55a7
       - type: shell #quick and ugly fix for versioning
         commands:
           - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml
