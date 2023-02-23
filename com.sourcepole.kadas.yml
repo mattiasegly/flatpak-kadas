@@ -555,7 +555,7 @@ modules:
       - type: git
         url: https://github.com/kadas-albireo/kadas-albireo2.git
         branch: master
-        commit: d598299b720edb40ed673c9fc95d0f66624d9b6f
+        commit: 89cc262e4b8ff45da8ccba102bbd33a00afdfad5
       - type: shell #quick and ugly fix for versioning
         commands:
           - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml
