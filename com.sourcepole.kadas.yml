@@ -174,7 +174,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/sqlite/sqlite.git
-        tag: version-3.40.1
+        tag: version-3.41.0
     buildsystem: simple
     builddir: true
     build-commands:
@@ -186,7 +186,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/OSGeo/PROJ.git
-        tag: 9.1.1
+        tag: 9.2.0
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
