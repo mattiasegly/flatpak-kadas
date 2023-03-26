@@ -127,7 +127,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/libgeos/geos.git
-        tag: 3.11.1
+        tag: 3.11.2
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -179,7 +179,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/sqlite/sqlite.git
-        tag: version-3.41.0
+        tag: version-3.41.2
     buildsystem: simple
     builddir: true
     build-commands:
@@ -256,7 +256,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/HDFGroup/hdf5.git
-        tag: hdf5-1_13_2 #works with netcdf-c 4.9.0
+        tag: hdf5-1_14_0
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -274,7 +274,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Unidata/netcdf-c.git
-        tag: v4.9.0 #works with hdf5 1.13.2
+        tag: v4.9.2
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -300,7 +300,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/OSGeo/gdal.git
-        tag: v3.6.2
+        tag: v3.6.3
     buildsystem: cmake-ninja
     builddir: true #recommended
     config-opts:
@@ -459,7 +459,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/geographiclib/geographiclib.git
-        tag: v2.1.2
+        tag: v2.2
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
