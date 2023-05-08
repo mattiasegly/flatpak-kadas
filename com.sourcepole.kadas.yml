@@ -536,7 +536,7 @@ modules:
       - type: git
         url: https://github.com/kadas-albireo/kadas-help-plugin.git
         branch: master
-        commit: 485f6baf30926b7db37efb7cb3b221aa0f29c2a6
+        commit: 55c30ca5d444d7c8e17093f1ad9371b10fde38dd
     buildsystem: simple
     builddir: true
     build-commands:
