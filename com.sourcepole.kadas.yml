@@ -15,7 +15,7 @@ finish-args:
   - --socket=fallback-x11
   - --share=ipc
   - --device=dri
-  - --filesystem=home #easier to work with local layers
+  - --filesystem=home #easier to work with local files and layers
 #
 build-options:
   env:
@@ -27,11 +27,11 @@ modules:
   - name: pypi-numpy
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/c5/21/275cfa7731ee2e121b1bf85ddb21b8712fe2f409f02a8b61521af6e4993d/numpy-1.24.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-        sha256: a51725a815a6188c662fb66fb32077709a9ca38053f0274640293a14fdd22978
+        url: https://files.pythonhosted.org/packages/6f/72/38f9a536bdb5bfb1682f2520f133ec6e08dde8bcca1f632e347641d90763/numpy-1.24.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: 2d926b52ba1367f9acb76b0df6ed21f0b16a1ad87c6720a1121674e5cf63e2b6
     buildsystem: simple
     build-commands:
-      - pip3 install --verbose --no-index --prefix /app numpy-1.24.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      - pip3 install --verbose --no-index --prefix /app numpy-1.24.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 #
   - name: pypi-jinja2
     sources:
@@ -86,7 +86,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/KhronosGroup/OpenCL-Headers.git
-        tag: v2023.02.06
+        tag: v2023.04.17
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -98,7 +98,7 @@ modules:
   - name: gsl
     sources:
       - type: git
-        url: https://git.savannah.gnu.org/git/gsl.git
+        url: https://git.savannah.gnu.org/git/gsl.git #browse https://git.savannah.gnu.org/cgit/gsl.git
         tag: release-2-7
     buildsystem: simple
     builddir: true
@@ -112,7 +112,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/frankosterfeld/qtkeychain.git
-        tag: v0.13.2
+        tag: v0.14.0
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -157,8 +157,8 @@ modules:
   - name: postgresql
     sources:
       - type: git
-        url: https://git.postgresql.org/git/postgresql.git
-        tag: REL_15_2
+        url: https://git.postgresql.org/git/postgresql.git #browse https://git.postgresql.org/gitweb/?p=postgresql.git;a=summary
+        tag: REL_15_3
     buildsystem: simple
     builddir: true
     build-commands:
@@ -169,17 +169,17 @@ modules:
   - name: pypi-psycopg2-binary #no whl for psychopg2
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/72/29/e16ac3d2722f2a3bc20823e6acc30d9ad56136652cce1324502adf94da1f/psycopg2_binary-2.9.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-        sha256: 5cbc554ba47ecca8cd3396ddaca85e1ecfe3e48dd57dc5e415e59551affe568e
+        url: https://files.pythonhosted.org/packages/44/06/6de819cb8604ad884aefe8d12980f53788fc08c4de8ea3ff1b3039746449/psycopg2_binary-2.9.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: ae102a98c547ee2288637af07393dd33f440c25e5cd79556b04e3fca13325e5f
     buildsystem: simple
     build-commands:
-      - pip3 install --verbose --no-index --prefix /app psycopg2_binary-2.9.5-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      - pip3 install --verbose --no-index --prefix /app psycopg2_binary-2.9.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 #
   - name: sqlite3
     sources:
       - type: git
         url: https://github.com/sqlite/sqlite.git
-        tag: version-3.41.2
+        tag: version-3.42.0
     buildsystem: simple
     builddir: true
     build-commands:
@@ -201,7 +201,7 @@ modules:
       - "-DUSE_CCACHE=ON"
       - "-DBUILD_TESTING=OFF"
 #
-  - name: librttopo #stale, last change 1 year ago
+  - name: librttopo
     sources:
       - type: git
         url: https://git.osgeo.org/gitea/rttopo/librttopo.git
@@ -226,7 +226,7 @@ modules:
       - make
       - make install
 #
-  - name: libspatialite #stale, last change 2 years ago
+  - name: libspatialite
     sources:
       - type: archive
         url: https://www.gaia-gis.it/gaia-sins/libspatialite-5.0.1.tar.gz
@@ -256,7 +256,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/HDFGroup/hdf5.git
-        tag: hdf5-1_14_0
+        tag: hdf5-1_14_1-2
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -283,7 +283,7 @@ modules:
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
       - "-DBUILD_SHARED_LIBS=ON"
 #
-  - name: swig #gdal recommended
+  - name: swig
     sources:
       - type: git
         url: https://github.com/swig/swig.git
@@ -300,7 +300,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/OSGeo/gdal.git
-        tag: v3.6.3
+        tag: v3.7.0
     buildsystem: cmake-ninja
     builddir: true #recommended
     config-opts:
@@ -314,7 +314,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/protocolbuffers/protobuf.git
-        tag: v21.12
+        tag: v21.12 #v21.* works with qgis 3.28
     buildsystem: cmake-ninja
     builddir: true #recommended
     config-opts:
@@ -329,7 +329,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Exiv2/exiv2.git
-        tag: v0.27.6
+        tag: v0.27.7 #v0.27.* works with qgis 3.28
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -414,7 +414,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/KDE/qca.git
-        tag: v2.3.5
+        tag: v2.3.6
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
