@@ -10,46 +10,50 @@ rename-icon: kadas
 #
 separate-locales: false
 finish-args:
+  - --share=ipc
   - --share=network
+  - --device=dri
   - --socket=wayland
   - --socket=fallback-x11
-  - --share=ipc
-  - --device=dri
-  - --filesystem=home #easier to work with local files and layers
+  - --env=PYTHONPATH=/app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages
+  - --filesystem=home
 #
 build-options:
   env:
-    PYTHONPATH: "/app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages" #fix "attempting to install a package to a directory that is not on PYTHONPATH and which Python does not read ".pth" files from."
+    PYTHONPATH: /app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages #fix "attempting to install a package to a directory that is not on PYTHONPATH and which Python does not read ".pth" files from."
 modules:
 #
 # KADAS QGIS
 #
-  - name: pypi-numpy
+  - name: numpy
     sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/6f/72/38f9a536bdb5bfb1682f2520f133ec6e08dde8bcca1f632e347641d90763/numpy-1.24.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-        sha256: 2d926b52ba1367f9acb76b0df6ed21f0b16a1ad87c6720a1121674e5cf63e2b6
+      - type: archive
+        url: https://files.pythonhosted.org/packages/d0/b2/fe774844d1857804cc884bba67bec38f649c99d0dc1ee7cbbf1da601357c/numpy-1.25.0.tar.gz
+        sha256: f1accae9a28dc3cda46a91de86acf69de0d1b5f4edd44a9b0c3ceb8036dfff19
     buildsystem: simple
+    builddir: true
     build-commands:
-      - pip3 install --verbose --no-index --prefix /app numpy-1.24.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
 #
-  - name: pypi-jinja2
+  - name: jinja2
     sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/bc/c3/f068337a370801f372f2f8f6bad74a5c140f6fda3d9de154052708dd3c65/Jinja2-3.1.2-py3-none-any.whl
-        sha256: 6088930bfe239f0e6710546ab9c19c9ef35e29792895fed6e6e31a023a182a61
+      - type: archive
+        url: https://files.pythonhosted.org/packages/7a/ff/75c28576a1d900e87eb6335b063fab47a8ef3c8b4d88524c4bf78f670cce/Jinja2-3.1.2.tar.gz
+        sha256: 31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852
     buildsystem: simple
+    builddir: true
     build-commands:
-      - pip3 install --verbose --no-index --prefix /app Jinja2-3.1.2-py3-none-any.whl
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
 #
-  - name: pypi-pyyaml
+  - name: pyyaml
     sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/02/25/6ba9f6bb50a3d4fbe22c1a02554dc670682a07c8701d1716d19ddea2c940/PyYAML-6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
-        sha256: f84fbc98b019fef2ee9a1cb3ce93e3187a6df0b2538a651bfb890254ba9f90b5
+      - type: archive
+        url: https://files.pythonhosted.org/packages/36/2b/61d51a2c4f25ef062ae3f74576b01638bebad5e045f747ff12643df63844/PyYAML-6.0.tar.gz
+        sha256: 68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2
     buildsystem: simple
+    builddir: true
     build-commands:
-      - pip3 install --verbose --no-index --prefix /app PyYAML-6.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
 #
   - name: libzip
     sources:
@@ -166,14 +170,15 @@ modules:
       - make
       - make install
 #
-  - name: pypi-psycopg2-binary #no whl for psychopg2
+  - name: psycopg2
     sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/44/06/6de819cb8604ad884aefe8d12980f53788fc08c4de8ea3ff1b3039746449/psycopg2_binary-2.9.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-        sha256: ae102a98c547ee2288637af07393dd33f440c25e5cd79556b04e3fca13325e5f
+      - type: archive
+        url: https://files.pythonhosted.org/packages/af/c4/5726cddb53fe52f0e839eb3da04322364f14493217ebd5818cc5e4c948a5/psycopg2-2.9.6.tar.gz
+        sha256: f15158418fd826831b28585e2ab48ed8df2d0d98f502a2b4fe619e7d5ca29011
     buildsystem: simple
+    builddir: true
     build-commands:
-      - pip3 install --verbose --no-index --prefix /app psycopg2_binary-2.9.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
 #
   - name: sqlite3
     sources:
@@ -191,7 +196,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/OSGeo/PROJ.git
-        tag: 9.2.0
+        tag: 9.2.1
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -341,59 +346,111 @@ modules:
       - "-DEXIV2_BUILD_SAMPLES=OFF"
       - "-DEXIV2_BUILD_UNIT_TESTS=OFF"
 #
-  - name: sip
+  - name: flit-core
     sources:
       - type: archive
-        url: https://www.riverbankcomputing.com/static/Downloads/sip/4.19.25/sip-4.19.25.tar.gz
-        sha256: b39d93e937647807bac23579edbff25fe46d16213f708370072574ab1f1b4211
+        url: https://files.pythonhosted.org/packages/c4/e6/c1ac50fe3eebb38a155155711e6e864e254ce4b6e17fe2429b4c4d5b9e80/flit_core-3.9.0.tar.gz
+        sha256: 72ad266176c4a3fcfab5f2930d76896059851240570ce9a98733b658cb786eba
     buildsystem: simple
     builddir: true
     build-commands:
-      - python3 configure.py --sip-module PyQt5.sip -b /app/bin -d /app/lib/python3.10/site-packages -e /app/include -v /app/share/sip --stubsdir=/app/lib/python3.10/site-packages
-      - make
-      - make install
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+#
+  - name: tomli
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/c0/3f/d7af728f075fb08564c5949a9c95e44352e23dee646869fa104a3b2060a3/tomli-2.0.1.tar.gz
+        sha256: de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+#
+  - name: ply
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/e5/69/882ee5c9d017149285cab114ebeab373308ef0f874fcdac9beb90e0ac4da/ply-3.11.tar.gz
+        sha256: 00c7c1aaa88358b9c765b6d3000c6eec0ba42abca5351b095321aef446081da3
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+#
+  - name: packaging
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/b9/6c/7c6658d258d7971c5eb0d9b69fa9265879ec9a9158031206d47800ae2213/packaging-23.1.tar.gz
+        sha256: a392980d2b6cffa644431898be54b0045151319d1e7ec34f0cfed48767dd334f
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+#
+  - name: sip
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/48/75/98987181e897ef378d6c239ee733328a7264a41f2d8263e61d7b7c4c0909/sip-6.7.9.tar.gz
+        sha256: 35d51fc10f599d3696abb50f29d068ad04763df7b77808c76b74597660f99b17
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+#
+  - name: pyqt-builder
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/31/d7/dbcb710a205014ca8f1c651ed77e6f1b1d0c67ab43c664afb079d6efb658/PyQt-builder-1.15.1.tar.gz
+        sha256: a2bd3cfbf952e959141dfe55b44b451aa945ca8916d1b773850bb2f9c0fa2985
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+#
+  - name: pyqt5-sip
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/c1/61/4055e7a0f36339964956ff415e36f4abf82561904cc49c021da32949fc55/PyQt5_sip-12.12.1.tar.gz
+        sha256: 8fdc6e0148abd12d977a1d3828e7b79aae958e83c6cb5adae614916d888a6b10
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
 #
   - name: pyqt5
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/28/6c/640e3f5c734c296a7193079a86842a789edb7988dca39eab44579088a1d1/PyQt5-5.15.2.tar.gz
-        sha256: 372b08dc9321d1201e4690182697c5e7ffb2e0770e6b4a45519025134b12e4fc
+        url: https://files.pythonhosted.org/packages/5c/46/b4b6eae1e24d9432905ef1d4e7c28b6610e28252527cdc38f2a75997d8b5/PyQt5-5.15.9.tar.gz
+        sha256: dc41e8401a90dc3e2b692b411bd5492ab559ae27a27424eed4bd3915564ec4c0
     buildsystem: simple
     builddir: true
     build-commands:
-      - python3 configure.py --assume-shared --confirm-license --no-designer-plugin --no-qml-plugin --sysroot=/app --qsci-api --qsci-api-destdir=/app/qsci --sipdir=/app/share/sip --sip=/app/bin/sip --sip-incdir=/app/include QMAKE_CFLAGS_RELEASE='-I/usr/include/python3.10/' QMAKE_CXXFLAGS_RELEASE='-I/usr/include/python3.10/'
-      - make
-      - make install
+      - sip-install --confirm-license --qt-shared --no-designer-plugin --no-qml-plugin --verbose --target-dir=/app/lib/python3.10/site-packages --scripts-dir=/app/bin --api-dir=/app/share/qt/qsci/api/python
 #
   - name: qscintilla
     sources:
       - type: archive
-        url: https://www.riverbankcomputing.com/static/Downloads/QScintilla/2.11.6/QScintilla-2.11.6.tar.gz
-        sha256: e7346057db47d2fb384467fafccfcb13aa0741373c5d593bc72b55b2f0dd20a7
+        url: https://files.pythonhosted.org/packages/a9/f6/a7aa4b495dcee4c521b87205de9363fb62ee5fdc8eab91d4ddb97257c85b/QScintilla-2.14.1.tar.gz
+        sha256: 2c120a56d60363ff4bc73b8a763dc69fae5f84681c24efcb03064c7df103052b
       - type: shell
         commands:
-          - sed -i 's/\$\$\[QT_INSTALL_LIBS\]/\/app\/lib/g' Qt4Qt5/qscintilla.pro
-          - sed -i 's/\$\$\[QT_INSTALL_HEADERS\]/\/app\/include/g' Qt4Qt5/qscintilla.pro
-          - sed -i 's/\$\$\[QT_INSTALL_TRANSLATIONS\]/\/app\/share\/qt5\/translations/g' Qt4Qt5/qscintilla.pro
-          - sed -i 's/\$\$\[QT_INSTALL_DATA\]/\/app\/share\/qt5/g' Qt4Qt5/qscintilla.pro
-          - sed -i 's/\$\$\[QT_HOST_DATA\]/\/app\/lib\/qt5/g' Qt4Qt5/qscintilla.pro
+          - sed -i 's/\$\$\[QT_INSTALL_LIBS\]/\/app\/lib/g' src/qscintilla.pro
+          - sed -i 's/\$\$\[QT_INSTALL_HEADERS\]/\/app\/include/g' src/qscintilla.pro
+          - sed -i 's/\$\$\[QT_INSTALL_TRANSLATIONS\]/\/app\/share\/qt\/translations/g' src/qscintilla.pro
+          - sed -i 's/\$\$\[QT_INSTALL_DATA\]/\/app\/share\/qt/g' src/qscintilla.pro
+          - sed -i 's/\$\$\[QT_HOST_DATA\]/\/app\/lib\/qt/g' src/qscintilla.pro
     buildsystem: qmake
     builddir: true
-    subdir: Qt4Qt5
+    subdir: src
 #
   - name: qscintilla-bindings
     sources:
       - type: archive
-        url: https://www.riverbankcomputing.com/static/Downloads/QScintilla/2.11.6/QScintilla-2.11.6.tar.gz
-        sha256: e7346057db47d2fb384467fafccfcb13aa0741373c5d593bc72b55b2f0dd20a7
+        url: https://files.pythonhosted.org/packages/a9/f6/a7aa4b495dcee4c521b87205de9363fb62ee5fdc8eab91d4ddb97257c85b/QScintilla-2.14.1.tar.gz
+        sha256: 2c120a56d60363ff4bc73b8a763dc69fae5f84681c24efcb03064c7df103052b
     buildsystem: simple
     builddir: true
     build-commands:
-      - >
-            sed -i "s/qmake = {'CONFIG': 'qscintilla2'}/qmake = {'CONFIG': 'qscintilla2', 'QT': 'widgets printsupport'}/g" Python/configure.py
-      - cd Python && python3 configure.py --pyqt=PyQt5 --pyqt-sipdir=/app/share/sip --qsci-incdir=/app/include --qsci-libdir=/app/lib --destdir=/app/lib/python3.10/site-packages/PyQt5 --apidir=/app/share/qt5/qsci --stubsdir=/app/lib/python3.10/site-packages/PyQt5 --no-dist-info
-      - echo LIBS += /app/lib/libqscintilla2_qt5.so >> Python/Qsci/Qsci.pro
-      - cd Python && make && make install
+      - sip-install --verbose --target-dir=/app/lib/python3.10/site-packages
 #
   - name: qwt
     sources:
@@ -429,6 +486,10 @@ modules:
       - type: git
         url: https://github.com/kadas-albireo/QGIS.git
         tag: final-3_28_2-kadas
+      - type: shell
+        commands:
+          - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
+          - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.10\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -436,6 +497,7 @@ modules:
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
       - "-DUSE_CCACHE=ON"
+      - "-DBINDINGS_GLOBAL_INSTALL=TRUE"
       - "-DSIP_GLOBAL_INSTALL=TRUE"
       - "-DENABLE_TESTS=FALSE"
 #
@@ -510,14 +572,15 @@ modules:
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
 #
-  - name: pypi-lxml #required by kadas-gpkg-plugin
+  - name: lxml
     sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/89/9c/be3ebeb6053c6625c0497f282e0d8acc36c309212d47201e9cb1198ffb54/lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
-        sha256: 1ab8f1f932e8f82355e75dda5413a57612c6ea448069d4fb2e217e9a4bed13d4
+      - type: archive
+        url: https://files.pythonhosted.org/packages/06/5a/e11cad7b79f2cf3dd2ff8f81fa8ca667e7591d3d8451768589996b65dec1/lxml-4.9.2.tar.gz
+        sha256: 2455cfaeb7ac70338b3257f41e21f0724f4b5b0c0e7702da67ee6c3640835b67
     buildsystem: simple
+    builddir: true
     build-commands:
-      - pip3 install --verbose --no-index --prefix /app lxml-4.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_24_x86_64.whl
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
 #
   - name: kadas-about-plugin
     sources:
@@ -536,7 +599,7 @@ modules:
       - type: git
         url: https://github.com/kadas-albireo/kadas-help-plugin.git
         branch: master
-        commit: 18b288928981f0805ca3c37060529092f3423aa1
+        commit: 36476d22e03e8fac7b81053d670b91f63f775b61
     buildsystem: simple
     builddir: true
     build-commands:
@@ -548,7 +611,7 @@ modules:
       - type: git
         url: https://github.com/kadas-albireo/kadas-gpkg-plugin.git
         branch: master
-        commit: 7e40559c86bfe7479782095cb07941c10d4505a2
+        commit: 8d42af58c26e9ae2e789a5fa4d24eb744d8994bd
     buildsystem: simple
     builddir: true
     build-commands:
@@ -560,7 +623,7 @@ modules:
       - type: git
         url: https://github.com/kadas-albireo/kadas-print-plugin.git
         branch: master
-        commit: 1cdc570b65db8f7df1fdc616885ee0bab3b74faa
+        commit: 878cba9e61966bf2997b26dbbc5260eab955efa5
     buildsystem: simple
     builddir: true
     build-commands:
@@ -572,15 +635,14 @@ modules:
       - type: git
         url: https://github.com/kadas-albireo/kadas-albireo2.git
         branch: master
-        commit: 0443b19356f6ae764d1aaca9efc2d2fabfe4cc99
-      - type: shell #quick and ugly fix for versioning
+        commit: 73695862eac2d37df1727a70afdde6d63120c41d
+      - type: shell
         commands:
-          - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml
-      - type: shell #prevent installing to site-packages in /usr
+          - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml #quick and ugly fix for versioning
+      - type: shell
         commands:
-          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/FindPyQt5.cmake
-          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' cmake/SIPMacros.cmake
-          - sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' python/CMakeLists.txt
+          - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
+          - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.10\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -589,7 +651,7 @@ modules:
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
       - "-DQGIS_PREFIX_PATH=/app"
       - "-DQGIS_PLUGIN_DIR=/app/lib/qgis/plugins" #fails finding file, libplugin_offlineediting.so = libofflineeditingplugin.so ?
-      - "-DQGIS_SIP_DIR=/app/share/sip/qgis"
+      - "-DQGIS_SIP_DIR=/app/lib/python3.10/site-packages/qgis"
       - "-DWITH_GLOBE=OFF" #fails on osgearth Style if ON, removes dependencies on osg and osgearth
       - "-DINSTALL_DEMO_DATA=ON"
 #
