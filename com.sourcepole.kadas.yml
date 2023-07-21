@@ -485,11 +485,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/kadas-albireo/QGIS.git
-        tag: final-3_28_2-kadas
+        tag: final-3_28_8-kadas
       - type: shell
         commands:
           - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-          - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.10\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
+          - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.10\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -497,8 +497,8 @@ modules:
       - "-DCMAKE_INSTALL_PREFIX=/app"
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
       - "-DUSE_CCACHE=ON"
-      - "-DBINDINGS_GLOBAL_INSTALL=TRUE"
-      - "-DSIP_GLOBAL_INSTALL=TRUE"
+      - "-DBINDINGS_GLOBAL_INSTALL=TRUE" #solved with python_sitearch fix
+      - "-DSIP_GLOBAL_INSTALL=TRUE" #analysis.sip needed by kadas, solved with findsip.py fix
       - "-DENABLE_TESTS=FALSE"
 #
 # KADAS ALBIREO
@@ -635,7 +635,7 @@ modules:
       - type: git
         url: https://github.com/kadas-albireo/kadas-albireo2.git
         branch: master
-        commit: 73695862eac2d37df1727a70afdde6d63120c41d
+        commit: 0464c3181ea83993a35304369fd4169895d67a75
       - type: shell
         commands:
           - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml #quick and ugly fix for versioning
@@ -651,7 +651,7 @@ modules:
       - "-DCMAKE_PREFIX_PATH=/app;/usr"
       - "-DQGIS_PREFIX_PATH=/app"
       - "-DQGIS_PLUGIN_DIR=/app/lib/qgis/plugins" #fails finding file, libplugin_offlineediting.so = libofflineeditingplugin.so ?
-      - "-DQGIS_SIP_DIR=/app/lib/python3.10/site-packages/qgis"
+      - "-DQGIS_SIP_DIR=/app/lib/python3.10/site-packages/qgis" #find qgis .sip files
       - "-DWITH_GLOBE=OFF" #fails on osgearth Style if ON, removes dependencies on osg and osgearth
       - "-DINSTALL_DEMO_DATA=ON"
 #
