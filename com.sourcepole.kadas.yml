@@ -28,8 +28,8 @@ modules:
   - name: numpy
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/d0/b2/fe774844d1857804cc884bba67bec38f649c99d0dc1ee7cbbf1da601357c/numpy-1.25.0.tar.gz
-        sha256: f1accae9a28dc3cda46a91de86acf69de0d1b5f4edd44a9b0c3ceb8036dfff19
+        url: https://files.pythonhosted.org/packages/cf/7a/f68d1d658a0e68084097beb212fa9356fee7eabff8b57231cc4acb555b12/numpy-1.25.1.tar.gz
+        sha256: 9a3a9f3a61480cc086117b426a8bd86869c213fc4072e606f01c4e4b66eb92bf
     buildsystem: simple
     builddir: true
     build-commands:
@@ -48,8 +48,8 @@ modules:
   - name: pyyaml
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/36/2b/61d51a2c4f25ef062ae3f74576b01638bebad5e045f747ff12643df63844/PyYAML-6.0.tar.gz
-        sha256: 68fb519c14306fec9720a2a5b45bc9f0c8d1b9c72adf45c37baedfcd949c35a2
+        url: https://files.pythonhosted.org/packages/cd/e5/af35f7ea75cf72f2cd079c95ee16797de7cd71f29ea7c68ae5ce7be1eda0/PyYAML-6.0.1.tar.gz
+        sha256: bfdf460b1736c775f2ba9f6a92bca30bc2095067b8a9d77876d1fad6cc3b4a43
     buildsystem: simple
     builddir: true
     build-commands:
@@ -59,7 +59,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/nih-at/libzip.git
-        tag: v1.9.2
+        tag: v1.10.0
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -131,7 +131,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/libgeos/geos.git
-        tag: 3.11.2
+        tag: 3.12.0
     buildsystem: cmake-ninja
     builddir: true
     config-opts:
@@ -305,7 +305,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/OSGeo/gdal.git
-        tag: v3.7.0
+        tag: v3.7.1
     buildsystem: cmake-ninja
     builddir: true #recommended
     config-opts:
@@ -424,7 +424,7 @@ modules:
     buildsystem: simple
     builddir: true
     build-commands:
-      - sip-install --confirm-license --qt-shared --no-designer-plugin --no-qml-plugin --verbose --target-dir=/app/lib/python3.10/site-packages --scripts-dir=/app/bin --api-dir=/app/share/qt/qsci/api/python
+      - sip-install --confirm-license --qt-shared --no-designer-plugin --no-qml-plugin --concatenate 1 --no-docstrings --verbose --target-dir /app/lib/python3.10/site-packages --scripts-dir /app/bin --api-dir /app/share/qt/qsci/api/python
 #
   - name: qscintilla
     sources:
@@ -450,7 +450,7 @@ modules:
     buildsystem: simple
     builddir: true
     build-commands:
-      - sip-install --verbose --target-dir=/app/lib/python3.10/site-packages
+      - sip-install --concatenate 1 --no-docstrings --verbose --target-dir /app/lib/python3.10/site-packages --scripts-dir /app/bin --api-dir /app/share/qt/qsci/api/python
 #
   - name: qwt
     sources:
@@ -575,8 +575,8 @@ modules:
   - name: lxml
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/06/5a/e11cad7b79f2cf3dd2ff8f81fa8ca667e7591d3d8451768589996b65dec1/lxml-4.9.2.tar.gz
-        sha256: 2455cfaeb7ac70338b3257f41e21f0724f4b5b0c0e7702da67ee6c3640835b67
+        url: https://files.pythonhosted.org/packages/30/39/7305428d1c4f28282a4f5bdbef24e0f905d351f34cf351ceb131f5cddf78/lxml-4.9.3.tar.gz
+        sha256: 48628bd53a426c9eb9bc066a923acaa0878d1e86129fd5359aee99285f4eed9c
     buildsystem: simple
     builddir: true
     build-commands:
