@@ -13,7 +13,7 @@ jobs:
       image: bilelmoussaoui/flatpak-github-actions:kde-5.15-22.08
       options: --privileged
     steps:
-    - name: Ceckout
+    - name: Checkout
       uses: actions/checkout@v3
     - name: Cache
       id: cache
@@ -21,7 +21,7 @@ jobs:
       with:
         path: .flatpak-builder
         key: flatpak-build-${{ github.sha }}
-    - name: Flatpak Build
+    - name: Build
       uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
         bundle: kadas.flatpak
