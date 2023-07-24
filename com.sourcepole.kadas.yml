@@ -14,7 +14,7 @@ finish-args:
   - --share=network
   - --device=dri
   - --socket=wayland
-  - --socket=fallback-x11
+  - --socket=x11
   - --filesystem=home
   - --env=PYTHONPATH=/app/lib/python3.10/site-packages
 #
