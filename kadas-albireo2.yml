@@ -3,22 +3,25 @@ sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
     branch: master
-    commit: 0464c3181ea83993a35304369fd4169895d67a75
+    commit: 531a267c60e947f2f276061feefd81a3bb6d2d83
     x-checker-data:
       type: git
+    tag: v2.1.96
   - type: shell
     commands:
-      - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml #quick and ugly fix for versioning
+      - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml
+        && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml                                                                                                         #quick and ugly fix for versioning
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-      - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.10\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
+      - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.10\/site-packages"/g'
+        cmake/FindSIP.py                                                                                      #force install sip files to /app instead of /usr
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
-  - "-DQGIS_PREFIX_PATH=/app"
-  - "-DQGIS_PLUGIN_DIR=/app/lib/qgis/plugins" #fails finding file, libplugin_offlineediting.so = libofflineeditingplugin.so ?
-  - "-DQGIS_SIP_DIR=/app/lib/python3.10/site-packages/qgis" #find qgis .sip files
-  - "-DWITH_GLOBE=OFF" #fails on osgearth Style if ON, removes dependencies on osg and osgearth
-  - "-DINSTALL_DEMO_DATA=ON"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_INSTALL_PREFIX=/app
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DQGIS_PREFIX_PATH=/app
+  - -DQGIS_PLUGIN_DIR=/app/lib/qgis/plugins   #fails finding file, libplugin_offlineediting.so = libofflineeditingplugin.so ?
+  - -DQGIS_SIP_DIR=/app/lib/python3.10/site-packages/qgis   #find qgis .sip files
+  - -DWITH_GLOBE=OFF   #fails on osgearth Style if ON, removes dependencies on osg and osgearth
+  - -DINSTALL_DEMO_DATA=ON

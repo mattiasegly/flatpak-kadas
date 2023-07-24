@@ -2,16 +2,16 @@ name: protobuf
 sources:
   - type: git
     url: https://github.com/protocolbuffers/protobuf.git
-    tag: v21.12 #v21.* works with qgis 3.28
-    commit: f0dc78d7e6e331b8c6bb2d5283e06aa26883ca7c
+    tag: v23.4  #v21.* works with qgis 3.28
+    commit: 2c5fa078d8e86e5f4bd34e6f4c9ea9e8d7d4d44a
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
 builddir: true #recommended
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
-  - "-DBUILD_SHARED_LIBS=ON"
-  - "-Dprotobuf_BUILD_SHARED_LIBS=ON"
-  - "-Dprotobuf_BUILD_TESTS=OFF"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_INSTALL_PREFIX=/app
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DBUILD_SHARED_LIBS=ON
+  - -Dprotobuf_BUILD_SHARED_LIBS=ON
+  - -Dprotobuf_BUILD_TESTS=OFF

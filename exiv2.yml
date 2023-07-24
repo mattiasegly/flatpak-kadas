@@ -2,17 +2,17 @@ name: exiv2
 sources:
   - type: git
     url: https://github.com/Exiv2/exiv2.git
-    tag: v0.27.7 #v0.27.* works with qgis 3.28
-    commit: 3c648bc619ef7a3d50e3ddeb7d64a5e47d126eb4
+    tag: v0.28.0 #v0.27.* works with qgis 3.28
+    commit: 931a40a746f5678dcc4625b06a2eb25fa4f00b34
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
-  - "-DBUILD_WITH_CCACHE=ON"
-  - "-DBUILD_SHARED_LIBS=ON"
-  - "-DEXIV2_BUILD_SAMPLES=OFF"
-  - "-DEXIV2_BUILD_UNIT_TESTS=OFF"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_INSTALL_PREFIX=/app
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DBUILD_WITH_CCACHE=ON
+  - -DBUILD_SHARED_LIBS=ON
+  - -DEXIV2_BUILD_SAMPLES=OFF
+  - -DEXIV2_BUILD_UNIT_TESTS=OFF

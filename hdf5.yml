@@ -2,19 +2,19 @@ name: hdf5
 sources:
   - type: git
     url: https://github.com/HDFGroup/hdf5.git
-    tag: hdf5-1_14_1-2
-    commit: ac07382ca947de2b936204dc9d60ce9ac245a21f
+    tag: 1.14.1
+    commit: 577c192518598c7e2945683655feffcdbdf5a91b
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
-  - "-DHDF5_ENABLE_Z_LIB_SUPPORT=ON" #for netcdf-c
-  - "-DBUILD_SHARED_LIBS=ON"
-  - "-DBUILD_STATIC_LIBS=OFF"
-  - "-DHDF5_BUILD_CPP_LIB=ON" #for gdal
-  - "-DBUILD_TESTING=OFF"
-  - "-DHDF5_BUILD_EXAMPLES=OFF"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_INSTALL_PREFIX=/app
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DHDF5_ENABLE_Z_LIB_SUPPORT=ON   #for netcdf-c
+  - -DBUILD_SHARED_LIBS=ON
+  - -DBUILD_STATIC_LIBS=OFF
+  - -DHDF5_BUILD_CPP_LIB=ON   #for gdal
+  - -DBUILD_TESTING=OFF
+  - -DHDF5_BUILD_EXAMPLES=OFF

@@ -4,12 +4,13 @@ sources:
     url: https://github.com/manisandro/GdbCrashHandler.git
     #tag: 0.3.0
     branch: master #works with quazip 1.x
-    commit: ea2e7b677c4e33a1f2ce554c620d0b7b9b6242f3
+    commit: e1399f877e98382178855604c26aaf69c22fdbc9
     x-checker-data:
       type: git
+    tag: 0.3.0
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_INSTALL_PREFIX=/app
+  - -DCMAKE_PREFIX_PATH=/app;/usr

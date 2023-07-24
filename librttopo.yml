@@ -2,8 +2,8 @@ name: librttopo
 sources:
   - type: git
     url: https://git.osgeo.org/gitea/rttopo/librttopo.git
-    tag: librttopo-1.1.0
-    commit: 98a8bdd0b2d13f6b685d0658b4bce15d46606a1a
+    tag: librttopo-1.1.0-RC1
+    commit: 821fc4b05160938361f2e01a39fbd1ad96fcc64a
     x-checker-data:
       type: git
       tag-pattern: (librttopo-\d+.\d+.\d+)
