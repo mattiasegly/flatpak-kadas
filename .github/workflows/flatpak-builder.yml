@@ -7,7 +7,7 @@ on:
 name: Build Flatpak
 jobs:
   flatpak:
-    name: Flatpak
+    name: Flatpak Builder
     runs-on: ubuntu-latest
     container:
       image: bilelmoussaoui/flatpak-github-actions:kde-5.15-22.08
@@ -15,12 +15,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+      
     - name: Cache
       id: cache
       uses: actions/cache@v3
       with:
         path: .flatpak-builder
-        key: flatpak-build
+        key: flatpak-build-cache
+        
     - name: Build
       uses: flatpak/flatpak-github-actions/flatpak-builder@v6
       with:
