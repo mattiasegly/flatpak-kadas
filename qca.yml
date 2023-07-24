@@ -2,15 +2,15 @@ name: qca
 sources:
   - type: git
     url: https://github.com/KDE/qca.git
-    tag: v2.3.6
-    commit: 2327b77dcacaf1cab30534f5354e463f30440d04
+    tag: v2.3.7
+    commit: c486ce505b5b341167816da3f81a83678414e145
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
-  - "-DBUILD_SHARED_LIBS=ON"
-  - "-DBUILD_TESTS=OFF"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_INSTALL_PREFIX=/app
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DBUILD_SHARED_LIBS=ON
+  - -DBUILD_TESTS=OFF
