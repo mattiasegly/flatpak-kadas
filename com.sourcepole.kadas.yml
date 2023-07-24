@@ -57,24 +57,24 @@ modules:
   - qtkeychain.yml              #required by kadas-qgis/kadas-albireo2
   - qca.yml                     #required by kadas-qgis/kadas-albireo2
 
+  - psycopg2.yml                #required by qgis core plugins
   - jinja2.yml                  #required by qgis core plugins
   - pygments.yml                #required by qgis core plugins
-  - psycopg2.yml                #required by qgis core plugins
   - typing-extensions.yml       #required by qgis core plugins
   - setuptools-scm.yml          #required by qgis core plugins
-  - editables.yml               #required by qgis core plugins
   - pluggy.yml                  #required by qgis core plugins
   - pathspec.yml                #required by qgis core plugins
+  - editables.yml               #required by qgis core plugins
   - hatchling.yml               #required by qgis core plugins
   - urllib3.yml                 #required by qgis core plugins
-  - certifi.yml                 #required by qgis core plugins
   - idna.yml                    #required by qgis core plugins
   - charset-normalizer.yml      #required by qgis core plugins
+  - certifi.yml                 #required by qgis core plugins
   - requests.yml                #required by qgis core plugins
-  - pyyaml.yml                  #required by qgis core plugins/kadas-gpkg-plugin
-  - pytz.yml                    #required by qgis core plugins
   - python-dateutil.yml         #required by qgis core plugins
-  - lxml.yml                    #required by qgis core plugins
+  - pyyaml.yml                  #required by qgis core plugins
+  - pytz.yml                    #required by qgis core plugins
+  - lxml.yml                    #required by qgis core plugins/kadas-gpkg-plugin
   - owslib.yml                  #required by qgis core plugins
 
   - kadas-qgis.yml              #required by kadas-albireo2

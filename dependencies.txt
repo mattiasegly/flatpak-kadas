@@ -16,9 +16,9 @@ qscintilla->qscintilla-bindings
 qscintilla-bindings->kadas-qgis
 tcl->sqlite
 tcl->swig
+tcl->postgresql
 sqlite->proj
 proj->libspatialite
-proj->gdal
 numpy->swig
 swig->gdal
 geos->librttopo
@@ -26,6 +26,10 @@ librttopo->libspatialite
 freexl->libspatialite
 minizip->libspatialite
 libspatialite->gdal
+opencl-headers->gdal
+hdf5->netcdf-c
+netcdf-c->gdal
+postgresql->gdal
 gdal->kadas-qgis
 libzip->kadas-qgis
 protobuf->kadas-qgis
@@ -41,8 +45,13 @@ svg2svgt->kadas-albireo2
 zonedetect->kadas-albireo2
 quazip->gdbcrashhandler
 gdbcrashhandler->kadas-albireo2
+lxml->kadas-gpkg-plugin
+kadas-gpkg-plugin->kadas-albireo2
+kadas-about-plugin->kadas-albireo2
+kadas-help-plugin->kadas-albireo2
+kadas-print-plugin->kadas-albireo2
 
-#additional dependencies
+#secondary dependencies
 sip->pyqt5
 sip->qscintilla-bindings
 sip->kadas-qgis
@@ -52,33 +61,50 @@ qscintilla->kadas-qgis
 sqlite->libspatialite
 sqlite->gdal
 sqlite->kadas-qgis
+proj->gdal
 numpy->gdal
 geos->libspatialite
 geos->gdal
 geos->kadas-qgis
 freexl->gdal
 libspatialite->kadas-qgis
+opencl-headers->kadas-qgis
+hdf5->gdal
+hdf5->kadas-qgis
+netcdf-c->kadas-qgis
+postgresql->kadas-qgis
 exiv2->kadas-albireo2
 qwt->kadas-albireo2
 qtkeychain->kadas-albireo2
 qca->kadas-albireo2
 quazip->kadas-albireo2
 
-#optional and additional dependencies
-tcl->postgresql
-postgresql->gdal
-postgresql->kadas-qgis
+#qgis core plugins dependencies
 postgresql->psycopg2
 psycopg2->kadas-qgis
-opencl-headers->gdal
-opencl-headers->kadas-qgis
-hdf5->netcdf-c
-hdf5->gdal
-hdf5->kadas-qgis
-netcdf-c->gdal
-netcdf-c->kadas-qgis
-lxml->kadas-gpkg-plugin
-kadas-gpkg-plugin->kadas-albireo2
-kadas-about-plugin->kadas-albireo2
-kadas-help-plugin->kadas-albireo2
-kadas-print-plugin->kadas-albireo2
+flit-core->packaging
+flit-core->idna
+flit-core->pathspec
+flit-core->editables
+flit-core->typing-extensions
+packaging->setuptools-scm
+tomli->setuptools-scm
+typing-extensions->setuptools-scm
+setuptools-scm->pluggy
+setuptools-scm->python-dateutil
+pluggy->hatchling
+pathspec->hatchling
+editables->hatchling
+hatchling->urllib3
+urllib3->requests
+idna->requests
+charset-normalizer->requests
+certifi->requests
+requests->owslib
+python-dateutil->owslib
+pytz->owslib
+pyyaml->owslib
+lxml->owslib
+owslib->kadas-qgis
+jinja2->kadas-qgis
+pygments->kadas-qgis
