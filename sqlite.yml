@@ -3,6 +3,10 @@ sources:
   - type: git
     url: https://github.com/sqlite/sqlite.git
     tag: version-3.42.0
+    commit: 89efa897780db03eac974eb6b0e041cfb7c39733
+    x-checker-data:
+      type: git
+      tag-pattern: (version-\d+\.\d+\.\d+)
 buildsystem: simple
 builddir: true
 build-commands:

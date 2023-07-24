@@ -3,6 +3,9 @@ sources:
   - type: git
     url: https://github.com/KhronosGroup/OpenCL-Headers.git
     tag: v2023.04.17
+    commit: 4fdcfb0ae675f2f63a9add9552e0af62c2b4ed30
+    x-checker-data:
+      type: git
 buildsystem: cmake-ninja
 builddir: true
 config-opts:

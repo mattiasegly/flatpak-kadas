@@ -3,6 +3,9 @@ sources:
   - type: git
     url: https://github.com/KDE/qca.git
     tag: v2.3.6
+    commit: 2327b77dcacaf1cab30534f5354e463f30440d04
+    x-checker-data:
+      type: git
 buildsystem: cmake-ninja
 builddir: true
 config-opts:

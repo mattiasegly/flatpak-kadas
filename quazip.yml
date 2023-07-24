@@ -3,6 +3,9 @@ sources:
   - type: git
     url: https://github.com/stachenov/quazip.git
     tag: v1.4
+    commit: 566fa496649b8cb09018b497575bb3bf2977965f
+    x-checker-data:
+      type: git
 buildsystem: cmake-ninja
 builddir: true
 config-opts:

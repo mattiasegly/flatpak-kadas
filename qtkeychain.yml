@@ -3,6 +3,9 @@ sources:
   - type: git
     url: https://github.com/frankosterfeld/qtkeychain.git
     tag: v0.14.0
+    commit: e63da2868465db18eb35a312b2635c26fdc46923
+    x-checker-data:
+      type: git
 buildsystem: cmake-ninja
 builddir: true
 config-opts:

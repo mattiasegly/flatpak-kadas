@@ -3,6 +3,10 @@ sources:
   - type: git
     url: https://git.osgeo.org/gitea/rttopo/librttopo.git
     tag: librttopo-1.1.0
+    commit: 98a8bdd0b2d13f6b685d0658b4bce15d46606a1a
+    x-checker-data:
+      type: git
+      tag-pattern: (librttopo-\d+.\d+.\d+)
 buildsystem: simple
 builddir: true
 build-commands:

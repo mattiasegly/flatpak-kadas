@@ -4,6 +4,8 @@ sources:
     url: https://github.com/kadas-albireo/kadas-about-plugin.git
     branch: master
     commit: faeca163cd2b6d1f1d0bd7247dfca6ddea412c3a
+    x-checker-data:
+      type: git
 buildsystem: simple
 builddir: true
 build-commands:

@@ -5,6 +5,8 @@ sources:
     #tag: 0.3.0
     branch: master #works with quazip 1.x
     commit: ea2e7b677c4e33a1f2ce554c620d0b7b9b6242f3
+    x-checker-data:
+      type: git
 buildsystem: cmake-ninja
 builddir: true
 config-opts:

@@ -3,6 +3,9 @@ sources:
   - type: archive
     url: https://files.pythonhosted.org/packages/b9/6c/7c6658d258d7971c5eb0d9b69fa9265879ec9a9158031206d47800ae2213/packaging-23.1.tar.gz
     sha256: a392980d2b6cffa644431898be54b0045151319d1e7ec34f0cfed48767dd334f
+    x-checker-data:
+      type: pypi
+      name: packaging
 buildsystem: simple
 builddir: true
 build-commands:

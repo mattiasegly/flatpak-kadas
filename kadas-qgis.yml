@@ -3,6 +3,10 @@ sources:
   - type: git
     url: https://github.com/kadas-albireo/QGIS.git
     tag: final-3_28_8-kadas
+    commit: 239b8e682733c756edc2bea0987b86113839018c
+    x-checker-data:
+      type: git
+      tag-pattern: (final-\d+_\d+_\d+-kadas)
   - type: shell
     commands:
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
