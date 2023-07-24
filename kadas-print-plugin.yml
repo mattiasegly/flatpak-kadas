@@ -4,8 +4,8 @@ sources:
     url: https://github.com/kadas-albireo/kadas-print-plugin.git
     branch: master
     commit: 878cba9e61966bf2997b26dbbc5260eab955efa5
-    x-checker-data:
-      type: git
+    #x-checker-data:
+      #type: git
 buildsystem: simple
 builddir: true
 build-commands:

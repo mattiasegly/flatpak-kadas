@@ -5,8 +5,8 @@ sources:
     #tag: v0.9.6
     branch: master #fixes error with ‘QPainterPath roundedRect’
     commit: cc180f65001b3859015e29589897b2412ac01042
-    x-checker-data:
-      type: git
+    #x-checker-data:
+      #type: git
 buildsystem: cmake-ninja
 builddir: true
 config-opts:

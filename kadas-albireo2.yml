@@ -4,8 +4,8 @@ sources:
     url: https://github.com/kadas-albireo/kadas-albireo2.git
     branch: master
     commit: 0464c3181ea83993a35304369fd4169895d67a75
-    x-checker-data:
-      type: git
+    #x-checker-data:
+      #type: git
   - type: shell
     commands:
       - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml #quick and ugly fix for versioning
