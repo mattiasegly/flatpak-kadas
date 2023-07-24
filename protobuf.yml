@@ -6,6 +6,7 @@ sources:
     commit: f0dc78d7e6e331b8c6bb2d5283e06aa26883ca7c
     x-checker-data:
       type: git
+      versions: {"<": "22"}
 buildsystem: cmake-ninja
 builddir: true #recommended
 config-opts:
