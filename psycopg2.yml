@@ -1,0 +1,9 @@
+name: psycopg2
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/af/c4/5726cddb53fe52f0e839eb3da04322364f14493217ebd5818cc5e4c948a5/psycopg2-2.9.6.tar.gz
+    sha256: f15158418fd826831b28585e2ab48ed8df2d0d98f502a2b4fe619e7d5ca29011
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

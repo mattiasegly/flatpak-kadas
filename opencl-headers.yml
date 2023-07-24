@@ -1,0 +1,12 @@
+name: opencl-headers
+sources:
+  - type: git
+    url: https://github.com/KhronosGroup/OpenCL-Headers.git
+    tag: v2023.04.17
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - "-DCMAKE_BUILD_TYPE=Release"
+  - "-DCMAKE_INSTALL_PREFIX=/app"
+  - "-DCMAKE_PREFIX_PATH=/app;/usr"
+  - "-DOPENCL_HEADERS_BUILD_CXX_TESTS=OFF"

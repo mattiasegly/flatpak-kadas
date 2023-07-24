@@ -1,0 +1,12 @@
+name: swig
+sources:
+  - type: git
+    url: https://github.com/swig/swig.git
+    tag: v4.1.1
+buildsystem: simple
+builddir: true
+build-commands:
+  - ./autogen.sh
+  - ./configure --prefix=/app --with-tclconfig=/app/lib
+  - make
+  - make install

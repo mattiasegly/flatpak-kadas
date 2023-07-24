@@ -15,643 +15,78 @@ finish-args:
   - --device=dri
   - --socket=wayland
   - --socket=fallback-x11
-  - --env=PYTHONPATH=/app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages
   - --filesystem=home
+  - --env=PYTHONPATH=/app/lib/python3.10/site-packages
 #
 build-options:
   env:
-    PYTHONPATH: /app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages #fix "attempting to install a package to a directory that is not on PYTHONPATH and which Python does not read ".pth" files from."
+    PYTHONPATH: /app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages
+#
 modules:
-#
-# KADAS QGIS
-#
-  - name: numpy
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/cf/7a/f68d1d658a0e68084097beb212fa9356fee7eabff8b57231cc4acb555b12/numpy-1.25.1.tar.gz
-        sha256: 9a3a9f3a61480cc086117b426a8bd86869c213fc4072e606f01c4e4b66eb92bf
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: jinja2
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/7a/ff/75c28576a1d900e87eb6335b063fab47a8ef3c8b4d88524c4bf78f670cce/Jinja2-3.1.2.tar.gz
-        sha256: 31351a702a408a9e7595a8fc6150fc3f43bb6bf7e319770cbc0db9df9437e852
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: pyyaml
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/cd/e5/af35f7ea75cf72f2cd079c95ee16797de7cd71f29ea7c68ae5ce7be1eda0/PyYAML-6.0.1.tar.gz
-        sha256: bfdf460b1736c775f2ba9f6a92bca30bc2095067b8a9d77876d1fad6cc3b4a43
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: libzip
-    sources:
-      - type: git
-        url: https://github.com/nih-at/libzip.git
-        tag: v1.10.0
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_SHARED_LIBS=ON"
-      - "-DBUILD_REGRESS=OFF"
-      - "-DBUILD_EXAMPLES=OFF"
-      - "-DBUILD_DOC=OFF"
-#
-  - name: minizip
-    sources:
-      - type: git
-        url: https://github.com/madler/zlib.git
-        tag: v1.2.13
-    buildsystem: simple
-    builddir: true
-    subdir: contrib/minizip
-    build-commands:
-      - rm -f Makefile
-      - autoreconf -fiv
-      - ./configure --prefix=/app
-      - make
-      - make install
-#
-  - name: opencl-headers
-    sources:
-      - type: git
-        url: https://github.com/KhronosGroup/OpenCL-Headers.git
-        tag: v2023.04.17
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DOPENCL_HEADERS_BUILD_CXX_TESTS=OFF"
-#
-  - name: gsl
-    sources:
-      - type: git
-        url: https://git.savannah.gnu.org/git/gsl.git #browse https://git.savannah.gnu.org/cgit/gsl.git
-        tag: release-2-7
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - ./autogen.sh
-      - ./configure --prefix=/app --enable-static=no
-      - make
-      - make install
-#
-  - name: qtkeychain
-    sources:
-      - type: git
-        url: https://github.com/frankosterfeld/qtkeychain.git
-        tag: v0.14.0
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_SHARED_LIBS=ON"
-      - "-DLIBSECRET_SUPPORT=OFF"
-      - "-DBUILD_TRANSLATIONS=OFF"
-#
-  - name: geos
-    sources:
-      - type: git
-        url: https://github.com/libgeos/geos.git
-        tag: 3.12.0
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DUSE_CCACHE=ON"
-      - "-DBUILD_SHARED_LIBS=ON"
-      - "-DBUILD_TESTING=OFF"
-      - "-DGEOS_BUILD_DEVELOPER=OFF"
-#
-  - name: tcl
-    sources:
-      - type: git
-        url: https://github.com/tcltk/tcl.git
-        tag: core-8-6-13
-    buildsystem: simple
-    builddir: true
-    subdir: unix
-    build-commands:
-      - ./configure --prefix=/app --enable-64bit
-      - make
-      - make install
-    post-install:
-      - chmod 755 /app/lib/libtcl*.so
-#
-  - name: postgresql
-    sources:
-      - type: git
-        url: https://git.postgresql.org/git/postgresql.git #browse https://git.postgresql.org/gitweb/?p=postgresql.git;a=summary
-        tag: REL_15_3
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - ./configure --prefix=/app --with-tcl --with-perl --with-python -with-libxml --with-libxslt -with-lz4 --with-zstd --with-openssl
-      - make
-      - make install
-#
-  - name: psycopg2
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/af/c4/5726cddb53fe52f0e839eb3da04322364f14493217ebd5818cc5e4c948a5/psycopg2-2.9.6.tar.gz
-        sha256: f15158418fd826831b28585e2ab48ed8df2d0d98f502a2b4fe619e7d5ca29011
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: sqlite3
-    sources:
-      - type: git
-        url: https://github.com/sqlite/sqlite.git
-        tag: version-3.42.0
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - CFLAGS="-DSQLITE_ENABLE_COLUMN_METADATA=1" ./configure --prefix=/app --disable-static --enable-all #enable-all is only; fts4/5 geopoly rtree session
-      - make
-      - make install
-#
-  - name: proj
-    sources:
-      - type: git
-        url: https://github.com/OSGeo/PROJ.git
-        tag: 9.2.1
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DUSE_CCACHE=ON"
-      - "-DBUILD_TESTING=OFF"
-#
-  - name: librttopo
-    sources:
-      - type: git
-        url: https://git.osgeo.org/gitea/rttopo/librttopo.git
-        tag: librttopo-1.1.0
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - ./autogen.sh
-      - ./configure --prefix=/app
-      - make
-      - make install
-#
-  - name: freexl
-    sources:
-      - type: archive
-        url: https://www.gaia-gis.it/gaia-sins/freexl-1.0.6.tar.gz
-        sha256: 3de8b57a3d130cb2881ea52d3aa9ce1feedb1b57b7daa4eb37f751404f90fc22
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - ./configure --prefix=/app
-      - make
-      - make install
-#
-  - name: libspatialite
-    sources:
-      - type: archive
-        url: https://www.gaia-gis.it/gaia-sins/libspatialite-5.0.1.tar.gz
-        sha256: eecbc94311c78012d059ebc0fae86ea5ef6eecb13303e6e82b3753c1b3409e98
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - ./configure --prefix=/app --enable-examples=no
-      - make
-      - make install
-#
-  - name: libspatialindex
-    sources:
-      - type: git
-        url: https://github.com/libspatialindex/libspatialindex.git
-        tag: 1.9.3
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_SHARED_LIBS=ON"
-      - "-DSIDX_BUILD_TESTS=OFF"
-#
-  - name: hdf5
-    sources:
-      - type: git
-        url: https://github.com/HDFGroup/hdf5.git
-        tag: hdf5-1_14_1-2
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DHDF5_ENABLE_Z_LIB_SUPPORT=ON" #for netcdf-c
-      - "-DBUILD_SHARED_LIBS=ON"
-      - "-DBUILD_STATIC_LIBS=OFF"
-      - "-DHDF5_BUILD_CPP_LIB=ON" #for gdal
-      - "-DBUILD_TESTING=OFF"
-      - "-DHDF5_BUILD_EXAMPLES=OFF"
-#
-  - name: netcdf-c
-    sources:
-      - type: git
-        url: https://github.com/Unidata/netcdf-c.git
-        tag: v4.9.2
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_SHARED_LIBS=ON"
-#
-  - name: swig
-    sources:
-      - type: git
-        url: https://github.com/swig/swig.git
-        tag: v4.1.1
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - ./autogen.sh
-      - ./configure --prefix=/app --with-tclconfig=/app/lib
-      - make
-      - make install
-#
-  - name: gdal
-    sources:
-      - type: git
-        url: https://github.com/OSGeo/gdal.git
-        tag: v3.7.1
-    buildsystem: cmake-ninja
-    builddir: true #recommended
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DGDAL_USE_OPENCL=ON"
-      - "-DBUILD_TESTING=OFF"
-#
-  - name: protobuf
-    sources:
-      - type: git
-        url: https://github.com/protocolbuffers/protobuf.git
-        tag: v21.12 #v21.* works with qgis 3.28
-    buildsystem: cmake-ninja
-    builddir: true #recommended
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_SHARED_LIBS=ON"
-      - "-Dprotobuf_BUILD_SHARED_LIBS=ON"
-      - "-Dprotobuf_BUILD_TESTS=OFF"
-#
-  - name: exiv2
-    sources:
-      - type: git
-        url: https://github.com/Exiv2/exiv2.git
-        tag: v0.27.7 #v0.27.* works with qgis 3.28
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_WITH_CCACHE=ON"
-      - "-DBUILD_SHARED_LIBS=ON"
-      - "-DEXIV2_BUILD_SAMPLES=OFF"
-      - "-DEXIV2_BUILD_UNIT_TESTS=OFF"
-#
-  - name: flit-core
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/c4/e6/c1ac50fe3eebb38a155155711e6e864e254ce4b6e17fe2429b4c4d5b9e80/flit_core-3.9.0.tar.gz
-        sha256: 72ad266176c4a3fcfab5f2930d76896059851240570ce9a98733b658cb786eba
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: tomli
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/c0/3f/d7af728f075fb08564c5949a9c95e44352e23dee646869fa104a3b2060a3/tomli-2.0.1.tar.gz
-        sha256: de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: ply
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/e5/69/882ee5c9d017149285cab114ebeab373308ef0f874fcdac9beb90e0ac4da/ply-3.11.tar.gz
-        sha256: 00c7c1aaa88358b9c765b6d3000c6eec0ba42abca5351b095321aef446081da3
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: packaging
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/b9/6c/7c6658d258d7971c5eb0d9b69fa9265879ec9a9158031206d47800ae2213/packaging-23.1.tar.gz
-        sha256: a392980d2b6cffa644431898be54b0045151319d1e7ec34f0cfed48767dd334f
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: sip
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/48/75/98987181e897ef378d6c239ee733328a7264a41f2d8263e61d7b7c4c0909/sip-6.7.9.tar.gz
-        sha256: 35d51fc10f599d3696abb50f29d068ad04763df7b77808c76b74597660f99b17
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: pyqt-builder
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/31/d7/dbcb710a205014ca8f1c651ed77e6f1b1d0c67ab43c664afb079d6efb658/PyQt-builder-1.15.1.tar.gz
-        sha256: a2bd3cfbf952e959141dfe55b44b451aa945ca8916d1b773850bb2f9c0fa2985
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: pyqt5-sip
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/c1/61/4055e7a0f36339964956ff415e36f4abf82561904cc49c021da32949fc55/PyQt5_sip-12.12.1.tar.gz
-        sha256: 8fdc6e0148abd12d977a1d3828e7b79aae958e83c6cb5adae614916d888a6b10
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: pyqt5
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/5c/46/b4b6eae1e24d9432905ef1d4e7c28b6610e28252527cdc38f2a75997d8b5/PyQt5-5.15.9.tar.gz
-        sha256: dc41e8401a90dc3e2b692b411bd5492ab559ae27a27424eed4bd3915564ec4c0
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - sip-install --confirm-license --qt-shared --no-designer-plugin --no-qml-plugin --concatenate 1 --no-docstrings --verbose --target-dir /app/lib/python3.10/site-packages --scripts-dir /app/bin --api-dir /app/share/qt/qsci/api/python
-#
-  - name: qscintilla
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/a9/f6/a7aa4b495dcee4c521b87205de9363fb62ee5fdc8eab91d4ddb97257c85b/QScintilla-2.14.1.tar.gz
-        sha256: 2c120a56d60363ff4bc73b8a763dc69fae5f84681c24efcb03064c7df103052b
-      - type: shell
-        commands:
-          - sed -i 's/\$\$\[QT_INSTALL_LIBS\]/\/app\/lib/g' src/qscintilla.pro
-          - sed -i 's/\$\$\[QT_INSTALL_HEADERS\]/\/app\/include/g' src/qscintilla.pro
-          - sed -i 's/\$\$\[QT_INSTALL_TRANSLATIONS\]/\/app\/share\/qt\/translations/g' src/qscintilla.pro
-          - sed -i 's/\$\$\[QT_INSTALL_DATA\]/\/app\/share\/qt/g' src/qscintilla.pro
-          - sed -i 's/\$\$\[QT_HOST_DATA\]/\/app\/lib\/qt/g' src/qscintilla.pro
-    buildsystem: qmake
-    builddir: true
-    subdir: src
-#
-  - name: qscintilla-bindings
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/a9/f6/a7aa4b495dcee4c521b87205de9363fb62ee5fdc8eab91d4ddb97257c85b/QScintilla-2.14.1.tar.gz
-        sha256: 2c120a56d60363ff4bc73b8a763dc69fae5f84681c24efcb03064c7df103052b
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - sip-install --concatenate 1 --no-docstrings --verbose --target-dir /app/lib/python3.10/site-packages --scripts-dir /app/bin --api-dir /app/share/qt/qsci/api/python
-#
-  - name: qwt
-    sources:
-      - type: archive
-        url: https://sourceforge.net/projects/qwt/files/qwt/6.2.0/qwt-6.2.0.zip
-        sha256: 3e9632a9be6a883db5c496e42ce74cbbf8da02cc3328faa89e2c43e434a2eb76
-      - type: shell
-        commands:
-          - sed -i 's/\$\$\[QT_INSTALL_PREFIX\]/\/app/g' qwtconfig.pri
-          - sed -i 's/usr\/local\/qwt-\$\$QWT_VERSION/app/g' qwtconfig.pri
-          - sed -i '/QwtExamples/s/^/#/g' qwtconfig.pri
-          - sed -i '/QwtPlayground/s/^/#/g' qwtconfig.pri
-          - sed -i '/QwtTests/s/^/#/g' qwtconfig.pri
-    buildsystem: qmake
-    builddir: true
-#
-  - name: qca
-    sources:
-      - type: git
-        url: https://github.com/KDE/qca.git
-        tag: v2.3.6
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_SHARED_LIBS=ON"
-      - "-DBUILD_TESTS=OFF"
-#
-  - name: kadas-qgis
-    sources:
-      - type: git
-        url: https://github.com/kadas-albireo/QGIS.git
-        tag: final-3_28_8-kadas
-      - type: shell
-        commands:
-          - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-          - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.10\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DUSE_CCACHE=ON"
-      - "-DBINDINGS_GLOBAL_INSTALL=TRUE" #solved with python_sitearch fix
-      - "-DSIP_GLOBAL_INSTALL=TRUE" #analysis.sip needed by kadas, solved with findsip.py fix
-      - "-DENABLE_TESTS=FALSE"
-#
-# KADAS ALBIREO
-#
-  - name: quazip
-    sources:
-      - type: git
-        url: https://github.com/stachenov/quazip.git
-        tag: v1.4
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_SHARED_LIBS=ON"
-      - "-DQUAZIP_ENABLE_TESTS=OFF"
-#
-  - name: geographiclib
-    sources:
-      - type: git
-        url: https://github.com/geographiclib/geographiclib.git
-        tag: v2.2
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DBUILD_SHARED_LIBS=ON"
-      - "-DBUILD_BOTH_LIBS=OFF"
-#
-  - name: svg2svgt
-    sources:
-      - type: git
-        url: https://github.com/manisandro/svg2svgt.git
-        #tag: v0.9.6
-        branch: master #fixes error with ‘QPainterPath roundedRect’
-        commit: cc180f65001b3859015e29589897b2412ac01042
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-#
-  - name: zonedetect
-    sources:
-      - type: git
-        url: https://github.com/BertoldVdb/ZoneDetect.git
-        branch: master
-        commit: 88e927d2302966993724f06d57e89cc4bf6d5e35
-    buildsystem: simple
-    builddir: true
-    subdir: library
-    build-commands:
-      - prefix=/app make
-      - prefix=/app make install
-#
-  - name: gdbcrashhandler
-    sources:
-      - type: git
-        url: https://github.com/manisandro/GdbCrashHandler.git
-        #tag: 0.3.0
-        branch: master #works with quazip 1.x
-        commit: ea2e7b677c4e33a1f2ce554c620d0b7b9b6242f3
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-#
-  - name: lxml
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/30/39/7305428d1c4f28282a4f5bdbef24e0f905d351f34cf351ceb131f5cddf78/lxml-4.9.3.tar.gz
-        sha256: 48628bd53a426c9eb9bc066a923acaa0878d1e86129fd5359aee99285f4eed9c
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
-#
-  - name: kadas-about-plugin
-    sources:
-      - type: git
-        url: https://github.com/kadas-albireo/kadas-about-plugin.git
-        branch: master
-        commit: faeca163cd2b6d1f1d0bd7247dfca6ddea412c3a
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - mkdir -p /app/share/kadas/python/plugins
-      - cp -r kadas_* /app/share/kadas/python/plugins
-#
-  - name: kadas-help-plugin
-    sources:
-      - type: git
-        url: https://github.com/kadas-albireo/kadas-help-plugin.git
-        branch: master
-        commit: 36476d22e03e8fac7b81053d670b91f63f775b61
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - mkdir -p /app/share/kadas/python/plugins
-      - cp -r kadas_* /app/share/kadas/python/plugins
-#
-  - name: kadas-gpkg-plugin
-    sources:
-      - type: git
-        url: https://github.com/kadas-albireo/kadas-gpkg-plugin.git
-        branch: master
-        commit: 8d42af58c26e9ae2e789a5fa4d24eb744d8994bd
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - mkdir -p /app/share/kadas/python/plugins
-      - cp -r kadas_* /app/share/kadas/python/plugins
-#
-  - name: kadas-print-plugin
-    sources:
-      - type: git
-        url: https://github.com/kadas-albireo/kadas-print-plugin.git
-        branch: master
-        commit: 878cba9e61966bf2997b26dbbc5260eab955efa5
-    buildsystem: simple
-    builddir: true
-    build-commands:
-      - mkdir -p /app/share/kadas/python/plugins
-      - cp -r kadas_* /app/share/kadas/python/plugins
-#
-  - name: kadas-albireo2
-    sources:
-      - type: git
-        url: https://github.com/kadas-albireo/kadas-albireo2.git
-        branch: master
-        commit: 0464c3181ea83993a35304369fd4169895d67a75
-      - type: shell
-        commands:
-          - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml #quick and ugly fix for versioning
-      - type: shell
-        commands:
-          - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-          - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.10\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
-    buildsystem: cmake-ninja
-    builddir: true
-    config-opts:
-      - "-DCMAKE_BUILD_TYPE=Release"
-      - "-DCMAKE_INSTALL_PREFIX=/app"
-      - "-DCMAKE_PREFIX_PATH=/app;/usr"
-      - "-DQGIS_PREFIX_PATH=/app"
-      - "-DQGIS_PLUGIN_DIR=/app/lib/qgis/plugins" #fails finding file, libplugin_offlineediting.so = libofflineeditingplugin.so ?
-      - "-DQGIS_SIP_DIR=/app/lib/python3.10/site-packages/qgis" #find qgis .sip files
-      - "-DWITH_GLOBE=OFF" #fails on osgearth Style if ON, removes dependencies on osg and osgearth
-      - "-DINSTALL_DEMO_DATA=ON"
-#
+  - flit-core.yml               #required by packaging/qgis core plugins
+  - packaging.yml               #required by sip/qgis core plugins
+  - tomli.yml                   #required by sip/qgis core plugins
+  - ply.yml                     #required by sip
+  - sip.yml                     #required by pyqt-builder/pyqt5-sip/pyqt5/qscintilla-bindings/kadas-qgis/kadas-albireo2
+  - pyqt-builder.yml            #required by pyqt5/qscintilla-bindings
+  - pyqt5-sip.yml               #required by pyqt5
+  - pyqt5.yml                   #required by kadas-qgis/kadas-albireo2
+  - qscintilla.yml              #required by qscintilla-bindings/kadas-qgis
+  - qscintilla-bindings.yml     #required by kadas-qgis
+  - tcl.yml                     #required by sqlite, optional to swig/postgresql, enabled
+  - sqlite.yml                  #required by proj/libspatialite/gdal/kadas-qgis
+  - proj.yml                    #required by libspatialite/gdal/kadas-qgis
+  - numpy.yml                   #required by swig/gdal
+  - swig.yml                    #required by gdal
+  - geos.yml                    #required by librttopo/libspatialite/gdal/kadas-qgis
+  - librttopo.yml               #required by libspatialite
+  - freexl.yml                  #required by libspatialite, optional to gdal
+  - minizip.yml                 #required by libspatialite
+  - libspatialite.yml           #required by kadas-qgis, optional to gdal
+  - opencl-headers.yml          #optional to gdal/kadas-qgis, enabled
+  - hdf5.yml                    #optional to gdal/kadas-qgis, required by netcdf-c
+  - netcdf-c.yml                #optional to gdal/kadas-qgis
+  - postgresql.yml              #optional to gdal/kadas-qgis, required by psycopg2
+  - gdal.yml                    #required by kadas-qgis
+  - libzip.yml                  #required by kadas-qgis
+  - protobuf.yml                #required by kadas-qgis
+  - gsl.yml                     #required by kadas-qgis
+  - libspatialindex.yml         #required by kadas-qgis
+  - exiv2.yml                   #required by kadas-qgis/kadas-albireo2
+  - qwt.yml                     #required by kadas-qgis/kadas-albireo2
+  - qtkeychain.yml              #required by kadas-qgis/kadas-albireo2
+  - qca.yml                     #required by kadas-qgis/kadas-albireo2
+
+  - jinja2.yml                  #required by qgis core plugins
+  - pygments.yml                #required by qgis core plugins
+  - psycopg2.yml                #required by qgis core plugins
+  - typing-extensions.yml       #required by qgis core plugins
+  - setuptools-scm.yml          #required by qgis core plugins
+  - editables.yml               #required by qgis core plugins
+  - pluggy.yml                  #required by qgis core plugins
+  - pathspec.yml                #required by qgis core plugins
+  - hatchling.yml               #required by qgis core plugins
+  - urllib3.yml                 #required by qgis core plugins
+  - certifi.yml                 #required by qgis core plugins
+  - idna.yml                    #required by qgis core plugins
+  - charset-normalizer.yml      #required by qgis core plugins
+  - requests.yml                #required by qgis core plugins
+  - pyyaml.yml                  #required by qgis core plugins/kadas-gpkg-plugin
+  - pytz.yml                    #required by qgis core plugins
+  - python-dateutil.yml         #required by qgis core plugins
+  - lxml.yml                    #required by qgis core plugins
+  - owslib.yml                  #required by qgis core plugins
+
+  - kadas-qgis.yml              #required by kadas-albireo2
+  - geographiclib.yml           #required by kadas-albireo2
+  - svg2svgt.yml                #required by kadas-albireo2
+  - zonedetect.yml              #required by kadas-albireo2
+  - quazip.yml                  #required by gdbcrashhandler/kadas-albireo2
+  - gdbcrashhandler.yml         #required by kadas-albireo2
+#  - osg.yml                    #optional to kadas-albireo2, disabled and omitted
+#  - osgearth.yml               #optional to kadas-albireo2, disabled and omitted
+  - kadas-gpkg-plugin.yml       #optional to kadas-albireo2
+  - kadas-about-plugin.yml      #optional to kadas-albireo2
+  - kadas-help-plugin.yml       #optional to kadas-albireo2
+  - kadas-print-plugin.yml      #optional to kadas-albireo2
+  - kadas-albireo2.yml

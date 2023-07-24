@@ -1,0 +1,9 @@
+name: editables
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/43/8a/a060ff3e75328015150f680b4b4bc4617644aaef199ece380342a334d78f/editables-0.4.tar.gz
+    sha256: dc322c42e7ccaf19600874035a4573898d88aadd07e177c239298135b75da772
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

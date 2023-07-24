@@ -1,0 +1,14 @@
+name: tcl
+sources:
+  - type: git
+    url: https://github.com/tcltk/tcl.git
+    tag: core-8-6-13
+buildsystem: simple
+builddir: true
+subdir: unix
+build-commands:
+  - ./configure --prefix=/app --enable-64bit
+  - make
+  - make install
+post-install:
+  - chmod 755 /app/lib/libtcl*.so

@@ -1,0 +1,13 @@
+name: libspatialindex
+sources:
+  - type: git
+    url: https://github.com/libspatialindex/libspatialindex.git
+    tag: 1.9.3
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - "-DCMAKE_BUILD_TYPE=Release"
+  - "-DCMAKE_INSTALL_PREFIX=/app"
+  - "-DCMAKE_PREFIX_PATH=/app;/usr"
+  - "-DBUILD_SHARED_LIBS=ON"
+  - "-DSIDX_BUILD_TESTS=OFF"

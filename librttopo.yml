@@ -1,0 +1,12 @@
+name: librttopo
+sources:
+  - type: git
+    url: https://git.osgeo.org/gitea/rttopo/librttopo.git
+    tag: librttopo-1.1.0
+buildsystem: simple
+builddir: true
+build-commands:
+  - ./autogen.sh
+  - ./configure --prefix=/app
+  - make
+  - make install

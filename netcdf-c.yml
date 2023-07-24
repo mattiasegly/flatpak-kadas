@@ -1,0 +1,12 @@
+name: netcdf-c
+sources:
+  - type: git
+    url: https://github.com/Unidata/netcdf-c.git
+    tag: v4.9.2
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - "-DCMAKE_BUILD_TYPE=Release"
+  - "-DCMAKE_INSTALL_PREFIX=/app"
+  - "-DCMAKE_PREFIX_PATH=/app;/usr"
+  - "-DBUILD_SHARED_LIBS=ON"

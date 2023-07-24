@@ -1,0 +1,14 @@
+name: gsl
+sources:
+  - type: git
+    url: https://git.savannah.gnu.org/git/gsl.git #browse https://git.savannah.gnu.org/cgit/gsl.git
+    #tag: release-2-7
+    branch: master #towards 2.8
+    commit: 3152143a42f0cb00452e1a2509ca77e1b959d21d
+buildsystem: simple
+builddir: true
+build-commands:
+  - ./autogen.sh
+  - ./configure --prefix=/app --enable-static=no
+  - make
+  - make install

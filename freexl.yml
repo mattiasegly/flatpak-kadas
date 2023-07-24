@@ -1,0 +1,11 @@
+name: freexl
+sources:
+  - type: archive
+    url: https://www.gaia-gis.it/gaia-sins/freexl-1.0.6.tar.gz
+    sha256: 3de8b57a3d130cb2881ea52d3aa9ce1feedb1b57b7daa4eb37f751404f90fc22
+buildsystem: simple
+builddir: true
+build-commands:
+  - ./configure --prefix=/app
+  - make
+  - make install
