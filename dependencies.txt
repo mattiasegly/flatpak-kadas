@@ -95,6 +95,7 @@ setuptools-scm->python-dateutil
 pluggy->hatchling
 pathspec->hatchling
 editables->hatchling
+trove-classifiers->hatchling
 hatchling->urllib3
 urllib3->requests
 idna->requests

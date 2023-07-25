@@ -1,0 +1,12 @@
+name: trove-classifiers
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/8b/2b/46dde7e5df5f2b22e35d060d1e3ec2ec68c6c89f85e00273ea67585e4237/trove-classifiers-2023.7.6.tar.gz
+    sha256: 8a8e168b51d20fed607043831d37632bb50919d1c80a64e0f1393744691a8b22
+    x-checker-data:
+      type: pypi
+      name: trove-classifiers
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

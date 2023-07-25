@@ -65,6 +65,7 @@ modules:
   - pluggy.yml                  #required by qgis core plugins
   - pathspec.yml                #required by qgis core plugins
   - editables.yml               #required by qgis core plugins
+  - trove-classifiers.yml       #required by qgis core plugins
   - hatchling.yml               #required by qgis core plugins
   - urllib3.yml                 #required by qgis core plugins
   - idna.yml                    #required by qgis core plugins
