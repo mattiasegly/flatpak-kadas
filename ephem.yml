@@ -1,0 +1,12 @@
+name: ephem
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/af/5d/bbd70a7538f6d6138583a59a73e8ee85a8b838ac5a284e1dedb2127a9369/ephem-4.1.4.tar.gz
+    sha256: 73a59f0d2162d1624535c3c3b75f956556bdbb2055eaf554a7bef147d3f9c760
+    x-checker-data:
+      type: pypi
+      name: ephem
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

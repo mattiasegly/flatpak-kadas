@@ -3,7 +3,7 @@ sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-help-plugin.git
     branch: master
-    commit: 36476d22e03e8fac7b81053d670b91f63f775b61
+    commit: 0ce21f7bfb7818cc14365d0530c1a6b3ab629765
     #x-checker-data:
       #type: git
 buildsystem: simple

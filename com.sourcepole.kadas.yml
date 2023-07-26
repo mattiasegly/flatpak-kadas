@@ -86,6 +86,8 @@ modules:
   - gdbcrashhandler.yml         #required by kadas-albireo2
 #  - osg.yml                    #optional to kadas-albireo2, disabled and omitted
 #  - osgearth.yml               #optional to kadas-albireo2, disabled and omitted
+  - pyephem.yml                 #required by kadas-ephem-plugin
+  - kadas-ephem-plugin.yml      #optional to kadas-albireo2
   - kadas-gpkg-plugin.yml       #optional to kadas-albireo2
   - kadas-about-plugin.yml      #optional to kadas-albireo2
   - kadas-help-plugin.yml       #optional to kadas-albireo2

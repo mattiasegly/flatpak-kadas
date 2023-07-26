@@ -45,11 +45,6 @@ svg2svgt->kadas-albireo2
 zonedetect->kadas-albireo2
 quazip->gdbcrashhandler
 gdbcrashhandler->kadas-albireo2
-lxml->kadas-gpkg-plugin
-kadas-gpkg-plugin->kadas-albireo2
-kadas-about-plugin->kadas-albireo2
-kadas-help-plugin->kadas-albireo2
-kadas-print-plugin->kadas-albireo2
 
 #secondary dependencies
 sip->pyqt5
@@ -79,7 +74,7 @@ qtkeychain->kadas-albireo2
 qca->kadas-albireo2
 quazip->kadas-albireo2
 
-#qgis core plugins dependencies
+#qgis/kadas plugins dependencies
 postgresql->psycopg2
 psycopg2->kadas-qgis
 flit-core->packaging
@@ -87,6 +82,7 @@ flit-core->idna
 flit-core->pathspec
 flit-core->editables
 flit-core->typing-extensions
+flit-core->ephem
 packaging->setuptools-scm
 tomli->setuptools-scm
 typing-extensions->setuptools-scm
@@ -109,3 +105,10 @@ lxml->owslib
 owslib->kadas-qgis
 jinja2->kadas-qgis
 pygments->kadas-qgis
+ephem->kadas-ephem-plugin
+lxml->kadas-gpkg-plugin
+kadas-gpkg-plugin->kadas-albireo2
+kadas-ephem-plugin->kadas-albireo2
+kadas-about-plugin->kadas-albireo2
+kadas-help-plugin->kadas-albireo2
+kadas-print-plugin->kadas-albireo2
