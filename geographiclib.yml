@@ -2,15 +2,15 @@ name: geographiclib
 sources:
   - type: git
     url: https://github.com/geographiclib/geographiclib.git
-    tag: v2.2
-    commit: f64b5bbd8876e95c90fda4056a38662b41c47949
+    tag: v2.3
+    commit: 849284b9620b2ee4f0b9841b6822c67f9d0fa0c2
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
-  - "-DBUILD_SHARED_LIBS=ON"
-  - "-DBUILD_BOTH_LIBS=OFF"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_INSTALL_PREFIX=/app
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DBUILD_SHARED_LIBS=ON
+  - -DBUILD_BOTH_LIBS=OFF
