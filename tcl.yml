@@ -6,7 +6,7 @@ sources:
     commit: 338c6692672696a76b6cb4073820426406c6f3f9
     x-checker-data:
       type: git
-      tag-pattern: (core-\d+-\d+-\d+)
+      tag-pattern: core-(\d+-\d+-\d+)
 buildsystem: simple
 builddir: true
 subdir: unix

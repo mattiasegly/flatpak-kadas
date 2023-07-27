@@ -6,7 +6,7 @@ sources:
     commit: 89efa897780db03eac974eb6b0e041cfb7c39733
     x-checker-data:
       type: git
-      tag-pattern: (version-\d+\.\d+\.\d+)
+      tag-pattern: version-(\d+\.\d+\.\d+)
 buildsystem: simple
 builddir: true
 build-commands:

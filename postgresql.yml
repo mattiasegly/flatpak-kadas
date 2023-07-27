@@ -6,7 +6,7 @@ sources:
     commit: 8382864eb5c9f9ebe962ac20b3392be5ae304d23
     x-checker-data:
       type: git
-      tag-pattern: (REL_\d+_\d+)
+      tag-pattern: REL_(\d+_\d+)
 buildsystem: simple
 builddir: true
 build-commands:

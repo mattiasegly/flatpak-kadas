@@ -7,7 +7,7 @@ sources:
     commit: 1b5c6df4d01891c28c222655541fc483b4ee7aa5
     #x-checker-data:
       #type: git
-      #tag-pattern: (librttopo-\d+.\d+.\d+)
+      #tag-pattern: librttopo-(\d+.\d+.\d+)
 buildsystem: simple
 builddir: true
 build-commands:
