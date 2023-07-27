@@ -23,8 +23,8 @@ numpy->swig
 swig->gdal
 geos->librttopo
 librttopo->libspatialite
+minizip->freexl
 freexl->libspatialite
-minizip->libspatialite
 libspatialite->gdal
 opencl-headers->gdal
 hdf5->netcdf-c
@@ -61,6 +61,7 @@ numpy->gdal
 geos->libspatialite
 geos->gdal
 geos->kadas-qgis
+minizip->libspatialite
 freexl->gdal
 libspatialite->kadas-qgis
 opencl-headers->kadas-qgis

@@ -40,8 +40,8 @@ modules:
   - swig.yml                    #required by gdal
   - geos.yml                    #required by librttopo/libspatialite/gdal/kadas-qgis
   - librttopo.yml               #required by libspatialite
+  - minizip.yml                 #required by freexl/libspatialite
   - freexl.yml                  #required by libspatialite, optional to gdal
-  - minizip.yml                 #required by libspatialite
   - libspatialite.yml           #required by kadas-qgis, optional to gdal
   - opencl-headers.yml          #optional to gdal/kadas-qgis, enabled
   - hdf5.yml                    #optional to gdal/kadas-qgis, required by netcdf-c
