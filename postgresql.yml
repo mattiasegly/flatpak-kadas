@@ -2,14 +2,14 @@ name: postgresql
 sources:
   - type: git
     url: https://git.postgresql.org/git/postgresql.git #browse https://git.postgresql.org/gitweb/?p=postgresql.git;a=summary
-    tag: REL_15_3
-    commit: 8382864eb5c9f9ebe962ac20b3392be5ae304d23
+    tag: REL_15_4
+    commit: 83ed1f71c88ae948a5b6ec6d2a4802cc54470102
     x-checker-data:
       type: git
       tag-pattern: REL_(\d+_\d+)
 buildsystem: simple
 builddir: true
 build-commands:
-  - ./configure --prefix=/app --with-tcl --with-perl --with-python -with-libxml --with-libxslt -with-lz4 --with-zstd --with-openssl
+  - ./configure --prefix=/app --with-tcl --with-perl --with-python --with-libxml --with-libxslt --with-lz4 --with-zstd --with-openssl
   - make
   - make install
