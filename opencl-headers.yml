@@ -9,7 +9,6 @@ sources:
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
-  - "-DOPENCL_HEADERS_BUILD_CXX_TESTS=OFF"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DOPENCL_HEADERS_BUILD_CXX_TESTS=OFF

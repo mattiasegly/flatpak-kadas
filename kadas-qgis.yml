@@ -16,10 +16,9 @@ sources:
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
-  - "-DUSE_CCACHE=ON"
-  - "-DBINDINGS_GLOBAL_INSTALL=TRUE" #solved with python_sitearch fix
-  - "-DSIP_GLOBAL_INSTALL=TRUE" #analysis.sip needed by kadas, solved with findsip.py fix
-  - "-DENABLE_TESTS=FALSE"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DUSE_CCACHE=ON
+  - -DBINDINGS_GLOBAL_INSTALL=TRUE   #solved with python_sitearch fix
+  - -DSIP_GLOBAL_INSTALL=TRUE   #analysis.sip needed by kadas, solved with findsip.py fix
+  - -DENABLE_TESTS=FALSE

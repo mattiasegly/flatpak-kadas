@@ -10,10 +10,9 @@ sources:
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
-  - "-DBUILD_WITH_CCACHE=ON"
-  - "-DBUILD_SHARED_LIBS=ON"
-  - "-DEXIV2_BUILD_SAMPLES=OFF"
-  - "-DEXIV2_BUILD_UNIT_TESTS=OFF"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DBUILD_WITH_CCACHE=ON
+  - -DBUILD_SHARED_LIBS=ON
+  - -DEXIV2_BUILD_SAMPLES=OFF
+  - -DEXIV2_BUILD_UNIT_TESTS=OFF

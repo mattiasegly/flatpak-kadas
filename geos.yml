@@ -9,10 +9,9 @@ sources:
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
-  - "-DCMAKE_BUILD_TYPE=Release"
-  - "-DCMAKE_INSTALL_PREFIX=/app"
-  - "-DCMAKE_PREFIX_PATH=/app;/usr"
-  - "-DUSE_CCACHE=ON"
-  - "-DBUILD_SHARED_LIBS=ON"
-  - "-DBUILD_TESTING=OFF"
-  - "-DGEOS_BUILD_DEVELOPER=OFF"
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DUSE_CCACHE=ON
+  - -DBUILD_SHARED_LIBS=ON
+  - -DBUILD_TESTING=OFF
+  - -DGEOS_BUILD_DEVELOPER=OFF
