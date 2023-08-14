@@ -1,1 +1,20 @@
- 
+name: osgearth
+sources:
+  - type: git
+    url: https://github.com/gwaldron/osgearth.git
+    tag: osgearth-2.10.2   #has necessary osgEarhtUtil
+    commit: f7a922ba17e9d956ddb4558a81154e2c01759aab
+    x-checker-data:
+      type: git
+      tag-pattern: osgearth-(\d+\.\d+\.\d+)
+      versions: {"<": "3"}
+  - type: shell
+    commands:
+      - sed -i '/\#include <cmath>/a \#include <limits>' src/osgEarth/earcut.hpp   #fix build error
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DBUILD_OSGEARTH_EXAMPLES=OFF
+  - -DBUILD_TESTS=OFF

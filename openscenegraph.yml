@@ -1,0 +1,15 @@
+name: openscenegraph
+sources:
+  - type: git
+    url: https://github.com/openscenegraph/OpenSceneGraph.git
+    tag: OpenSceneGraph-3.6.5
+    commit: a827840baf0786d72e11ac16d5338a4ee25779db
+    x-checker-data:
+      type: git
+      tag-pattern: OpenSceneGraph-(\d+\.\d+\.\d+)
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DCMAKE_DISABLE_FIND_PACKAGE_FFmpeg=1   #openscenegraph relies on old version of ffmpeg
