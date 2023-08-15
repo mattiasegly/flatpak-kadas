@@ -23,7 +23,8 @@ jobs:
       uses: actions/cache@v3
       with:
         path: .flatpak-builder
-        key: flatpak-build-cache
+        key: flatpak-build-${{ github.sha }}
+        restore-keys: flatpak-build
         
     - name: Build
       uses: flatpak/flatpak-github-actions/flatpak-builder@v6
