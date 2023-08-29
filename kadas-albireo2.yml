@@ -2,10 +2,10 @@ name: kadas-albireo2
 sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
-    branch: master
+    tag: v2.2.2
     commit: 486654811159162bf089284aa7c593d859d499dd
-    #x-checker-data:
-      #type: git
+    x-checker-data:
+      type: git
   - type: shell
     commands:
       - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml #quick and ugly fix for versioning
