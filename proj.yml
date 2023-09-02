@@ -2,8 +2,8 @@ name: proj
 sources:
   - type: git
     url: https://github.com/OSGeo/PROJ.git
-    tag: 9.2.1
-    commit: 5405125a6544126b86af3f2cee53d954e4eb28b5
+    tag: 9.3.0
+    commit: 08f394ea303391be96f6ade46d87b7b677531afc
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
