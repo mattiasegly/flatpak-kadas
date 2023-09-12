@@ -2,8 +2,8 @@ name: sqlite
 sources:
   - type: git
     url: https://github.com/sqlite/sqlite.git
-    tag: version-3.43.0
-    commit: 995f96f8e11036c909b1dec14049999bc23421c6
+    tag: version-3.43.1
+    commit: f1f6a0bba16895215150081e55dda0d960494773
     x-checker-data:
       type: git
       tag-pattern: version-(\d+\.\d+\.\d+)
