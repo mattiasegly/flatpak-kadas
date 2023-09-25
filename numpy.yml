@@ -6,6 +6,7 @@ sources:
     x-checker-data:
       type: pypi
       name: numpy
+      versions: {"<": "1.26"} #gdal doesn't recognize numpy 1.26.0 yet
 buildsystem: simple
 builddir: true
 build-commands:
