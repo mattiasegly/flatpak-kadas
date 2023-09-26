@@ -50,4 +50,3 @@ config-opts:
   - -DCMAKE_BUILD_TYPE=Release
   - -DCMAKE_PREFIX_PATH=/app;/usr
   - -DCMAKE_DISABLE_FIND_PACKAGE_FFmpeg=1   #openscenegraph relies on old version of ffmpeg
-  - -DOpenGL_GL_PREFERENCE=GLVND
