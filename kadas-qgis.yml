@@ -21,4 +21,8 @@ config-opts:
   - -DUSE_CCACHE=ON
   - -DBINDINGS_GLOBAL_INSTALL=TRUE   #solved with python_sitearch fix
   - -DSIP_GLOBAL_INSTALL=TRUE   #analysis.sip needed by kadas, solved with findsip.py fix
+  - -DWITH_3D=TRUE
+  - -DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE
+  - -DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE
+  - -DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
   - -DENABLE_TESTS=FALSE

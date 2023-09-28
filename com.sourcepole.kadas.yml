@@ -13,9 +13,10 @@ finish-args:
   - --share=ipc
   - --share=network
   - --device=dri
-  - --socket=wayland
+# - --socket=wayland   #forced x11 in openscenegraph
   - --socket=x11
   - --filesystem=home
+  - --env=LD_LIBRARY_PATH=/app/lib:/app/lib64
   - --env=PYTHONPATH=/app/lib/python3.10/site-packages
 #
 build-options:
@@ -84,8 +85,8 @@ modules:
   - zonedetect.yml              #required by kadas-albireo2
   - quazip.yml                  #required by gdbcrashhandler/kadas-albireo2
   - gdbcrashhandler.yml         #required by kadas-albireo2
-#  - openscenegraph.yml         #optional to kadas-albireo2, disabled
-#  - osgearth.yml               #optional to kadas-albireo2, disabled
+  - openscenegraph.yml          #optional to kadas-albireo2
+  - osgearth.yml                #optional to kadas-albireo2
   - pyephem.yml                 #required by kadas-ephem-plugin
   - kadas-ephem-plugin.yml      #optional to kadas-albireo2
   - kadas-gpkg-plugin.yml       #optional to kadas-albireo2

@@ -20,5 +20,4 @@ config-opts:
   - -DQGIS_PREFIX_PATH=/app
   - -DQGIS_PLUGIN_DIR=/app/lib/qgis/plugins   #fails finding file, libplugin_offlineediting.so = libofflineeditingplugin.so ?
   - -DQGIS_SIP_DIR=/app/lib/python3.10/site-packages/qgis   #find qgis .sip files
-  - -DWITH_GLOBE=OFF   #fails on osgearth Style if ON, removes dependencies on osg and osgearth
   - -DINSTALL_DEMO_DATA=ON

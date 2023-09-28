@@ -2,15 +2,29 @@ name: osgearth
 sources:
   - type: git
     url: https://github.com/gwaldron/osgearth.git
-    tag: osgearth-2.10.2   #has necessary osgEarhtUtil
+    tag: osgearth-2.10.2   #version 2.10.2 has necessary osgEarhtUtil
     commit: f7a922ba17e9d956ddb4558a81154e2c01759aab
     x-checker-data:
       type: git
       tag-pattern: osgearth-(\d+\.\d+\.\d+)
       versions: {"<": "3"}
-  - type: shell
+
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/osgearth.git/plain/osgearth-geos_c.patch
+    sha256: adba783859f094fd19809cd75a010f3be61b60c68ccb667e3740f94621b65a58
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/osgearth.git/plain/osgearth_earcut.patch
+    sha256: 6d3cc937fc4da60fba84c1a25bc3a8d8114fc70995cd6603226e4c5448fcf5f0
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/osgearth.git/plain/osgearth_undef-ref.patch
+    sha256: 4adddd417fbc199293d2162407fff25d52c408e84d5a3b63243b89633ecfa4c8
+
+  - type: shell   #patches according to https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/osgearth.git/tree/osgearth.spec
     commands:
-      - sed -i '/\#include <cmath>/a \#include <limits>' src/osgEarth/earcut.hpp   #fix build error
+      - patch -p1 <osgearth-geos_c.patch
+      - patch -p1 <osgearth_earcut.patch
+      - patch -p1 <osgearth_undef-ref.patch
+
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
