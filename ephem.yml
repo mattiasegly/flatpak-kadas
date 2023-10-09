@@ -1,8 +1,8 @@
 name: ephem
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/af/5d/bbd70a7538f6d6138583a59a73e8ee85a8b838ac5a284e1dedb2127a9369/ephem-4.1.4.tar.gz
-    sha256: 73a59f0d2162d1624535c3c3b75f956556bdbb2055eaf554a7bef147d3f9c760
+    url: https://files.pythonhosted.org/packages/4f/1a/832ad7783efc176e7c626f78f6ca67866fa35b81e30d60576ce8c58069ff/ephem-4.1.5.tar.gz
+    sha256: 0c64a8aa401574c75942045b9af70d1656e14c5366151c0cbb400cbeedc2362a
     x-checker-data:
       type: pypi
       name: ephem
