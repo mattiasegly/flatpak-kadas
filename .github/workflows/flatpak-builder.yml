@@ -21,6 +21,7 @@ jobs:
     - name: Cache
       id: cache
       uses: actions/cache@v3
+      if: always()
       with:
         path: .flatpak-builder
         key: flatpak-build-${{ github.sha }}
