@@ -19,6 +19,18 @@ finish-args:
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib64
   - --env=PYTHONPATH=/app/lib/python3.10/site-packages
 #
+cleanup:   #https://github.com/flatpak/flatpak-builder/issues/233
+  - /include
+  - /lib/pkgconfig
+  - /share/cmake
+  - /share/doc
+  - /share/man
+  - /share/pkgconfig
+  - '*.la'
+  - '*.a'
+cleanup-commands:
+  - rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}
+#
 build-options:
   env:
     PYTHONPATH: /app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages
