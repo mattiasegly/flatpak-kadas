@@ -97,8 +97,8 @@ modules:
   - zonedetect.yml              #required by kadas-albireo2
   - quazip.yml                  #required by gdbcrashhandler/kadas-albireo2
   - gdbcrashhandler.yml         #required by kadas-albireo2
-  - openscenegraph.yml          #optional to kadas-albireo2
-  - osgearth.yml                #optional to kadas-albireo2
+#  - openscenegraph.yml          #optional to kadas-albireo2, disabled
+#  - osgearth.yml                #optional to kadas-albireo2, disabled
   - pyephem.yml                 #required by kadas-ephem-plugin
   - kadas-ephem-plugin.yml      #optional to kadas-albireo2
   - kadas-gpkg-plugin.yml       #optional to kadas-albireo2

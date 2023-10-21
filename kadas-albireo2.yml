@@ -23,3 +23,4 @@ config-opts:
   - -DQGIS_PLUGIN_DIR=/app/lib/qgis/plugins   #fails finding file, libplugin_offlineediting.so = libofflineeditingplugin.so ?
   - -DQGIS_SIP_DIR=/app/lib/python3.10/site-packages/qgis   #find qgis .sip files
   - -DINSTALL_DEMO_DATA=ON
+  - -DWITH_GLOBE=OFF   #disable 3D globe, shorten build time
