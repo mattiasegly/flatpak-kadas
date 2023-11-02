@@ -2,8 +2,8 @@ name: hdf5
 sources:
   - type: git
     url: https://github.com/HDFGroup/hdf5.git
-    tag: hdf5-1_14_2
-    commit: 2d926cf0426d2ed9403946071d9b05ac8b4dd778
+    tag: hdf5-1_14_3-rc1
+    commit: c86e4ccbea8eec7a5d0af52e338a0b73f4134a0f
     x-checker-data:
       type: git
       tag-pattern: hdf5-(\d+_\d+_\d+)
