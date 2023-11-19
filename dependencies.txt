@@ -93,6 +93,7 @@ pluggy->hatchling
 pathspec->hatchling
 editables->hatchling
 trove-classifiers->hatchling
+hatchling->pygments
 hatchling->urllib3
 urllib3->requests
 idna->requests

@@ -72,7 +72,6 @@ modules:
 
   - psycopg2.yml                #required by qgis core plugins
   - jinja2.yml                  #required by qgis core plugins
-  - pygments.yml                #required by qgis core plugins
   - typing-extensions.yml       #required by qgis core plugins
   - setuptools-scm.yml          #required by qgis core plugins
   - pluggy.yml                  #required by qgis core plugins
@@ -80,6 +79,7 @@ modules:
   - editables.yml               #required by qgis core plugins
   - trove-classifiers.yml       #required by qgis core plugins
   - hatchling.yml               #required by qgis core plugins
+  - pygments.yml                #required by qgis core plugins
   - urllib3.yml                 #required by qgis core plugins
   - idna.yml                    #required by qgis core plugins
   - charset-normalizer.yml      #required by qgis core plugins
