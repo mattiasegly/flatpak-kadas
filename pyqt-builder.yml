@@ -1,8 +1,8 @@
 name: pyqt-builder
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/cb/f0/dc998da4a3358249a0e53927c831a52bfc2aa070a96e8164fffcf3dce349/PyQt-builder-1.15.2.tar.gz
-    sha256: 746cfe83c03ebff4458d478a1c06714790ef93e458ecd5a28bc2837bac88eb74
+    url: https://files.pythonhosted.org/packages/c0/75/a3384eea8770c17e77821368618a5140c4ae0c37f9c05a84ef55f4807172/PyQt-builder-1.15.4.tar.gz
+    sha256: 39f8c75db17d9ce17cb6bbf3df1650b5cebc1ea4e5bd73843d21cc96612b2ae1
     x-checker-data:
       type: pypi
       name: PyQt-builder

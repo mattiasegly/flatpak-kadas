@@ -19,6 +19,18 @@ finish-args:
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib64
   - --env=PYTHONPATH=/app/lib/python3.10/site-packages
 #
+cleanup:   #https://github.com/flatpak/flatpak-builder/issues/233
+  - /include
+  - /lib/pkgconfig
+  - /share/cmake
+  - /share/doc
+  - /share/man
+  - /share/pkgconfig
+  - '*.la'
+  - '*.a'
+cleanup-commands:
+  - rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}
+#
 build-options:
   env:
     PYTHONPATH: /app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages
@@ -60,7 +72,6 @@ modules:
 
   - psycopg2.yml                #required by qgis core plugins
   - jinja2.yml                  #required by qgis core plugins
-  - pygments.yml                #required by qgis core plugins
   - typing-extensions.yml       #required by qgis core plugins
   - setuptools-scm.yml          #required by qgis core plugins
   - pluggy.yml                  #required by qgis core plugins
@@ -68,6 +79,7 @@ modules:
   - editables.yml               #required by qgis core plugins
   - trove-classifiers.yml       #required by qgis core plugins
   - hatchling.yml               #required by qgis core plugins
+  - pygments.yml                #required by qgis core plugins
   - urllib3.yml                 #required by qgis core plugins
   - idna.yml                    #required by qgis core plugins
   - charset-normalizer.yml      #required by qgis core plugins
@@ -85,8 +97,8 @@ modules:
   - zonedetect.yml              #required by kadas-albireo2
   - quazip.yml                  #required by gdbcrashhandler/kadas-albireo2
   - gdbcrashhandler.yml         #required by kadas-albireo2
-  - openscenegraph.yml          #optional to kadas-albireo2
-  - osgearth.yml                #optional to kadas-albireo2
+#  - openscenegraph.yml          #optional to kadas-albireo2, disabled
+#  - osgearth.yml                #optional to kadas-albireo2, disabled
   - pyephem.yml                 #required by kadas-ephem-plugin
   - kadas-ephem-plugin.yml      #optional to kadas-albireo2
   - kadas-gpkg-plugin.yml       #optional to kadas-albireo2

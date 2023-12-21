@@ -1,8 +1,8 @@
 name: psycopg2
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/f7/fa/6e6bb7a7bbe4e02b35aa2fc009fb53221663a5e07e333b72cb5a85e4dbb0/psycopg2-2.9.7.tar.gz
-    sha256: f00cc35bd7119f1fed17b85bd1007855194dde2cbd8de01ab8ebb17487440ad8
+    url: https://files.pythonhosted.org/packages/c9/5e/dc6acaf46d78979d6b03458b7a1618a68e152a6776fce95daac5e0f0301b/psycopg2-2.9.9.tar.gz
+    sha256: d1454bde93fb1e224166811694d600e746430c006fbb031ea06ecc2ea41bf156
     x-checker-data:
       type: pypi
       name: psycopg2
