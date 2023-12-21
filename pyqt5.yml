@@ -10,5 +10,5 @@ buildsystem: simple
 builddir: true
 build-commands:
   - sip-install --confirm-license --qt-shared --no-designer-plugin --no-qml-plugin
-    --jobs 3 --concatenate 1 --no-docstrings --verbose --target-dir /app/lib/python3.10/site-packages
+    --jobs 3 --concatenate 1 --no-docstrings --verbose --target-dir /app/lib/python3.11/site-packages
     --scripts-dir /app/bin --api-dir /app/share/qt/qsci/api/python
