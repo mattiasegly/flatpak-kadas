@@ -36,73 +36,74 @@ build-options:
     PYTHONPATH: /app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages
 #
 modules:
-  - flit-core.yml               #required by packaging/qgis core plugins
-  - packaging.yml               #required by sip/qgis core plugins
-  - tomli.yml                   #required by sip/qgis core plugins
-  - ply.yml                     #required by sip
-  - sip.yml                     #required by pyqt-builder/pyqt5-sip/pyqt5/qscintilla-bindings/kadas-qgis/kadas-albireo2
-  - pyqt-builder.yml            #required by pyqt5/qscintilla-bindings
-  - pyqt5-sip.yml               #required by pyqt5
-  - pyqt5.yml                   #required by kadas-qgis/kadas-albireo2
-  - qscintilla.yml              #required by qscintilla-bindings/kadas-qgis
-  - qscintilla-bindings.yml     #required by kadas-qgis
-  - tcl.yml                     #required by sqlite, optional to swig/postgresql, enabled
-  - sqlite.yml                  #required by proj/libspatialite/gdal/kadas-qgis
-  - proj.yml                    #required by libspatialite/gdal/kadas-qgis
-  - numpy.yml                   #required by swig/gdal
-  - swig.yml                    #required by gdal
-  - geos.yml                    #required by librttopo/libspatialite/gdal/kadas-qgis
-  - librttopo.yml               #required by libspatialite
-  - minizip.yml                 #required by freexl/libspatialite
-  - freexl.yml                  #required by libspatialite, optional to gdal
-  - libspatialite.yml           #required by kadas-qgis, optional to gdal
-  - opencl-headers.yml          #optional to gdal/kadas-qgis, enabled
-  - hdf5.yml                    #optional to gdal/kadas-qgis, required by netcdf-c
-  - netcdf-c.yml                #optional to gdal/kadas-qgis
-  - postgresql.yml              #optional to gdal/kadas-qgis, required by psycopg2
-  - gdal.yml                    #required by kadas-qgis
-  - libzip.yml                  #required by kadas-qgis
-  - protobuf.yml                #required by kadas-qgis
-  - gsl.yml                     #required by kadas-qgis
-  - libspatialindex.yml         #required by kadas-qgis
-  - exiv2.yml                   #required by kadas-qgis/kadas-albireo2
-  - qwt.yml                     #required by kadas-qgis/kadas-albireo2
-  - qtkeychain.yml              #required by kadas-qgis/kadas-albireo2
-  - qca.yml                     #required by kadas-qgis/kadas-albireo2
+  - modules/flit-core.yml               #required by packaging/qgis core plugins
+  - modules/packaging.yml               #required by sip/qgis core plugins
+  - modules/tomli.yml                   #required by sip/qgis core plugins
+  - modules/ply.yml                     #required by sip
+  - modules/sip.yml                     #required by pyqt-builder/pyqt5-sip/pyqt5/qscintilla-bindings/kadas-qgis/kadas-albireo2
+  - modules/pyqt-builder.yml            #required by pyqt5/qscintilla-bindings
+  - modules/pyqt5-sip.yml               #required by pyqt5
+  - modules/pyqt5.yml                   #required by kadas-qgis/kadas-albireo2
+  - modules/qscintilla.yml              #required by qscintilla-bindings/kadas-qgis
+  - modules/qscintilla-bindings.yml     #required by kadas-qgis
+  - modules/tcl.yml                     #required by sqlite, optional to swig/postgresql, enabled
+  - modules/sqlite.yml                  #required by proj/libspatialite/gdal/kadas-qgis
+  - modules/proj.yml                    #required by libspatialite/gdal/kadas-qgis
+  - modules/numpy.yml                   #required by swig/gdal
+  - modules/swig.yml                    #required by gdal
+  - modules/geos.yml                    #required by librttopo/libspatialite/gdal/kadas-qgis
+  - modules/librttopo.yml               #required by libspatialite
+  - modules/minizip.yml                 #required by freexl/libspatialite
+  - modules/freexl.yml                  #required by libspatialite, optional to gdal
+  - modules/libspatialite.yml           #required by kadas-qgis, optional to gdal
+  - modules/opencl-headers.yml          #optional to gdal/kadas-qgis, enabled
+  - modules/hdf5.yml                    #optional to gdal/kadas-qgis, required by netcdf-c
+  - modules/netcdf-c.yml                #optional to gdal/kadas-qgis
+  - modules/postgresql.yml              #optional to gdal/kadas-qgis, required by psycopg2
+  - modules/gdal.yml                    #required by kadas-qgis
+  - modules/libzip.yml                  #required by kadas-qgis
+  - modules/protobuf.yml                #required by kadas-qgis
+  - modules/gsl.yml                     #required by kadas-qgis
+  - modules/libspatialindex.yml         #required by kadas-qgis
+  - modules/exiv2.yml                   #required by kadas-qgis/kadas-albireo2
+  - modules/qwt.yml                     #required by kadas-qgis/kadas-albireo2
+  - modules/qtkeychain.yml              #required by kadas-qgis/kadas-albireo2
+  - modules/qca.yml                     #required by kadas-qgis/kadas-albireo2
 
-  - psycopg2.yml                #required by qgis core plugins
-  - jinja2.yml                  #required by qgis core plugins
-  - typing-extensions.yml       #required by qgis core plugins
-  - setuptools-scm.yml          #required by qgis core plugins
-  - pluggy.yml                  #required by qgis core plugins
-  - pathspec.yml                #required by qgis core plugins
-  - editables.yml               #required by qgis core plugins
-  - trove-classifiers.yml       #required by qgis core plugins
-  - hatchling.yml               #required by qgis core plugins
-  - pygments.yml                #required by qgis core plugins
-  - urllib3.yml                 #required by qgis core plugins
-  - idna.yml                    #required by qgis core plugins
-  - charset-normalizer.yml      #required by qgis core plugins
-  - certifi.yml                 #required by qgis core plugins
-  - requests.yml                #required by qgis core plugins
-  - python-dateutil.yml         #required by qgis core plugins
-  - pyyaml.yml                  #required by qgis core plugins
-  - pytz.yml                    #required by qgis core plugins
-  - lxml.yml                    #required by qgis core plugins/kadas-gpkg-plugin
-  - owslib.yml                  #required by qgis core plugins
+  - modules/psycopg2.yml                #required by qgis core plugins
+  - modules/jinja2.yml                  #required by qgis core plugins
+  - modules/typing-extensions.yml       #required by qgis core plugins
+  - modules/setuptools-scm.yml          #required by qgis core plugins
+  - modules/pluggy.yml                  #required by qgis core plugins
+  - modules/pathspec.yml                #required by qgis core plugins
+  - modules/editables.yml               #required by qgis core plugins
+  - modules/trove-classifiers.yml       #required by qgis core plugins
+  - modules/hatchling.yml               #required by qgis core plugins
+  - modules/pygments.yml                #required by qgis core plugins
+  - modules/urllib3.yml                 #required by qgis core plugins
+  - modules/idna.yml                    #required by qgis core plugins
+  - modules/charset-normalizer.yml      #required by qgis core plugins
+  - modules/certifi.yml                 #required by qgis core plugins
+  - modules/requests.yml                #required by qgis core plugins
+  - modules/python-dateutil.yml         #required by qgis core plugins
+  - modules/pyyaml.yml                  #required by qgis core plugins
+  - modules/pytz.yml                    #required by qgis core plugins
+  - modules/lxml.yml                    #required by qgis core plugins/kadas-gpkg-plugin
+  - modules/owslib.yml                  #required by qgis core plugins
 
-  - kadas-qgis.yml              #required by kadas-albireo2
-  - geographiclib.yml           #required by kadas-albireo2
-  - svg2svgt.yml                #required by kadas-albireo2
-  - zonedetect.yml              #required by kadas-albireo2
-  - quazip.yml                  #required by gdbcrashhandler/kadas-albireo2
-  - gdbcrashhandler.yml         #required by kadas-albireo2
-#  - openscenegraph.yml          #optional to kadas-albireo2, disabled
-#  - osgearth.yml                #optional to kadas-albireo2, disabled
-  - pyephem.yml                 #required by kadas-ephem-plugin
-  - kadas-ephem-plugin.yml      #optional to kadas-albireo2
-  - kadas-gpkg-plugin.yml       #optional to kadas-albireo2
-  - kadas-about-plugin.yml      #optional to kadas-albireo2
-  - kadas-help-plugin.yml       #optional to kadas-albireo2
-  - kadas-print-plugin.yml      #optional to kadas-albireo2
+  - modules/kadas-qgis.yml              #required by kadas-albireo2
+  - modules/geographiclib.yml           #required by kadas-albireo2
+  - modules/svg2svgt.yml                #required by kadas-albireo2
+  - modules/zonedetect.yml              #required by kadas-albireo2
+  - modules/quazip.yml                  #required by gdbcrashhandler/kadas-albireo2
+  - modules/gdbcrashhandler.yml         #required by kadas-albireo2
+#  - modules/openscenegraph.yml          #optional to kadas-albireo2, disabled
+#  - modules/osgearth.yml                #optional to kadas-albireo2, disabled
+  - modules/pyephem.yml                 #required by kadas-ephem-plugin
+  - modules/kadas-ephem-plugin.yml      #optional to kadas-albireo2
+  - modules/kadas-gpkg-plugin.yml       #optional to kadas-albireo2
+  - modules/kadas-about-plugin.yml      #optional to kadas-albireo2
+  - modules/kadas-help-plugin.yml       #optional to kadas-albireo2
+  - modules/kadas-print-plugin.yml      #optional to kadas-albireo2
+
   - kadas-albireo2.yml
