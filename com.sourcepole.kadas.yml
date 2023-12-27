@@ -1,9 +1,9 @@
 app-id: com.sourcepole.kadas
 branch: development
 runtime: org.kde.Platform
-runtime-version: "5.15-23.08"
+runtime-version: "5.15-22.08"
 base: io.qt.qtwebkit.BaseApp
-base-version: "5.15-23.08"
+base-version: "5.15-22.08"
 sdk: org.kde.Sdk
 command: kadas
 rename-icon: kadas
@@ -17,7 +17,7 @@ finish-args:
   - --socket=x11
   - --filesystem=home
   - --env=LD_LIBRARY_PATH=/app/lib:/app/lib64
-  - --env=PYTHONPATH=/app/lib/python3.11/site-packages
+  - --env=PYTHONPATH=/app/lib/python3.10/site-packages
 #
 cleanup:   #https://github.com/flatpak/flatpak-builder/issues/233
   - /include
@@ -33,7 +33,7 @@ cleanup-commands:
 #
 build-options:
   env:
-    PYTHONPATH: /app/lib/python3.11/site-packages:/usr/lib/python3.11/site-packages
+    PYTHONPATH: /app/lib/python3.10/site-packages:/usr/lib/python3.10/site-packages
 #
 modules:
   - flit-core.yml               #required by packaging/qgis core plugins
