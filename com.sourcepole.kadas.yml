@@ -106,4 +106,4 @@ modules:
   - modules/kadas-help-plugin.yml       #optional to kadas-albireo2
   - modules/kadas-print-plugin.yml      #optional to kadas-albireo2
 
-  - kadas-albireo2.yml
+  - modules/kadas-albireo2.yml
