@@ -2,8 +2,8 @@ name: qca
 sources:
   - type: git
     url: https://github.com/KDE/qca.git
-    tag: v2.3.7
-    commit: c486ce505b5b341167816da3f81a83678414e145
+    tag: v2.3.8
+    commit: 0685472ed2772237633560ef0e3f115f5e09769b
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
