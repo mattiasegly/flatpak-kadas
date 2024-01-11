@@ -19,6 +19,8 @@ tcl->swig
 tcl->postgresql
 sqlite->proj
 proj->libspatialite
+pyproject-metadata->numpy
+openblas->numpy
 numpy->swig
 swig->gdal
 geos->librttopo
