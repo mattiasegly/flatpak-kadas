@@ -4,7 +4,7 @@ sources:
     url: https://git.osgeo.org/gitea/rttopo/librttopo.git
     #tag: librttopo-1.1.0
     branch: master #security patch
-    commit: 1b5c6df4d01891c28c222655541fc483b4ee7aa5
+    commit: 039cb92f6e43e44302cc867ccf9a064e8a2e87a4
     #x-checker-data:
       #type: git
       #tag-pattern: librttopo-(\d+.\d+.\d+)
