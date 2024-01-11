@@ -1,0 +1,17 @@
+name: openblas
+sources:
+  - type: git
+    url: https://github.com/xianyi/OpenBLAS.git
+    tag: v0.3.26
+    commit: 6c77e5e314474773a7749357b153caba4ec3817d
+    x-checker-data:
+      type: git
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DCMAKE_Fortran_COMPILER=gfortran
+  - -DBUILD_TESTING=OFF
+  - -DBUILD_SHARED_LIBS=ON
+  - -DDYNAMIC_ARCH=TRUE

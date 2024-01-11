@@ -49,6 +49,8 @@ modules:
   - modules/tcl.yml                     #required by sqlite, optional to swig/postgresql, enabled
   - modules/sqlite.yml                  #required by proj/libspatialite/gdal/kadas-qgis
   - modules/proj.yml                    #required by libspatialite/gdal/kadas-qgis
+  - modules/pyproject-metadata.yml      #required by numpy
+  - modules/openblas.yml                #required by numpy
   - modules/numpy.yml                   #required by swig/gdal
   - modules/swig.yml                    #required by gdal
   - modules/geos.yml                    #required by librttopo/libspatialite/gdal/kadas-qgis
