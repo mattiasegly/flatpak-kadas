@@ -3,14 +3,16 @@ sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
     branch: master
-    commit: 78ae65a93890fbfcb5e7f5373c3225925c4f3b66
+    commit: 73d9e53386100b14d378e4f69ea0e21d35850070
     #x-checker-data:
       #type: git
   - type: shell
     commands:
-      - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml   #quick and ugly fix for versioning
+      - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml
+        && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml                                                                                                           #quick and ugly fix for versioning
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g'   #crude fix for forcing cmake setting site-packages to /app instead of /usr
-      - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.10\/site-packages"/g' cmake/FindSIP.py   #force install sip files to /app instead of /usr
+      - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.10\/site-packages"/g'
+        cmake/FindSIP.py                                                                                        #force install sip files to /app instead of /usr
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake   #try to "significantly speed up the build"
 buildsystem: cmake-ninja
 builddir: true
