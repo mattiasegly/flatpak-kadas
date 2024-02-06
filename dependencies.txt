@@ -20,6 +20,8 @@ tcl->postgresql
 sqlite->proj
 proj->libspatialite
 pyproject-metadata->numpy
+pyproject-metadata->meson-python
+meson-python->numpy
 openblas->numpy
 numpy->swig
 swig->gdal
