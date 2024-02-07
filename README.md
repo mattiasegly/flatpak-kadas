@@ -6,3 +6,7 @@
 <BR>
 <BR>Build & Install:
 <BR>clear && flatpak-builder --user --install --jobs=3 --ccache --disable-rofiles-fuse --force-clean build-dir com.sourcepole.kadas.yml
+<BR>
+<BR>Or download an artifact from https://github.com/mattiasegly/flatpak-kadas/actions/workflows/flatpak-builder.yml
+<BR>Extract .zip archive and install with:
+<BR>flatpak --user install kadas.flatpak
