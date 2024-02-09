@@ -2,8 +2,8 @@ name: kadas-albireo2
 sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
-    branch: main
-    commit: 867c2371fb2fb7e542c3c5153ee34d8125bf2b93
+    #branch: main
+    commit: 78ae65a93890fbfcb5e7f5373c3225925c4f3b66
     #x-checker-data:
       #type: git
   - type: shell
