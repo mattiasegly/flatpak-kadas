@@ -4,8 +4,6 @@ sources:
     url: https://github.com/BertoldVdb/ZoneDetect.git
     branch: master
     commit: dcbf759fa42fb1553bc8ea4b551eefc837bc2147
-    #x-checker-data:
-      #type: git
 buildsystem: simple
 builddir: true
 subdir: library

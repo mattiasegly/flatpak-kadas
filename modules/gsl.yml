@@ -1,13 +1,9 @@
 name: gsl
 sources:
   - type: git
-    url: https://git.savannah.gnu.org/git/gsl.git #browse https://git.savannah.gnu.org/cgit/gsl.git
-    #tag: release-2-7
-    branch: master #towards 2.8
+    url: https://git.savannah.gnu.org/git/gsl.git   #browse https://git.savannah.gnu.org/cgit/gsl.git
+    branch: master
     commit: 3152143a42f0cb00452e1a2509ca77e1b959d21d
-    #x-checker-data:
-      #type: git
-      #tag-pattern: release-(\d+-\d+)
 buildsystem: simple
 builddir: true
 build-commands:

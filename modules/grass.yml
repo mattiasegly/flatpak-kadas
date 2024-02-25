@@ -1,0 +1,14 @@
+name: grass
+sources:
+  - type: git
+    url: https://github.com/OSGeo/grass.git
+    tag: 8.3.1
+    commit: 4e66071694144043f251c53df2c2237f01b5af9c
+    x-checker-data:
+      type: git
+buildsystem: simple
+builddir: true
+build-commands:
+  - ./configure --prefix=/app --enable-shared --with-postgres --with-fftw --with-readline --with-pthread --with-opencl --with-bzlib --with-netcdf --with-geos --without-pdal
+  - make
+  - make install

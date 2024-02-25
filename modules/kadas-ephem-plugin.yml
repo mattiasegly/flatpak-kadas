@@ -4,8 +4,6 @@ sources:
     url: https://github.com/kadas-albireo/kadas-ephem-plugin.git
     branch: main
     commit: 153f6e02011e198ecd3b70165c9fab20cd3aa343
-    #x-checker-data:
-      #type: git
 buildsystem: simple
 builddir: true
 build-commands:

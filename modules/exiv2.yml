@@ -2,11 +2,10 @@ name: exiv2
 sources:
   - type: git
     url: https://github.com/Exiv2/exiv2.git
-    tag: v0.27.7 #v0.27.* works with qgis 3.28
-    commit: 3c648bc619ef7a3d50e3ddeb7d64a5e47d126eb4
+    tag: v0.28.2
+    commit: 04207b9c39bf7b3b1a7144f7ed4e4f16b4f29ef6
     x-checker-data:
       type: git
-      versions: {"<": "0.28"}
 buildsystem: cmake-ninja
 builddir: true
 config-opts:

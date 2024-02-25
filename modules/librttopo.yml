@@ -2,12 +2,8 @@ name: librttopo
 sources:
   - type: git
     url: https://git.osgeo.org/gitea/rttopo/librttopo.git
-    #tag: librttopo-1.1.0
-    branch: master #security patch
+    branch: master
     commit: 91ebc054e39bd60b12daddcd2e92e8eab63b8ae1
-    #x-checker-data:
-      #type: git
-      #tag-pattern: librttopo-(\d+.\d+.\d+)
 buildsystem: simple
 builddir: true
 build-commands:

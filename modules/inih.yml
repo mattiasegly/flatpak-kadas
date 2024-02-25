@@ -1,0 +1,11 @@
+name: inih
+sources:
+  - type: git
+    url: https://github.com/benhoyt/inih.git
+    tag: r58
+    commit: 5cc5e2c24642513aaa5b19126aad42d0e4e0923e
+    x-checker-data:
+      type: git
+      tag-pattern: r(\d+)
+buildsystem: meson
+builddir: true

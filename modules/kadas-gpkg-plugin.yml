@@ -4,8 +4,6 @@ sources:
     url: https://github.com/kadas-albireo/kadas-gpkg-plugin.git
     branch: master
     commit: 8d42af58c26e9ae2e789a5fa4d24eb744d8994bd
-    #x-checker-data:
-      #type: git
 buildsystem: simple
 builddir: true
 build-commands:
