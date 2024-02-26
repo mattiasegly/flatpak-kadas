@@ -17,33 +17,6 @@ jobs:
       options: --privileged
       
     steps:
-    - name: Clean
-      shell: bash
-      run: |
-        echo "Available storage before cleaning:"
-        df -h
-        
-        # inspired by https://github.com/easimon/maximize-build-space
-        for label_with_path in \
-              "Android SDK:/usr/local/lib/android" \
-              "CodeQL:/opt/hostedtoolcache/CodeQL" \
-              "Haskell:/opt/ghc" \
-              ".NET:/usr/share/dotnet"; do
-          dependency_name="$(echo "${label_with_path}" | cut -d: -f1)"
-          dependency_path="$(echo "${label_with_path}" | cut -d: -f2)"
-        
-          if [ -d "${dependency_path}" ]; then
-            echo "[INFO] Deleting binaries of ${dependency_name} in ${dependency_path}."
-            sudo rm -rf "${dependency_path}"
-            df -h
-          else
-            echo "[INFO] The directory '${dependency_path}' doesn't exist. ${dependency_name} won't be removed."
-          fi
-        done
-
-        echo "Available storage after cleaning:"
-        df -h
-          
     - name: Checkout
       uses: actions/checkout@v4
       
