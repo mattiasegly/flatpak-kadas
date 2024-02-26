@@ -20,7 +20,7 @@ jobs:
     - name: Clean
       shell: bash
       run: |
-        echo "Available storage after cleaning:"
+        echo "Available storage before cleaning:"
         df -h
         
         # inspired by https://github.com/easimon/maximize-build-space
@@ -41,7 +41,7 @@ jobs:
           fi
         done
 
-        echo "Available storage before cleaning:"
+        echo "Available storage after cleaning:"
         df -h
           
     - name: Checkout
