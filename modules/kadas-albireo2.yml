@@ -14,12 +14,6 @@ sources:
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake   #try to "significantly speed up the build"
       - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <\/app\/include\/zonedetect.h>/g'
         kadas/core/kadascoordinateutils.cpp                                                                                            #find zonedetect.h
-      - sed -i 's/#include <QtCrypto>/#include <\/app\/include\/Qca-qt5\/QtCrypto\/QtCrypto>/g'
-        /app/include/qgis/qgsauthmanager.h                                                                                           #find QtCrypto
-      - sed -i 's/#include <QtCrypto>/#include <\/app\/include\/Qca-qt5\/QtCrypto\/QtCrypto>/g'
-        /app/include/qgis/qgsauthcertutils.h                                                                                           #find QtCrypto
-      - sed -i 's/#include <QSerialPort>/#include <\/usr\/include\/QtSerialPort\/QSerialPort>/g'
-        /app/include/qgis/qgsgpsdetector.h                                                                                            #find QSerialPort
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
