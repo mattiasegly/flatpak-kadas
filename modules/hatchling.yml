@@ -1,8 +1,8 @@
 name: hatchling
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/fd/9b/6c92b3078a5493ebba5a5e4cb805b8bfee4253d56bfe6e9e4d16c9b8d173/hatchling-1.22.1.tar.gz
-    sha256: ad52ebe5dabbce8f7448f347e2a4f72700dcc7a1e3d93f6e69996f9df30bc129
+    url: https://files.pythonhosted.org/packages/5e/45/c72ece34dd03e623ce9fc14c180ef164df732726dd0a19fc25d24bef1893/hatchling-1.22.2.tar.gz
+    sha256: f2dfce8e5d389c53c41c87f5c643c5ef2f9519510eaaddda0aac63eb52470684
     x-checker-data:
       type: pypi
       name: hatchling
