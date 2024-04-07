@@ -6,14 +6,15 @@ sources:
     commit: 3bad0563796bfbfa0111cab4cb04eb16775db296
   - type: shell
     commands:
-      - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml
-        && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml                                                                                                           #quick and ugly fix for versioning
+      - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml   #quick and ugly fix for versioning
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.11\/site-packages/g'   #crude fix for forcing cmake setting site-packages to /app instead of /usr
-      - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.11\/site-packages"/g'
-        cmake/FindSIP.py                                                                                        #force install sip files to /app instead of /usr
+      - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.11\/site-packages"/g' cmake/FindSIP.py   #force install sip files to /app instead of /usr
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake   #try to "significantly speed up the build"
-      - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <\/app\/include\/zonedetect.h>/g'
-        kadas/core/kadascoordinateutils.cpp                                                                                            #find zonedetect.h
+      - sed -i 's/PYTHON_MODULE_DIR \${QGIS_PYTHON_MODULE_DIR}/PYTHON_MODULE_DIR "\${QGIS_PYTHON_MODULE_DIR}"/g' cmake/FindQGIS.cmake   #fix "set_target_properties called with incorrect number of arguments"
+      #- sed -i 's/%Import core\/core.sip/%Import \/app\/lib\/python3.11\/site-packages\/qgis\/core\/core.sip/g' python/kadascore/kadascore.sip.in   #find core.sip
+      #- sed -i 's/%Import core\/core.sip/%Import \/app\/lib\/python3.11\/site-packages\/qgis\/core\/core.sip/g' python/kadasanalysis/kadasanalysis.sip.in   #find core.sip
+      #- sed -i 's/%Import analysis\/analysis.sip/%Import \/app\/lib\/python3.11\/site-packages\/qgis\/analysis\/analysis.sip/g' python/kadasanalysis/kadasanalysis.sip.in   #find analysis.sip
+      - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <\/app\/include\/zonedetect.h>/g' kadas/core/kadascoordinateutils.cpp   #find zonedetect.h
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
@@ -21,6 +22,7 @@ config-opts:
   - -DCMAKE_PREFIX_PATH=/app;/usr
   - -DWITH_VCPKG=OFF
   - -DWITH_QTWEBKIT=OFF
+  - -DWITH_BINDINGS=OFF   #alternative to fixing FindQGIS.cmake and .sip.in-files above
   - -DWITH_GLOBE=OFF   #disable 3D globe, shorten build time
   - -DINSTALL_DEMO_DATA=ON
-  - -DQGIS_SIP_DIR=/app/lib/python3.11/site-packages/qgis   #find qgis .sip files
+  - -DQGIS_SIP_DIR=/app/lib/python3.11/site-packages/qgis   #find qgis .sip files, not needed with bindings disabled
