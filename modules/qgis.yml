@@ -2,8 +2,8 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
-    tag: final-3_36_1
-    commit: 3e58945326468503a291cb423ed6cdbd5521902c
+    tag: final-3_36_2
+    commit: 6d250527200640a1abd9873919eb3bb3632e0bb1
     x-checker-data:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)
