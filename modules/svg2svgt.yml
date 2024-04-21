@@ -2,7 +2,7 @@ name: svg2svgt
 sources:
   - type: git
     url: https://github.com/manisandro/svg2svgt.git
-    branch: master   #fixes error with ‘QPainterPath roundedRect’
+    branch: master #fixes error with ‘QPainterPath roundedRect’
     commit: cc180f65001b3859015e29589897b2412ac01042
 buildsystem: cmake-ninja
 builddir: true

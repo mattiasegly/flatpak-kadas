@@ -1,7 +1,7 @@
 name: gsl
 sources:
   - type: git
-    url: https://git.savannah.gnu.org/git/gsl.git   #browse https://git.savannah.gnu.org/cgit/gsl.git
+    url: https://git.savannah.gnu.org/git/gsl.git #browse https://git.savannah.gnu.org/cgit/gsl.git
     branch: master
     commit: e647c6484702b638062d6e2154055f6535790cd7
 buildsystem: simple

@@ -11,6 +11,6 @@ buildsystem: simple
 builddir: true
 build-commands:
   - CFLAGS="-DSQLITE_ENABLE_COLUMN_METADATA=1" ./configure --prefix=/app --disable-static
-    --enable-all                                                                                         #enable-all is only; fts4/5 geopoly rtree session
+    --enable-all #enable-all is only; fts4/5 geopoly rtree session
   - make
   - make install

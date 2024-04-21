@@ -26,8 +26,8 @@ cleanup:
   - /share/doc
   - /share/man
   - /share/pkgconfig
-  - '*.la'
-  - '*.a'
+  - "*.la"
+  - "*.a"
 cleanup-commands:
   - /app/cleanup-BaseApp.sh
   - rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}
@@ -37,14 +37,14 @@ build-options:
     PYTHONPATH: /app/lib/python3.11/site-packages:/usr/lib/python3.11/site-packages
 
 modules:
-#  - modules/flit-core.yml
-#  - modules/packaging.yml
-#  - modules/tomli.yml
-#  - modules/ply.yml
-#  - modules/sip.yml
-#  - modules/pyqt-builder.yml
-#  - modules/pyqt5-sip.yml
-#  - modules/pyqt5.yml
+  #  - modules/flit-core.yml
+  #  - modules/packaging.yml
+  #  - modules/tomli.yml
+  #  - modules/ply.yml
+  #  - modules/sip.yml
+  #  - modules/pyqt-builder.yml
+  #  - modules/pyqt5-sip.yml
+  #  - modules/pyqt5.yml
   - modules/qscintilla.yml
   - modules/qscintilla-bindings.yml
   - modules/tcl.yml
@@ -79,8 +79,8 @@ modules:
 
   - modules/psycopg2.yml
   - modules/jinja2.yml
-#  - modules/typing-extensions.yml
-#  - modules/setuptools-scm.yml
+  #  - modules/typing-extensions.yml
+  #  - modules/setuptools-scm.yml
   - modules/pluggy.yml
   - modules/pathspec.yml
   - modules/editables.yml
@@ -106,8 +106,8 @@ modules:
   - modules/zonedetect.yml
   - modules/quazip.yml
   - modules/gdbcrashhandler.yml
-#  - modules/pyephem.yml
-#  - modules/kadas-ephem-plugin.yml
+  #  - modules/pyephem.yml
+  #  - modules/kadas-ephem-plugin.yml
   - modules/kadas-gpkg-plugin.yml
   - modules/kadas-about-plugin.yml
   - modules/kadas-help-plugin.yml
