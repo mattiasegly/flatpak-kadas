@@ -2,8 +2,8 @@ name: qtkeychain
 sources:
   - type: git
     url: https://github.com/frankosterfeld/qtkeychain.git
-    tag: 0.14.2
-    commit: 8eac9889775ca45c106d077bb0d3744754a1570a
+    tag: 0.14.3
+    commit: 38ff50766c7e4ec490fecb2d9939b7cdc4b74b8e
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
