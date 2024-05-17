@@ -108,9 +108,9 @@ modules:
   - modules/gdbcrashhandler.yml
   #  - modules/pyephem.yml
   #  - modules/kadas-ephem-plugin.yml
-  - modules/kadas-gpkg-plugin.yml
-  - modules/kadas-about-plugin.yml
-  - modules/kadas-help-plugin.yml
-  - modules/kadas-print-plugin.yml
+  #  - modules/kadas-gpkg-plugin.yml
+  #  - modules/kadas-about-plugin.yml
+  #  - modules/kadas-help-plugin.yml
+  #  - modules/kadas-print-plugin.yml
 
   - modules/kadas-albireo2.yml
