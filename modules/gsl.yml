@@ -3,7 +3,7 @@ sources:
   - type: git
     url: https://git.savannah.gnu.org/git/gsl.git #browse https://git.savannah.gnu.org/cgit/gsl.git
     branch: master
-    commit: a025c5a324a915dedac7b81b4170c8bee3bcb1c4
+    commit: 1b0e2ae81c5cb708966babe7ee915118ff936d51
 buildsystem: simple
 builddir: true
 build-commands:
