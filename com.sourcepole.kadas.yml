@@ -3,8 +3,6 @@ branch: development
 runtime: org.kde.Platform
 runtime-version: "5.15-23.08"
 sdk: org.kde.Sdk
-base: com.riverbankcomputing.PyQt.BaseApp
-base-version: "5.15-23.08"
 command: kadas
 rename-icon: kadas
 
@@ -29,7 +27,6 @@ cleanup:
   - "*.la"
   - "*.a"
 cleanup-commands:
-  - /app/cleanup-BaseApp.sh
   - rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}
 
 build-options:
@@ -37,18 +34,20 @@ build-options:
     PYTHONPATH: /app/lib/python3.11/site-packages:/usr/lib/python3.11/site-packages
 
 modules:
-  #  - modules/flit-core.yml
-  #  - modules/packaging.yml
-  #  - modules/tomli.yml
-  #  - modules/ply.yml
-  #  - modules/sip.yml
-  #  - modules/pyqt-builder.yml
-  #  - modules/pyqt5-sip.yml
-  #  - modules/pyqt5.yml
+  - modules/flit-core.yml
+  - modules/packaging.yml
+  - modules/tomli.yml
+  - modules/ply.yml
+  - modules/sip.yml
+  - modules/pyqt-builder.yml
+  - modules/pyqt5-sip.yml
+  - modules/pyqt5.yml
   - modules/qscintilla.yml
   - modules/qscintilla-bindings.yml
   - modules/tcl.yml
   - modules/sqlite.yml
+  - modules/woff2.yml
+  - modules/qtwebkit.yml
   - modules/proj.yml
   - modules/pyproject-metadata.yml
   - modules/meson-python.yml
@@ -79,8 +78,8 @@ modules:
 
   - modules/psycopg2.yml
   - modules/jinja2.yml
-  #  - modules/typing-extensions.yml
-  #  - modules/setuptools-scm.yml
+  - modules/typing-extensions.yml
+  - modules/setuptools-scm.yml
   - modules/pluggy.yml
   - modules/pathspec.yml
   - modules/editables.yml
