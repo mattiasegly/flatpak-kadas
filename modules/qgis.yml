@@ -2,16 +2,17 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
-    tag: final-3_34_7
-    commit: 6f7d735cae386a441197ffafa1938ce6d41a15ab
+    tag: final-3_34_8
+    commit: 91642333b10eca04556a9a83a82f6eaf4f5aefb3
     x-checker-data:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)
-      versions: {"<": "3_35"}
+      versions: {<: '3_35'}
   - type: shell
     commands:
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.11\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.11\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
+      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.11\/site-packages"/g'
+        cmake/FindSIP.py                                                                           #force install sip files to /app instead of /usr
       - sed -i 's/set(SIP_CONCAT_PARTS 22)/set(SIP_CONCAT_PARTS 10)/g' CMakeLists.txt #try to "significantly speed up the build"
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
 buildsystem: cmake-ninja
