@@ -1,0 +1,17 @@
+name: qtwebkit
+sources:
+  - type: git
+    url: https://github.com/movableink/webkit.git
+    branch: plugin-stubs-readded
+    commit: a3f87ca34da5117e87fafbfd5d0c225a2d441751
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DCMAKE_INSTALL_LIBDIR=lib   #prevent installation to lib64
+  - -DPORT=Qt
+  - -DENABLE_INSPECTOR_UI=OFF   #default ON
+  - -DENABLE_VIDEO=OFF   #default ON, gstreamer build error
+  - -DENABLE_WEB_AUDIO=OFF   #default ON, gstreamer build error
+  - -DENABLE_PRINT_SUPPORT=ON   #default OFF
