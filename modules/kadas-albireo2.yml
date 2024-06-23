@@ -7,13 +7,13 @@ sources:
   - type: shell
     commands:
       - EPOCH=$(date +%s) && DATE=$(date -I) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml
-        && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml                                                                                                         #quick and ugly fix for versioning
+        && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml #quick and ugly fix for versioning
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.11\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
       - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <\/app\/include\/zonedetect.h>/g'
-        kadas/core/kadascoordinateutils.cpp                                                                                          #find zonedetect.h
+        kadas/core/kadascoordinateutils.cpp #find zonedetect.h
       - sed -i 's/#include "keychain.h"/#include <\/app\/include\/qt5keychain\/keychain.h>/g'
-        /app/include/qgis/qgsauthmanager.h                                                                                       #find keychain.h
+        /app/include/qgis/qgsauthmanager.h #find keychain.h
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
