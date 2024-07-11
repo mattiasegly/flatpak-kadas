@@ -2,8 +2,8 @@ name: gdal
 sources:
   - type: git
     url: https://github.com/OSGeo/gdal.git
-    tag: v3.9.0
-    commit: bb5ea618e23e498e79e8b8e6bd7215ad94bb2103
+    tag: v3.9.1
+    commit: 01ac70772b997ab87d2312e2036eb66faf6b0508
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
