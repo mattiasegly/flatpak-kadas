@@ -2,12 +2,12 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
-    tag: final-3_34_8
-    commit: 91642333b10eca04556a9a83a82f6eaf4f5aefb3
+    tag: final-3_34_9
+    commit: cbbc7bdfb66b392b159eb931bc52f3b7b4bed07a
     x-checker-data:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)
-      versions: { <: "3_35" }
+      versions: {<: '3_35'}
   - type: shell
     commands:
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.11\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
