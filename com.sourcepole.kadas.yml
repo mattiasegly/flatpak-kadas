@@ -38,6 +38,8 @@ modules:
   - modules/packaging.yml
   - modules/tomli.yml
   - modules/ply.yml
+  - modules/typing-extensions.yml
+  - modules/setuptools-scm.yml
   - modules/sip.yml
   - modules/pyqt-builder.yml
   - modules/pyqt5-sip.yml
@@ -78,8 +80,6 @@ modules:
 
   - modules/psycopg2.yml
   - modules/jinja2.yml
-  - modules/typing-extensions.yml
-  - modules/setuptools-scm.yml
   - modules/pluggy.yml
   - modules/pathspec.yml
   - modules/editables.yml
