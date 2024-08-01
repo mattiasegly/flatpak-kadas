@@ -1,0 +1,11 @@
+name: gdbcrashhandler
+sources:
+  - type: git
+    url: https://github.com/manisandro/GdbCrashHandler.git
+    branch: master #works with quazip 1.x
+    commit: ea2e7b677c4e33a1f2ce554c620d0b7b9b6242f3
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr

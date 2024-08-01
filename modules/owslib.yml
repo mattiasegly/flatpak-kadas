@@ -1,0 +1,12 @@
+name: owslib
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/7a/f6/d739b48f3ae0067996fd3c2e11e066c74cd5158e363dc672529385ccca34/OWSLib-0.31.0.tar.gz
+    sha256: 2ed6540087445cc57d905138a590b6ae58624ec7661b5c1682ed4e3303bcd150
+    x-checker-data:
+      type: pypi
+      name: OWSLib
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

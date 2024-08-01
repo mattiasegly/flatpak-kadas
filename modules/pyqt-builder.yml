@@ -1,0 +1,12 @@
+name: pyqt-builder
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/e6/f5/daead7fd8ef3675ce55f4ef66dbe3287b0bdd74315f6b5a57718a020570b/pyqt_builder-1.16.4.tar.gz
+    sha256: 4515e41ae379be2e54f88a89ecf47cd6e4cac43e862c4abfde18389c2666afdf
+    x-checker-data:
+      type: pypi
+      name: PyQt-builder
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

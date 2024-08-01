@@ -1,0 +1,28 @@
+name: kadas-qgis
+sources:
+  - type: git
+    url: https://github.com/kadas-albireo/QGIS.git
+    tag: final-3_28_8-kadas
+    commit: 239b8e682733c756edc2bea0987b86113839018c
+    x-checker-data:
+      type: git
+      tag-pattern: final-(\d+_\d+_\d+)-kadas
+  - type: shell
+    commands:
+      - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
+      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.10\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
+      - sed -i 's/set(SIP_CONCAT_PARTS 20)/set(SIP_CONCAT_PARTS 10)/g' CMakeLists.txt #try to "significantly speed up the build"
+      - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DUSE_CCACHE=ON
+  - -DBINDINGS_GLOBAL_INSTALL=TRUE #solved with python_sitearch fix
+  - -DSIP_GLOBAL_INSTALL=TRUE #analysis.sip needed by kadas, solved with findsip.py fix
+  - -DWITH_3D=TRUE
+  - -DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE
+  - -DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE
+  - -DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
+  - -DENABLE_TESTS=FALSE

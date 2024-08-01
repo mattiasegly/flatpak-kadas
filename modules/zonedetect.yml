@@ -1,0 +1,12 @@
+name: zonedetect
+sources:
+  - type: git
+    url: https://github.com/BertoldVdb/ZoneDetect.git
+    branch: master
+    commit: dcbf759fa42fb1553bc8ea4b551eefc837bc2147
+buildsystem: simple
+builddir: true
+subdir: library
+build-commands:
+  - prefix=/app make
+  - prefix=/app make install

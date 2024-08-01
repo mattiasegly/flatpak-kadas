@@ -1,0 +1,17 @@
+name: geos
+sources:
+  - type: git
+    url: https://github.com/libgeos/geos.git
+    tag: 3.12.2
+    commit: b74fefb7be4ba6c833760106f95f0f495b832c43
+    x-checker-data:
+      type: git
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DUSE_CCACHE=ON
+  - -DBUILD_SHARED_LIBS=ON
+  - -DBUILD_TESTING=OFF
+  - -DGEOS_BUILD_DEVELOPER=OFF

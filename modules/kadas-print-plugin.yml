@@ -1,0 +1,11 @@
+name: kadas-print-plugin
+sources:
+  - type: git
+    url: https://github.com/kadas-albireo/kadas-print-plugin.git
+    branch: master
+    commit: a902e19ff4bcbe22aec46c7fe21db37d34a8d6d7
+buildsystem: simple
+builddir: true
+build-commands:
+  - mkdir -p /app/share/kadas/python/plugins
+  - cp -r kadas_* /app/share/kadas/python/plugins

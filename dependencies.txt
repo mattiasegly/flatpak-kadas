@@ -6,6 +6,8 @@ flit-core->packaging
 packaging->sip
 tomli->sip
 ply->sip
+typing-extensions->setuptools-scm
+setuptools-scm->sip
 sip->pyqt-builder
 sip->pyqt5-sip
 pyqt-builder->pyqt5

@@ -1,0 +1,25 @@
+name: kadas-albireo2
+sources:
+  - type: git
+    url: https://github.com/kadas-albireo/kadas-albireo2.git
+    tag: v2.2.2
+    commit: 486654811159162bf089284aa7c593d859d499dd
+    x-checker-data:
+      type: git
+  - type: shell
+    commands:
+      - sed -i "s/1580472000/1693224000/g" com.sourcepole.kadas.appdata.xml #set release
+      - sed -i "s/v2.0.0-rc1/v2.2.2/g" com.sourcepole.kadas.appdata.xml #set version
+      - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.10\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
+      - sed -i 's/get_python_lib(plat_specific=1)/"\/app\/lib\/python3.10\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
+      - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DQGIS_PREFIX_PATH=/app
+  - -DQGIS_PLUGIN_DIR=/app/lib/qgis/plugins #fails finding file, libplugin_offlineediting.so = libofflineeditingplugin.so ?
+  - -DQGIS_SIP_DIR=/app/lib/python3.10/site-packages/qgis #find qgis .sip files
+  - -DINSTALL_DEMO_DATA=ON
+  - -DWITH_GLOBE=OFF #disable 3D globe, shorten build time

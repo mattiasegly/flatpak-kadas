@@ -1,0 +1,12 @@
+name: lxml
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/63/f7/ffbb6d2eb67b80a45b8a0834baa5557a14a5ffce0979439e7cd7f0c4055b/lxml-5.2.2.tar.gz
+    sha256: bb2dc4898180bea79863d5487e5f9c7c34297414bad54bcd0f0852aee9cfdb87
+    x-checker-data:
+      type: pypi
+      name: lxml
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

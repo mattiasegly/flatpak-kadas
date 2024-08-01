@@ -1,0 +1,12 @@
+name: pyqt5-sip
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/1b/15/78318d50f10062c428e97e7ce387e772616a4673c356018b905f247a6a85/PyQt5_sip-12.15.0.tar.gz
+    sha256: d23fdfcf363b5cedd9d39f8a9c5710e7d52804f5b08a58e91c638b36eafcb702
+    x-checker-data:
+      type: pypi
+      name: PyQt5-sip
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

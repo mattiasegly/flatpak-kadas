@@ -1,0 +1,11 @@
+name: kadas-gpkg-plugin
+sources:
+  - type: git
+    url: https://github.com/kadas-albireo/kadas-gpkg-plugin.git
+    branch: master
+    commit: 7eaf47e31647fd676bb727617ffc7c1fb20f1324
+buildsystem: simple
+builddir: true
+build-commands:
+  - mkdir -p /app/share/kadas/python/plugins
+  - cp -r kadas_* /app/share/kadas/python/plugins

@@ -1,0 +1,52 @@
+name: openscenegraph
+sources:
+  - type: git
+    url: https://github.com/openscenegraph/OpenSceneGraph.git
+    tag: OpenSceneGraph-3.6.5
+    commit: a827840baf0786d72e11ac16d5338a4ee25779db
+    x-checker-data:
+      type: git
+      tag-pattern: OpenSceneGraph-(\d+\.\d+\.\d+)
+
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/OpenSceneGraph.git/plain/0001-Cmake-fixes.patch
+    sha256: d2405e72f70f63c1517043c5d8149831937b6de3a90bc28da019b0a47bba972c
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/OpenSceneGraph.git/plain/0002-Activate-osgviewerWX.patch
+    sha256: 654d86e39c63d44796de5b45e8745d31abb7a3ca94065bf0811c044b1b376922
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/OpenSceneGraph.git/plain/0003-Unset-DOT_FONTNAME.patch
+    sha256: 001cca9dfee1ba1bdf1912e2ea56b5ac440e930f13da7d2f7057aab2f4e57b8c
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/OpenSceneGraph.git/plain/0004-Re-add-osgframerenderer.patch
+    sha256: 8495027711e81095081f12417b07991e74db2c1d36fdfd9f819a8c3e21a3981d
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/OpenSceneGraph.git/plain/force-x11-backend.patch
+    sha256: a1a9458bd5683cdf21c3f02f90204338d1b00a45733b9163653fcd1ef0a4bc2b
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/OpenSceneGraph.git/plain/OpenSceneGraph-openexr3.patch
+    sha256: f98c07bef64e8683323706cb31b3baf2a34bf7ba4b1cb0b682a6c26f72fa6307
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/OpenSceneGraph.git/plain/OpenSceneGraph_asio.patch
+    sha256: 950d38f9d8917916c2c0ca05a47cecfcf9d32d9c0e416ab77e31495f3c39941d
+  - type: file
+    url: https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/OpenSceneGraph.git/plain/OpenSceneGraph_gta.patch
+    sha256: 53da11e4187b0172ea98882c5e2b69ba5fe57f62741f4332be192834e4aea0a8
+
+  - type: shell #patches according to https://copr-dist-git.fedorainfracloud.org/cgit/smani/osgearth-2.10/OpenSceneGraph.git/tree/OpenSceneGraph.spec
+    commands:
+      - patch -p1 <0001-Cmake-fixes.patch
+      - patch -p1 <0002-Activate-osgviewerWX.patch
+      - patch -p1 <0003-Unset-DOT_FONTNAME.patch
+      - patch -p1 <0004-Re-add-osgframerenderer.patch
+      - patch -p1 <force-x11-backend.patch
+      - patch -p1 <OpenSceneGraph-openexr3.patch
+      - patch -p1 <OpenSceneGraph_asio.patch
+      - patch -p1 <OpenSceneGraph_gta.patch
+
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DCMAKE_DISABLE_FIND_PACKAGE_FFmpeg=1 #openscenegraph relies on old version of ffmpeg

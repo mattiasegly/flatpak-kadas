@@ -1,0 +1,18 @@
+name: qwt
+sources:
+  - type: archive
+    url: https://sourceforge.net/projects/qwt/files/qwt/6.3.0/qwt-6.3.0.zip
+    sha256: 268d8d41974d263014fea13168324452f41e02880db573794f559995a4e11331
+    x-checker-data:
+      type: html
+      url: https://sourceforge.net/projects/qwt/rss
+      pattern: <link>(https://sourceforge.net/.+/qwt-(\d+\.\d+\.\d+).zip)/download</link>
+  - type: shell
+    commands:
+      - sed -i 's/\$\$\[QT_INSTALL_PREFIX\]/\/app/g' qwtconfig.pri
+      - sed -i 's/usr\/local\/qwt-\$\$QWT_VERSION/app/g' qwtconfig.pri
+      - sed -i '/QwtExamples/s/^/#/g' qwtconfig.pri
+      - sed -i '/QwtPlayground/s/^/#/g' qwtconfig.pri
+      - sed -i '/QwtTests/s/^/#/g' qwtconfig.pri
+buildsystem: qmake
+builddir: true

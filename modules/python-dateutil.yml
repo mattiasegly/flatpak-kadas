@@ -1,0 +1,12 @@
+name: python-dateutil
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/66/c0/0c8b6ad9f17a802ee498c46e004a0eb49bc148f2fd230864601a86dcf6db/python-dateutil-2.9.0.post0.tar.gz
+    sha256: 37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3
+    x-checker-data:
+      type: pypi
+      name: python-dateutil
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
