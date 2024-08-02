@@ -11,6 +11,6 @@ sources:
 buildsystem: simple
 builddir: true
 build-commands:
-  - ./configure --prefix=/app --enable-examples=no
+  - ./configure --prefix=/app --enable-static=no --enable-examples=no
   - make
   - make install
