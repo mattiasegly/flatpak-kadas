@@ -1,7 +1,7 @@
 name: librttopo
 sources:
   - type: git
-    url: https://git.osgeo.org/gitea/rttopo/librttopo.git
+    url: https://gitlab.com/rttopo/rttopo.git #https://git.osgeo.org/gitea/rttopo/librttopo.git down
     branch: master
     commit: 91ebc054e39bd60b12daddcd2e92e8eab63b8ae1
 buildsystem: simple
