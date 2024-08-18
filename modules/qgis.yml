@@ -11,8 +11,9 @@ sources:
   - type: shell
     commands:
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.11\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.11\/site-packages"/g'
-        cmake/FindSIP.py #force install sip files to /app instead of /usr
+      - git grep -l '#include "keychain.h"' | xargs sed -i 's/#include "keychain.h"/#include <qt5keychain\/keychain.h>/g' #crude fix for finding keychain.h
+      - git grep -l '#include <keychain.h>' | xargs sed -i 's/#include <keychain.h>/#include <qt5keychain\/keychain.h>/g' #crude fix for finding keychain.h
+      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.11\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
       - sed -i 's/set(SIP_CONCAT_PARTS 22)/set(SIP_CONCAT_PARTS 10)/g' CMakeLists.txt #try to "significantly speed up the build"
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
 buildsystem: cmake-ninja
@@ -26,7 +27,7 @@ config-opts:
   - -DWITH_DRACO=FALSE
   - -DGRASS_PREFIX8=/app/grass84
   - -DBINDINGS_GLOBAL_INSTALL=TRUE #solved with python_sitearch fix
-  - -DSIP_GLOBAL_INSTALL=TRUE #analysis.sip needed by kadas, solved with FindSip.py fix
+  - -DSIP_GLOBAL_INSTALL=TRUE #installs core.sip
   - -DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE
   - -DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE
   - -DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
