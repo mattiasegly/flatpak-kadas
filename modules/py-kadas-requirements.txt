@@ -1,0 +1,252 @@
+#additional KADAS Python requirements
+#modules:
+
+# CAN'T INSTALL POETRY BECUSE POETRY DOESN'T EXIST
+#  - name: poetry
+#    sources:
+#      - type: archive
+#        url: https://files.pythonhosted.org/packages/07/c7/41108195c39ac1010054ef6b3b445894cee79e8ec73f086b73da94a01901/poetry-1.8.3.tar.gz
+#        sha256: 67f4eb68288eab41e841cc71a00d26cf6bdda9533022d0189a145a34d0a35f48
+#        x-checker-data:
+#          type: pypi
+#          name: poetry
+#    buildsystem: simple
+#    builddir: true
+#    build-commands:
+#      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+#  - name: isort
+#    sources:
+#      - type: archive
+#        url: https://files.pythonhosted.org/packages/87/f9/c1eb8635a24e87ade2efce21e3ce8cd6b8630bb685ddc9cdaca1349b2eb5/isort-5.13.2.tar.gz
+#        sha256: 48fdfcb9face5d58a4f6dde2e72a1fb8dcaf8ab26f95ab49fab84c2ddefb0109
+#        x-checker-data:
+#          type: pypi
+#          name: isort
+#    buildsystem: simple
+#    builddir: true
+#    build-commands:
+#      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: pycodestyle
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/43/aa/210b2c9aedd8c1cbeea31a50e42050ad56187754b34eb214c46709445801/pycodestyle-2.12.1.tar.gz
+        sha256: 6838eae08bbce4f6accd5d5572075c63626a15ee3e6f842df996bf62f6d73521
+        x-checker-data:
+          type: pypi
+          name: pycodestyle
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: autopep8
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/6c/52/65556a5f917a4b273fd1b705f98687a6bd721dbc45966f0f6687e90a18b0/autopep8-2.3.1.tar.gz
+        sha256: 8d6c87eba648fdcfc83e29b788910b8643171c395d9c4bcf115ece035b9c9dda
+        x-checker-data:
+          type: pypi
+          name: autopep8
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: pycparser
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/1d/b2/31537cf4b1ca988837256c910a668b553fceb8f069bedc4b1c826024b52c/pycparser-2.22.tar.gz
+        sha256: 491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6
+        x-checker-data:
+          type: pypi
+          name: pycparser
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: cffi
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/1e/bf/82c351342972702867359cfeba5693927efe0a8dd568165490144f554b18/cffi-1.17.0.tar.gz
+        sha256: f3157624b7558b914cb039fd1af735e5e8049a87c817cc215109ad1c8779df76
+        x-checker-data:
+          type: pypi
+          name: cffi
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: semantic-version
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/7d/31/f2289ce78b9b473d582568c234e104d2a342fd658cc288a7553d83bb8595/semantic_version-2.10.0.tar.gz
+        sha256: bdabb6d336998cbb378d4b9db3a4b56a1e3235701dc05ea2690d9a997ed5041c
+        x-checker-data:
+          type: pypi
+          name: semantic-version
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: setuptools-rust
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/b8/86/4f34594f21f529623b8650fe729548e3a2ad6c9ad81583391f03f74dd11a/setuptools_rust-1.10.1.tar.gz
+        sha256: d79035fc54cdf9342e9edf4b009491ecab06c3a652b37c3c137c7ba85547d3e6
+        x-checker-data:
+          type: pypi
+          name: setuptools-rust
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+# INSERT RUST COMPILER HERE
+
+  - name: maturin
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/80/da/a4bbd6e97f3645f4ebd725321aa235e22e31037dfd92caf4539f721c0a5a/maturin-1.7.0.tar.gz
+        sha256: 1ba5277dd7832dc6181d69a005182b97b3520945825058484ffd9296f2efb59c
+        x-checker-data:
+          type: pypi
+          name: maturin
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: cryptography
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/69/ec/9fb9dcf4f91f0e5e76de597256c43eedefd8423aa59be95c70c4c3db426a/cryptography-43.0.0.tar.gz
+        sha256: b88075ada2d51aa9f18283532c9f60e72170041bba88d7f37e49cbb10275299e
+        x-checker-data:
+          type: pypi
+          name: cryptography
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: kerberos-proxy-auth
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/43/7a/1e83a563978577179be7866d4da7c14fe655a16fd3c91515f2092e7f7411/kerberos-proxy-auth-0.0.2.tar.gz
+        sha256: c3a66a0eea4ce717eab31ec937d4a618f48655d2d0f297601d23af273118032b
+        x-checker-data:
+          type: pypi
+          name: kerberos-proxy-auth
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: pyspnego
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/46/f5/1f938a781742d18475ac43a101ec8a9499e1655da0984e08b59e20012c04/pyspnego-0.11.1.tar.gz
+        sha256: e92ed8b0a62765b9d6abbb86a48cf871228ddb97678598dc01c9c39a626823f6
+        x-checker-data:
+          type: pypi
+          name: pyspnego
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: pip-system-certs #python_certifi_win32
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/27/9a/4e949d0a281c5dd45c8d5b02b03fe32044936234675e967de49317a1daee/pip_system_certs-4.0.tar.gz
+        sha256: db8e6a31388d9795ec9139957df1a89fa5274fb66164456fd091a5d3e94c350c
+        x-checker-data:
+          type: pypi
+          name: pip-system-certs
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: requests
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz
+        sha256: 55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760
+        x-checker-data:
+          type: pypi
+          name: requests
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: requests-kerberos
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/63/78/bedf4c6788a4502f8c8b6485a9a00b3006aaed34ebbccecc1b2265a3bc9f/requests_kerberos-0.15.0.tar.gz
+        sha256: 437512e424413d8113181d696e56694ffa4259eb9a5fc4e803926963864eaf4e
+        x-checker-data:
+          type: pypi
+          name: requests-kerberos
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: sspilib
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/b5/bf/c5b6e78526f1d2a77e225c8328891a6623f3e3a577a1faaae0aaacab04de/sspilib-0.1.0.tar.gz
+        sha256: 58b5291553cf6220549c0f855e0e6973f4977375d8236ce47bb581efb3e9b1cf
+        x-checker-data:
+          type: pypi
+          name: sspilib
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: wrapt
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/95/4c/063a912e20bcef7124e0df97282a8af3ff3e4b603ce84c481d6d7346be0a/wrapt-1.16.0.tar.gz
+        sha256: 5f370f952971e7d17c7d1ead40e49f32345a7f7a5373571ef44d800d06b1899d
+        x-checker-data:
+          type: pypi
+          name: wrapt
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: pygeographiclib
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/96/cd/90271fd195d79a9c2af0ca21632b297a6cc3e852e0413a2e4519e67be213/geographiclib-2.0.tar.gz
+        sha256: f7f41c85dc3e1c2d3d935ec86660dc3b2c848c83e17f9a9e51ba9d5146a15859
+        x-checker-data:
+          type: pypi
+          name: geographiclib
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+
+  - name: markupsafe
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/87/5b/aae44c6655f3801e81aa3eef09dbbf012431987ba564d7231722f68df02d/MarkupSafe-2.1.5.tar.gz
+        sha256: d283d37a890ba4c1ae73ffadf8046435c76e7bc2247bbb63c00bd1a709c6544b
+        x-checker-data:
+          type: pypi
+          name: MarkupSafe
+    buildsystem: simple
+    builddir: true
+    build-commands:
+      - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
