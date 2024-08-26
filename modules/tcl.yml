@@ -3,7 +3,7 @@ sources:
   - type: git
     url: https://github.com/tcltk/tcl.git
     tag: core-8-6-14
-    commit: 89b41e0a93ac87b8b838cf82db3da1d6085623c4
+    commit: 16b5e6486a8e0e1746e35a0a88125ed72e286cd9
     x-checker-data:
       type: git
       tag-pattern: core-(\d+-\d+-\d+)
