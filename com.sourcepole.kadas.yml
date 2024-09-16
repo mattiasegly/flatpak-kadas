@@ -85,6 +85,7 @@ modules:
   - modules/editables.yml
   - modules/trove-classifiers.yml
   - modules/hatchling.yml
+  - modules/hatch-vcs.yml
   - modules/pygments.yml
   - modules/urllib3.yml
   - modules/idna.yml
