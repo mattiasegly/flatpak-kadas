@@ -2,8 +2,8 @@ name: tcl
 sources:
   - type: git
     url: https://github.com/tcltk/tcl.git
-    tag: core-8-6-14
-    commit: 16b5e6486a8e0e1746e35a0a88125ed72e286cd9
+    tag: core-8-6-15
+    commit: 1a98213e55128c8a2136379fedfaef0c8e15320b
     x-checker-data:
       type: git
       tag-pattern: core-(\d+-\d+-\d+)
