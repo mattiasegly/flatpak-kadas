@@ -17,6 +17,7 @@ finish-args:
   - --socket=x11
   - --filesystem=home
   - --env=LD_LIBRARY_PATH=/app/lib:/app/grass84/lib
+  - --env=PROJ_DATA=/app/share/proj
   - --env=PYTHONPATH=/app/lib/python3.11/site-packages
 
 cleanup:
@@ -33,6 +34,7 @@ cleanup-commands:
 
 build-options:
   env:
+    PROJ_DATA: /app/share/proj
     PYTHONPATH: /app/lib/python3.11/site-packages:/usr/lib/python3.11/site-packages
 
 modules:
@@ -51,6 +53,7 @@ modules:
   - modules/tcl.yml
   - modules/sqlite.yml
   - modules/proj.yml
+  - modules/proj-data.yml
   - modules/pyproject-metadata.yml
   - modules/meson-python.yml
   - modules/openblas.yml
