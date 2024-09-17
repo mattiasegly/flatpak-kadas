@@ -108,4 +108,5 @@ modules:
   - modules/quazip.yml
   - modules/gdbcrashhandler.yml
 
+  - modules/kadas-help-plugin.yml
   - modules/kadas-albireo2.yml
