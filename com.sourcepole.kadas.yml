@@ -3,8 +3,6 @@ branch: development
 runtime: org.kde.Platform
 runtime-version: "5.15-23.08"
 sdk: org.kde.Sdk
-#base: com.riverbankcomputing.PyQt.BaseApp
-#base-version: "5.15-23.08"
 command: kadas
 rename-icon: kadas
 
