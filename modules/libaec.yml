@@ -1,0 +1,13 @@
+name: libaec
+sources:
+  - type: git
+    url: https://gitlab.dkrz.de/k202009/libaec.git
+    tag: v1.1.3
+    commit: 58677dbbf080bac17bbb8717d32e63feb4e20115
+    x-checker-data:
+      type: git
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
