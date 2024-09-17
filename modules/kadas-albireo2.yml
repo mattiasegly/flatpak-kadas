@@ -6,8 +6,9 @@ sources:
     commit: 7c3445b4dbd9c44fdb8a872919f0b01e96cb0cb7
   - type: shell
     commands:
-      - EPOCH=$(date +%s) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml #set date
-      - DATE=$(date -I) && sed -i "s/v2.0.0-rc1/$DATE/g" com.sourcepole.kadas.appdata.xml #set version
+      - EPOCH=$(date +%s) && sed -i 's/1580472000/$EPOCH/g' com.sourcepole.kadas.appdata.xml #set date
+      - DATE=$(date -I) && sed -i 's/v2.0.0-rc1/$DATE/g' com.sourcepole.kadas.appdata.xml #set version
+      - DATE=$(date '+%Y%m%d%H%M') && sed -i 's/201911010130/$DATE/g' share/settings_patch.ini #cosmetic
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.11\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
       - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <zonedetect.h>/g' kadas/core/kadascoordinateutils.cpp #find zonedetect.h
