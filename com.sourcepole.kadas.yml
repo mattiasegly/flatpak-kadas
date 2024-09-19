@@ -17,6 +17,7 @@ finish-args:
   - --env=LD_LIBRARY_PATH=/app/lib:/app/grass84/lib
   - --env=PROJ_DATA=/app/share/proj
   - --env=PYTHONPATH=/app/lib/python3.11/site-packages
+  - --env=PYTHONPYCACHEPREFIX=/app/lib/python3.11/site-packages/pycache
 
 cleanup:
   - /include
@@ -34,6 +35,7 @@ build-options:
   env:
     PROJ_DATA: /app/share/proj
     PYTHONPATH: /app/lib/python3.11/site-packages:/usr/lib/python3.11/site-packages
+    PYTHONPYCACHEPREFIX: /app/lib/python3.11/site-packages/pycache
 
 modules:
   - modules/flit-core.yml
@@ -48,6 +50,7 @@ modules:
   - modules/pyqt5.yml
   - modules/qscintilla.yml
   - modules/qscintilla-bindings.yml
+  - modules/boost.yml
   - modules/tcl.yml
   - modules/sqlite.yml
   - modules/proj.yml
@@ -67,6 +70,9 @@ modules:
   - modules/hdf5.yml
   - modules/netcdf-c.yml
   - modules/postgresql.yml
+  - modules/uriparser.yml
+  - modules/libkml.yml
+  - modules/libjxl.yml
   - modules/gdal.yml
   - modules/libzip.yml
   - modules/protobuf.yml

@@ -1,0 +1,20 @@
+name: libjxl
+sources:
+  - type: git
+    url: https://github.com/libjxl/libjxl.git
+    tag: v0.11.0
+    commit: 4df1e9eccdf86b8df4c0c7c08f529263906f9c4f
+    x-checker-data:
+      type: git
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DJPEGXL_ENABLE_FUZZERS=OFF
+  - -DJPEGXL_ENABLE_DOXYGEN=OFF
+  - -DJPEGXL_ENABLE_MANPAGES=OFF
+  - -DJPEGXL_ENABLE_BENCHMARK=OFF
+  - -DJPEGXL_ENABLE_EXAMPLES=OFF
+  - -DJPEGXL_ENABLE_PLUGINS=ON
+  - -DJPEGXL_FORCE_SYSTEM_BROTLI=ON

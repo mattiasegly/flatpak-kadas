@@ -1,0 +1,16 @@
+name: uriparser
+sources:
+  - type: git
+    url: https://github.com/uriparser/uriparser.git
+    tag: uriparser-0.9.8
+    commit: bfe94f6e54d0abb5afa7bb0411940b7242cb835a
+    x-checker-data:
+      type: git
+      tag-pattern: uriparser-(\d+.\d+.\d+)
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DURIPARSER_BUILD_DOCS=OFF
+  - -DURIPARSER_BUILD_TESTS=OFF
