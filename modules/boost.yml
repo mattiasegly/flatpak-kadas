@@ -2,8 +2,8 @@ name: boost
 sources:
   - type: git
     url: https://github.com/boostorg/boost.git
-    tag: boost-1.86.0
-    commit: 65c1319bb92fe7a9a4abd588eff5818d9c2bccf9
+    tag: boost-1.86.0.beta1
+    commit: e4b2e2d6a11c9596a022ddfaa49c7a3c6261e297
     x-checker-data:
       type: git
       tag-pattern: boost-(\d+.\d+.\d+)
