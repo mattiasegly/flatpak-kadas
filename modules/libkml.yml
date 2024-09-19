@@ -8,7 +8,7 @@ sources:
       type: git
   - type: shell
     commands:
-      - sed -i '/\${MODULE_NAME}.pyc/s/^/#/g' #don't install, use PYTHONPYCACHEPREFIX instead
+      - sed -i '/\${MODULE_NAME}.pyc/s/^/#/g' src/swig/CMakeLists.txt #don't install, use PYTHONPYCACHEPREFIX instead
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
