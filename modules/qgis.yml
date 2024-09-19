@@ -6,7 +6,7 @@ sources:
     commit: 2904bcec7c902543341a076264ba4f3c7f4289ee
     x-checker-data:
       type: git
-      tag-pattern: final-(\d+_\d+_\d+)
+      tag-pattern: final-(\d+_\d+_\d+)$
       versions: {<: '3_35'}
   - type: shell
     commands:

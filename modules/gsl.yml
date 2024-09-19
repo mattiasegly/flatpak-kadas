@@ -6,7 +6,7 @@ sources:
     commit: f6de5706f9287e7b9cf5eebf31274caedf6f9603
     x-checker-data:
       type: git
-      tag-pattern: release-(\d+-\d+)
+      tag-pattern: release-(\d+-\d+)$
 buildsystem: simple
 builddir: true
 build-commands:

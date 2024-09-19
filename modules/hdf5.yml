@@ -6,7 +6,7 @@ sources:
     commit: 8b5cac6bc498546efa5639f99bb7dbbc1a2d5d90
     x-checker-data:
       type: git
-      tag-pattern: hdf5-(\d+_\d+_\d+$)
+      tag-pattern: hdf5-(\d+_\d+_\d+$)$
 buildsystem: cmake-ninja
 builddir: true
 config-opts:

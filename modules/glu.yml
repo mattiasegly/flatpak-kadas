@@ -6,6 +6,6 @@ sources:
     commit: a2b96c7bba8db8fec3e02fb4227a7f7b02cabad1
     x-checker-data:
       type: git
-      tag-pattern: glu-(\d+.\d+.\d+)
+      tag-pattern: glu-(\d+.\d+.\d+)$
 buildsystem: meson
 builddir: true
