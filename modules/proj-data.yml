@@ -9,4 +9,9 @@ sources:
 buildsystem: simple
 builddir: true
 build-commands:
-  - find . -type f -iname "*.tif" -exec mv {} /app/share/proj \;
+  #- find . -type f -iname "*.tif" -exec mv {} /app/share/proj \; #all
+
+  #cherry picking
+  - mv se_lantmateriet/se_lantmateriet_SWEN17_RH2000.tif /app/share/proj
+  - mv ch_swisstopo/ch_swisstopo_CHENyx06a.tif /app/share/proj
+  - mv ch_swisstopo/ch_swisstopo_CHENyx06_ETRS.tif /app/share/proj
