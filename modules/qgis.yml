@@ -7,16 +7,13 @@ sources:
     x-checker-data:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)$
-      versions: {<: '3_35'}
+      versions: { <: "3_35" }
   - type: shell
     commands:
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.11\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-      - git grep -l '#include "keychain.h"' | xargs sed -i 's/#include "keychain.h"/#include
-        <qt5keychain\/keychain.h>/g'                                                                                      #crude fix for finding keychain.h
-      - git grep -l '#include <keychain.h>' | xargs sed -i 's/#include <keychain.h>/#include
-        <qt5keychain\/keychain.h>/g'                                                                                      #crude fix for finding keychain.h
-      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.11\/site-packages"/g'
-        cmake/FindSIP.py                                                                           #force install sip files to /app instead of /usr
+      - git grep -l '#include "keychain.h"' | xargs sed -i 's/#include "keychain.h"/#include <qt5keychain\/keychain.h>/g' #crude fix for finding keychain.h
+      - git grep -l '#include <keychain.h>' | xargs sed -i 's/#include <keychain.h>/#include <qt5keychain\/keychain.h>/g' #crude fix for finding keychain.h
+      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.11\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
       - sed -i 's/set(SIP_CONCAT_PARTS 22)/set(SIP_CONCAT_PARTS 10)/g' CMakeLists.txt #try to "significantly speed up the build"
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
 buildsystem: cmake-ninja
