@@ -1,8 +1,8 @@
 name: pyproj
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/7d/84/2b39bbf888c753ea48b40d47511548c77aa03445465c35cc4c4e9649b643/pyproj-3.6.1.tar.gz
-    sha256: 44aa7c704c2b7d8fb3d483bbf75af6cb2350d30a63b144279a09b75fead501bf
+    url: https://files.pythonhosted.org/packages/47/c2/0572c8e31aebf0270f15f3368adebd10fc473de9f09567a0743a3bc41c8d/pyproj-3.7.0.tar.gz
+    sha256: bf658f4aaf815d9d03c8121650b6f0b8067265c36e31bc6660b98ef144d81813
     x-checker-data:
       type: pypi
       name: pyproj
