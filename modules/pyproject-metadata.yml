@@ -1,8 +1,8 @@
 name: pyproject-metadata
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/cf/cc/428b057f8c229b7c374efe9d6a6a35e693f79e071e25846ab0c55e59d337/pyproject_metadata-0.8.0.tar.gz
-    sha256: 376d5a00764ac29440a54579f88e66b7d9cb7e629d35c35a1c7248bfebc9b455
+    url: https://files.pythonhosted.org/packages/fa/24/47dc876eacddcf7125fe59cd26b064530c7e58655dae87f6928bf47aabaf/pyproject_metadata-0.8.1.tar.gz
+    sha256: e6b494d4fbac8007ed0efd3a08df067bb28a299fb113b885ce77e492ad1f0600
     x-checker-data:
       type: pypi
       name: pyproject-metadata
