@@ -4,7 +4,7 @@ sources:
     url: https://github.com/qgis/QGIS.git
     branch: master
     #tag: final-3_38_3
-    commit: 1431d2c70e0c8f3a31a9bf7273e58fb376854545
+    commit: 9e12573fac811d89ec0133343284e0607e17a510
     #x-checker-data:
       #type: git
       #tag-pattern: final-(\d+_\d+_\d+)$
