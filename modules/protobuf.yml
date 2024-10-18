@@ -14,3 +14,4 @@ config-opts:
   - -DBUILD_SHARED_LIBS=ON
   - -Dprotobuf_BUILD_SHARED_LIBS=ON
   - -Dprotobuf_BUILD_TESTS=OFF
+  - -DABSL_PROPAGATE_CXX_STD=ON #suppress warning "future Abseil release will default setting to ON"
