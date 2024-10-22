@@ -2,14 +2,15 @@ name: sqlite
 sources:
   - type: git
     url: https://github.com/sqlite/sqlite.git
-    tag: version-3.46.1
-    commit: f3d536d37825302e31ed0eddd811c689f38f85a3
+    tag: version-3.47.0
+    commit: f5fb820c0f4781337faf02ed871be68d13a83d94
     x-checker-data:
       type: git
       tag-pattern: version-(\d+\.\d+\.\d+)$
 buildsystem: simple
 builddir: true
 build-commands:
-  - CFLAGS="-DSQLITE_ENABLE_COLUMN_METADATA=1" ./configure --prefix=/app --disable-static --enable-all #enable-all is only; fts4/5 geopoly rtree session
+  - CFLAGS="-DSQLITE_ENABLE_COLUMN_METADATA=1" ./configure --prefix=/app --disable-static
+    --enable-all                                                                                       #enable-all is only; fts4/5 geopoly rtree session
   - make
   - make install
