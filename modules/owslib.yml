@@ -1,8 +1,8 @@
 name: owslib
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/7a/f6/d739b48f3ae0067996fd3c2e11e066c74cd5158e363dc672529385ccca34/OWSLib-0.31.0.tar.gz
-    sha256: 2ed6540087445cc57d905138a590b6ae58624ec7661b5c1682ed4e3303bcd150
+    url: https://files.pythonhosted.org/packages/33/53/e853a6038e62b749d3cd8a564b69ec1b6882d76b739b6050ff2e88cea599/OWSLib-0.32.0.tar.gz
+    sha256: 7513860d3102ae8d4dc5efd8652ff3c61eca3a8cb220d6c8601121357cd2b01a
     x-checker-data:
       type: pypi
       name: OWSLib
