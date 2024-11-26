@@ -17,8 +17,7 @@ builddir: true
 config-opts:
   - -DCMAKE_BUILD_TYPE=Release
   - -DCMAKE_PREFIX_PATH=/app;/usr
-  - -DWITH_GLOBE=OFF
   - -DWITH_QTWEBKIT=OFF
-  - -DWITH_BINDINGS=OFF
+  - -DWITH_BINDINGS=ON
   - -DWITH_VCPKG=OFF
   - -DINSTALL_DEMO_DATA=ON
