@@ -2,12 +2,12 @@ name: tcl
 sources:
   - type: git
     url: https://github.com/tcltk/tcl.git
-    tag: core-8-6-15
-    commit: 1a98213e55128c8a2136379fedfaef0c8e15320b
+    tag: core-8-6-16
+    commit: 874e4fe4264a40c00c4db5115afba9600f9f368d
     x-checker-data:
       type: git
       tag-pattern: core-(\d+-\d+-\d+)$
-      versions: { <: "9" }
+      versions: {<: '9'}
 buildsystem: simple
 builddir: true
 subdir: unix
