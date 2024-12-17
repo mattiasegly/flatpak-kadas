@@ -16,4 +16,4 @@ config-opts:
   - -DCMAKE_PREFIX_PATH=/app;/usr
   - -DWITH_SWIG=ON
   - -DWITH_PYTHON=ON
-  - -DPYTHON_INSTALL_DIR=/app/lib/python3.11/site-packages/libkml
+  - -DPYTHON_INSTALL_DIR=/app/lib/python3.12/site-packages/libkml

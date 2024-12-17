@@ -1,7 +1,7 @@
 app-id: com.sourcepole.kadas
 branch: development
 runtime: org.kde.Platform
-runtime-version: "5.15-23.08"
+runtime-version: "5.15-24.08"
 sdk: org.kde.Sdk
 command: kadas
 rename-icon: kadas
@@ -16,8 +16,8 @@ finish-args:
   - --filesystem=home
   - --env=LD_LIBRARY_PATH=/app/lib:/app/grass84/lib
   - --env=PROJ_DATA=/app/share/proj
-  - --env=PYTHONPATH=/app/lib/python3.11/site-packages
-  - --env=PYTHONPYCACHEPREFIX=/app/lib/python3.11/site-packages/pycache
+  - --env=PYTHONPATH=/app/lib/python3.12/site-packages
+  - --env=PYTHONPYCACHEPREFIX=/app/lib/python3.12/site-packages/pycache
 
 cleanup:
   - /include
@@ -34,12 +34,11 @@ cleanup-commands:
 build-options:
   env:
     PROJ_DATA: /app/share/proj
-    PYTHONPATH: /app/lib/python3.11/site-packages:/usr/lib/python3.11/site-packages
-    PYTHONPYCACHEPREFIX: /app/lib/python3.11/site-packages/pycache
+    PYTHONPATH: /app/lib/python3.12/site-packages:/usr/lib/python3.12/site-packages
+    PYTHONPYCACHEPREFIX: /app/lib/python3.12/site-packages/pycache
 
 modules:
   - modules/flit-core.yml
-  - modules/packaging.yml
   - modules/tomli.yml
   - modules/ply.yml
   - modules/typing-extensions.yml

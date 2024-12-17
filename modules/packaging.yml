@@ -9,4 +9,4 @@ sources:
 buildsystem: simple
 builddir: true
 build-commands:
-  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
+  - pip3 install --verbose --no-index --no-build-isolation --ignore-installed --prefix /app .

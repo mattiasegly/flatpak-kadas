@@ -9,4 +9,4 @@ sources:
 buildsystem: simple
 builddir: true
 build-commands:
-  - sip-install --concatenate 1 --no-docstrings --verbose --target-dir /app/lib/python3.11/site-packages --scripts-dir /app/bin --api-dir /app/share/qt/qsci/api/python
+  - sip-install --concatenate 1 --no-docstrings --verbose --target-dir /app/lib/python3.12/site-packages --scripts-dir /app/bin --api-dir /app/share/qt/qsci/api/python
