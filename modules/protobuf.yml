@@ -2,8 +2,8 @@ name: protobuf
 sources:
   - type: git
     url: https://github.com/protocolbuffers/protobuf.git
-    tag: v29.1
-    commit: 796e49f6ca82f763d1087d2ff7355d2f0d7b71b1
+    tag: v29.2
+    commit: 233098326bc268fc03b28725c941519fc77703e6
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
