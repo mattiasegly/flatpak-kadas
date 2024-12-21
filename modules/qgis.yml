@@ -3,8 +3,8 @@ sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
     #branch: master
-    tag: final-3_40_1
-    commit: 989853a7a31d120b1c06792915104bfcb3ec3278
+    tag: final-3_40_2
+    commit: 14826ca1e4aa617bbb2f99f8356852b661a14275
     x-checker-data:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)$
@@ -12,7 +12,8 @@ sources:
   - type: shell
     commands:
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
+      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g'
+        cmake/FindSIP.py                                                                           #force install sip files to /app instead of /usr
       - sed -i 's/qgis\/\${module}/qgis\/bindings\/\${module}/g' python/CMakeLists.txt #force install sip files to bindings folder
       - sed -i 's/set(SIP_CONCAT_PARTS 22)/set(SIP_CONCAT_PARTS 10)/g' CMakeLists.txt #try to "significantly speed up the build"
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
