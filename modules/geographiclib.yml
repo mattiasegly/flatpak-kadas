@@ -2,8 +2,8 @@ name: geographiclib
 sources:
   - type: git
     url: https://github.com/geographiclib/geographiclib.git
-    tag: v2.4
-    commit: 44a5c2db78af3241b3ed6433faf2da535be11b8a
+    tag: v2.5
+    commit: b0719910da478da8e8885f52a580ac3a754a4b65
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
