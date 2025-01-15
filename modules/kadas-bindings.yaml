@@ -9,8 +9,8 @@ modules:
         --prefix=${FLATPAK_DEST} "autopep8" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/ad/9e/f0beffe45b507dca9d7540fad42b316b2fd1076dc484c9b1f23d9da570d7/autopep8-2.3.1-py2.py3-none-any.whl
-        sha256: a203fe0fcad7939987422140ab17a930f684763bf7335bdb6709991dd7ef6c2d
+        url: https://files.pythonhosted.org/packages/9e/43/53afb8ba17218f19b77c7834128566c5bbb100a0ad9ba2e8e89d089d7079/autopep8-2.3.2-py2.py3-none-any.whl
+        sha256: ce8ad498672c845a0c3de2629c15b635ec2b05ef8177a6e7c91c74f3e9b51128
         x-checker-data:
           name: autopep8
           packagetype: bdist_wheel
