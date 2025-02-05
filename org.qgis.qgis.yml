@@ -1,0 +1,109 @@
+app-id: org.qgis.qgis
+runtime: org.kde.Platform
+runtime-version: "5.15-24.08"
+sdk: org.kde.Sdk
+command: qgis
+rename-icon: qgis
+
+separate-locales: false
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --device=dri
+  - --socket=wayland
+  - --socket=x11
+  - --filesystem=home
+  - --env=LD_LIBRARY_PATH=/app/lib:/app/grass84/lib
+  - --env=PROJ_DATA=/app/share/proj
+  - --env=PYTHONPATH=/app/lib/python3.12/site-packages
+  - --env=PYTHONPYCACHEPREFIX=/app/lib/python3.12/site-packages/pycache
+
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /share/cmake
+  - /share/doc
+  - /share/man
+  - /share/pkgconfig
+  - "*.la"
+  - "*.a"
+cleanup-commands:
+  - rm -rf /app/{include,lib/{cmake,mkspecs,pkgconfig}}
+
+build-options:
+  env:
+    PROJ_DATA: /app/share/proj
+    PYTHONPATH: /app/lib/python3.12/site-packages:/usr/lib/python3.12/site-packages
+    PYTHONPYCACHEPREFIX: /app/lib/python3.12/site-packages/pycache
+
+modules:
+  - modules/flit-core.yml
+  - modules/tomli.yml
+  - modules/ply.yml
+  - modules/typing-extensions.yml
+  - modules/setuptools-scm.yml
+  - modules/sip.yml
+  - modules/pyqt-builder.yml
+  - modules/pyqt5-sip.yml
+  - modules/pyqt5.yml
+  - modules/qscintilla.yml
+  - modules/qscintilla-bindings.yml
+  - modules/boost.yml
+  - modules/tcl.yml
+  - modules/sqlite.yml
+  - modules/proj.yml
+  - modules/proj-data.yml
+  - modules/pyproject-metadata.yml
+  - modules/meson-python.yml
+  - modules/openblas.yml
+  - modules/numpy.yml
+  - modules/swig.yml
+  - modules/geos.yml
+  - modules/librttopo.yml
+  - modules/minizip.yml
+  - modules/freexl.yml
+  - modules/libspatialite.yml
+  - modules/opencl-headers.yml
+  - modules/libaec.yml
+  - modules/hdf5.yml
+  - modules/netcdf-c.yml
+  - modules/postgresql.yml
+  - modules/uriparser.yml
+  - modules/libkml.yml
+  - modules/libjxl.yml
+  - modules/gdal.yml
+  - modules/libzip.yml
+  - modules/protobuf.yml
+  - modules/gsl.yml
+  - modules/libspatialindex.yml
+  - modules/inih.yml
+  - modules/exiv2.yml
+  - modules/qwt.yml
+  - modules/qtkeychain.yml
+  - modules/qca.yml
+  - modules/glu.yml
+  - modules/grass.yml
+
+  - modules/psycopg2.yml
+  - modules/jinja2.yml
+  - modules/pluggy.yml
+  - modules/pathspec.yml
+  - modules/editables.yml
+  - modules/trove-classifiers.yml
+  - modules/hatchling.yml
+  - modules/hatch-vcs.yml
+  - modules/pygments.yml
+  - modules/urllib3.yml
+  - modules/idna.yml
+  - modules/charset-normalizer.yml
+  - modules/certifi.yml
+  - modules/requests.yml
+  - modules/python-dateutil.yml
+  - modules/pyyaml.yml
+  - modules/pytz.yml
+  - modules/lxml.yml
+  - modules/owslib.yml
+
+  - modules/pyproj.yml
+
+  - modules/qgis.yml
