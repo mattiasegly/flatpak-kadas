@@ -41,8 +41,8 @@ modules:
         --prefix=${FLATPAK_DEST} "ephem" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/45/eb/844403865b5c861736c85196112a791c74283f27bf4496de2381eb57c085/ephem-4.1.6.tar.gz
-        sha256: 0ed2e4ea76f9db3eede2204adab8af3f1708201c7c04ee8511e710a54ca6425f
+        url: https://files.pythonhosted.org/packages/59/13/0d2c9525b1ba465e09af3f6585b3ac8fb0d66241b52f9f4f10118e323a9d/ephem-4.2.tar.gz
+        sha256: 3c4fd64f453e8f40cf862420a70da95a71b6487ace75e8e0cf85d73707db6065
         x-checker-data:
           name: ephem
           type: pypi
