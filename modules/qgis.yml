@@ -3,8 +3,8 @@ sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
     #branch: master
-    tag: final-3_40_3
-    commit: 2a274ab7754accf86c7ebb38fe276f458d201039
+    tag: final-3_40_4
+    commit: 4dd7d7e969168246c3f6c06fed2b152ffdd7fb22
     x-checker-data:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)$
