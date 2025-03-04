@@ -1,5 +1,6 @@
 on:
   workflow_dispatch: # can be manually dispatched under GitHub's "Actions" tab
+
 name: Build Flatpak
 jobs:
   flatpak:
@@ -13,17 +14,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cache
-        id: cache
-        uses: actions/cache@v4
+      - name: Restore Cache
+        id: cache-restore
+        uses: actions/cache/restore@v4
         with:
           path: .flatpak-builder
-          key: flatpak-build-${{ github.sha }}
-          restore-keys: flatpak-build
+          key: flatpak-build
 
-      - name: Build
+      - name: Build Flatpak
         uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: kadas.flatpak
           manifest-path: com.sourcepole.kadas.yml
           cache: false
+
+      - name: Save Cache
+        id: cache-save
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .flatpak-builder
+          key: flatpak-build-${{ github.sha }}
