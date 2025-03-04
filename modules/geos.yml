@@ -2,8 +2,8 @@ name: geos
 sources:
   - type: git
     url: https://github.com/libgeos/geos.git
-    tag: 3.13.0
-    commit: d7957246c588aa9c690efe67924fd70e741a06ab
+    tag: 3.13.1
+    commit: 431568d6e311e0bbfb057b4ec3d44d0d3ba3335f
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
