@@ -20,7 +20,6 @@ jobs:
           path: .flatpak-builder
           key: flatpak-build-${{ github.sha }}
           restore-keys: flatpak-build
-          save-always: true
 
       - name: Build
         uses: flatpak/flatpak-github-actions/flatpak-builder@v6
