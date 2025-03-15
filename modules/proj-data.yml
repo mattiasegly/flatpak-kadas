@@ -2,8 +2,8 @@ name: proj-data
 sources:
   - type: git
     url: https://github.com/OSGeo/PROJ-data.git
-    tag: 1.20.0
-    commit: e2f2a50b5bdec896dd27ed375f3beae406a78a24
+    tag: 1.21.0
+    commit: 14f8051bd72afb934b4a6400ebd5107c57dedc65
     x-checker-data:
       type: git
 buildsystem: simple
