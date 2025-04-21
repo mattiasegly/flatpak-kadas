@@ -1,8 +1,8 @@
 name: numpy
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/e1/78/31103410a57bc2c2b93a3597340a8119588571f6a4539067546cb9a0bfac/numpy-2.2.4.tar.gz
-    sha256: 9ba03692a45d3eef66559efe1d1096c4b9b75c0986b5dff5530c378fb8331d4f
+    url: https://files.pythonhosted.org/packages/dc/b2/ce4b867d8cd9c0ee84938ae1e6a6f7926ebf928c9090d036fc3c6a04f946/numpy-2.2.5.tar.gz
+    sha256: a9c0d994680cd991b1cb772e8b297340085466a6fe964bc9d4e80f5e2f43c291
     x-checker-data:
       type: pypi
       name: numpy
