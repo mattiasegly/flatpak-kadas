@@ -2,8 +2,8 @@ name: postgresql
 sources:
   - type: git
     url: https://git.postgresql.org/git/postgresql.git #browse https://git.postgresql.org/gitweb/?p=postgresql.git;a=summary
-    tag: REL_17_4
-    commit: f8554dee417ffc4540c94cf357f7bf7d4b6e5d80
+    tag: REL_17_5
+    commit: 5e2f3df49d4298c6097789364a5a53be172f6e85
     x-checker-data:
       type: git
       tag-pattern: REL_(\d+_\d+)$
