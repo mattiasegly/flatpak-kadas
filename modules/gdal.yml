@@ -11,5 +11,4 @@ builddir: true #recommended
 config-opts:
   - -DCMAKE_BUILD_TYPE=Release
   - -DCMAKE_PREFIX_PATH=/app;/usr
-  - -DGDAL_USE_OPENCL=ON
   - -DBUILD_TESTING=OFF
