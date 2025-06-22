@@ -2,8 +2,8 @@ name: libaec
 sources:
   - type: git
     url: https://gitlab.dkrz.de/k202009/libaec.git
-    tag: v1.1.3
-    commit: 58677dbbf080bac17bbb8717d32e63feb4e20115
+    tag: v1.1.4
+    commit: 7204505af7d6635734fc12a38d6bd0a6253c9c6d
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
