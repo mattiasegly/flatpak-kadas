@@ -12,6 +12,9 @@ sources:
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/SET(SIP_CONCAT_PARTS 17)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
       - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <zonedetect.h>/g' kadas/core/kadascoordinateutils.cpp #find zonedetect.h
+      - sed -i 's/#include <QSqlDatabase>/#include <\/usr\/include\/QtSql\/QSqlDatabase>/g' /app/include/qgis/qgsauthmanager.h #find QtSql stuff
+      - sed -i 's/#include <QSqlError>/#include <\/usr\/include\/QtSql\/QSqlError>/g' /app/include/qgis/qgsauthmanager.h #find QtSql stuff
+      - sed -i 's/#include <QSqlQuery>/#include <\/usr\/include\/QtSql\/QSqlQuery>/g' /app/include/qgis/qgsauthmanager.h #find QtSql stuff
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
