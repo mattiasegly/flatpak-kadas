@@ -1,137 +1,151 @@
-# Generated with flatpak-pip-generator --runtime=org.kde.Sdk//5.15-23.08 --requirements-file=requirements.txt --yaml --checker-data --output kadas-bindings
+# Generated with flatpak-pip-generator --runtime=org.kde.Sdk//5.15-24.08 --requirements-file=kadas-requirements.txt --yaml --checker-data --output kadas-bindings
 build-commands: []
 buildsystem: simple
 modules:
-  - name: python3-autopep8
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "autopep8" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/9e/43/53afb8ba17218f19b77c7834128566c5bbb100a0ad9ba2e8e89d089d7079/autopep8-2.3.2-py2.py3-none-any.whl
-        sha256: ce8ad498672c845a0c3de2629c15b635ec2b05ef8177a6e7c91c74f3e9b51128
-        x-checker-data:
-          name: autopep8
-          packagetype: bdist_wheel
-          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/d7/27/a58ddaf8c588a3ef080db9d0b7e0b97215cee3a45df74f3a94dbbf5c893a/pycodestyle-2.14.0-py2.py3-none-any.whl
-        sha256: dd6bf7cb4ee77f8e016f9c8e74a35ddd9f67e1d5fd4184d86c3b98e07099f42d
-        x-checker-data:
-          name: pycodestyle
-          packagetype: bdist_wheel
-          type: pypi
-  - name: python3-py-dateutil
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "py-dateutil" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/73/30/e9e22e80fc592803edb23d89588ccaa184f14bb67d9c321f705edbfdd95b/py-dateutil-2.2.tar.gz
-        sha256: 7efa2ca17159c590408cb624de9aa10d360f14097cb70dd7559e632f2cf4b048
-        x-checker-data:
-          name: py-dateutil
-          type: pypi
-  - name: python3-ephem
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "ephem" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/59/13/0d2c9525b1ba465e09af3f6585b3ac8fb0d66241b52f9f4f10118e323a9d/ephem-4.2.tar.gz
-        sha256: 3c4fd64f453e8f40cf862420a70da95a71b6487ace75e8e0cf85d73707db6065
-        x-checker-data:
-          name: ephem
-          type: pypi
-  - name: python3-flask
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "flask" --no-build-isolation
-    sources:
-      - &id001
-        type: file
-        url: https://files.pythonhosted.org/packages/b2/97/5d42485e71dfc078108a86d6de8fa46db44a1a9295e89c5d6d4a06e23a62/markupsafe-3.0.2.tar.gz
-        sha256: ee55d3edf80167e48ea11a923c7386f4669df67d7994554387f84e7d8b0a2bf0
-        x-checker-data:
-          name: markupsafe
-          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/10/cb/f2ad4230dc2eb1a74edf38f1a38b9b52277f75bef262d8908e60d957e13c/blinker-1.9.0-py3-none-any.whl
-        sha256: ba0efaa9080b619ff2f3459d1d500c57bddea4a6b424b60a91141db6fd2f08bc
-        x-checker-data:
-          name: blinker
-          packagetype: bdist_wheel
-          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/85/32/10bb5764d90a8eee674e9dc6f4db6a0ab47c8c4d0d83c27f7c39ac415a4d/click-8.2.1-py3-none-any.whl
-        sha256: 61a3265b914e850b85317d0b3109c7f8cd35a670f963866005d6ef1d5175a12b
-        x-checker-data:
-          name: click
-          packagetype: bdist_wheel
-          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/3d/68/9d4508e893976286d2ead7f8f571314af6c2037af34853a30fd769c02e9d/flask-3.1.1-py3-none-any.whl
-        sha256: 07aae2bb5eaf77993ef57e357491839f5fd9f4dc281593a81a9e4d79a24f295c
-        x-checker-data:
-          name: flask
-          packagetype: bdist_wheel
-          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/04/96/92447566d16df59b2a776c0fb82dbc4d9e07cd95062562af01e408583fc4/itsdangerous-2.2.0-py3-none-any.whl
-        sha256: c6242fc49e35958c8b15141343aa660db5fc54d4f13a1db01a3f5891b98700ef
-        x-checker-data:
-          name: itsdangerous
-          packagetype: bdist_wheel
-          type: pypi
-#      - type: file
-#        url: https://files.pythonhosted.org/packages/31/80/3a54838c3fb461f6fec263ebf3a3a41771bd05190238de3486aae8540c36/jinja2-3.1.4-py3-none-any.whl
-#        sha256: bc5dd2abb727a5319567b7a813e6a2e7318c39f4f487cfe6c89c6f9c7d25197d
-#        x-checker-data:
-#          name: jinja2
-#          packagetype: bdist_wheel
-#          type: pypi
-      - type: file
-        url: https://files.pythonhosted.org/packages/52/24/ab44c871b0f07f491e5d2ad12c9bd7358e527510618cb1b803a88e986db1/werkzeug-3.1.3-py3-none-any.whl
-        sha256: 54b78bf3716d19a65be4fceccc0d1d7b89e608834989dfae50ea87564639213e
-        x-checker-data:
-          name: werkzeug
-          packagetype: bdist_wheel
-          type: pypi
-  - name: python3-geographiclib
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "geographiclib" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/9f/5a/a26132406f1f40cf51ea349a5f11b0a46cec02a2031ff82e391c2537247a/geographiclib-2.0-py3-none-any.whl
-        sha256: 6b7225248e45ff7edcee32becc4e0a1504c606ac5ee163a5656d482e0cd38734
-        x-checker-data:
-          name: geographiclib
-          packagetype: bdist_wheel
-          type: pypi
-  - name: python3-isort
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "isort" --no-build-isolation
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/c1/11/114d0a5f4dabbdcedc1125dee0888514c3c3b16d3e9facad87ed96fad97c/isort-6.0.1-py3-none-any.whl
-        sha256: 2dc5d7f65c9678d94c88dfc29161a320eec67328bc97aad576874cb4be1e9615
-        x-checker-data:
-          name: isort
-          packagetype: bdist_wheel
-          type: pypi
-  - name: python3-markupsafe
-    buildsystem: simple
-    build-commands:
-      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-        --prefix=${FLATPAK_DEST} "markupsafe" --no-build-isolation
-    sources:
-      - *id001
+- name: python3-autopep8
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "autopep8" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/9e/43/53afb8ba17218f19b77c7834128566c5bbb100a0ad9ba2e8e89d089d7079/autopep8-2.3.2-py2.py3-none-any.whl
+    sha256: ce8ad498672c845a0c3de2629c15b635ec2b05ef8177a6e7c91c74f3e9b51128
+    x-checker-data:
+      name: autopep8
+      packagetype: bdist_wheel
+      type: pypi
+  - type: file
+    url: https://files.pythonhosted.org/packages/d7/27/a58ddaf8c588a3ef080db9d0b7e0b97215cee3a45df74f3a94dbbf5c893a/pycodestyle-2.14.0-py2.py3-none-any.whl
+    sha256: dd6bf7cb4ee77f8e016f9c8e74a35ddd9f67e1d5fd4184d86c3b98e07099f42d
+    x-checker-data:
+      name: pycodestyle
+      packagetype: bdist_wheel
+      type: pypi
+- name: python3-ephem
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "ephem" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/59/13/0d2c9525b1ba465e09af3f6585b3ac8fb0d66241b52f9f4f10118e323a9d/ephem-4.2.tar.gz
+    sha256: 3c4fd64f453e8f40cf862420a70da95a71b6487ace75e8e0cf85d73707db6065
+    x-checker-data:
+      name: ephem
+      type: pypi
+- name: python3-flask
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "flask" --no-build-isolation
+  sources:
+  - &id001
+    type: file
+    url: https://files.pythonhosted.org/packages/b2/97/5d42485e71dfc078108a86d6de8fa46db44a1a9295e89c5d6d4a06e23a62/markupsafe-3.0.2.tar.gz
+    sha256: ee55d3edf80167e48ea11a923c7386f4669df67d7994554387f84e7d8b0a2bf0
+    x-checker-data:
+      name: markupsafe
+      type: pypi
+  - type: file
+    url: https://files.pythonhosted.org/packages/10/cb/f2ad4230dc2eb1a74edf38f1a38b9b52277f75bef262d8908e60d957e13c/blinker-1.9.0-py3-none-any.whl
+    sha256: ba0efaa9080b619ff2f3459d1d500c57bddea4a6b424b60a91141db6fd2f08bc
+    x-checker-data:
+      name: blinker
+      packagetype: bdist_wheel
+      type: pypi
+  - type: file
+    url: https://files.pythonhosted.org/packages/85/32/10bb5764d90a8eee674e9dc6f4db6a0ab47c8c4d0d83c27f7c39ac415a4d/click-8.2.1-py3-none-any.whl
+    sha256: 61a3265b914e850b85317d0b3109c7f8cd35a670f963866005d6ef1d5175a12b
+    x-checker-data:
+      name: click
+      packagetype: bdist_wheel
+      type: pypi
+  - type: file
+    url: https://files.pythonhosted.org/packages/3d/68/9d4508e893976286d2ead7f8f571314af6c2037af34853a30fd769c02e9d/flask-3.1.1-py3-none-any.whl
+    sha256: 07aae2bb5eaf77993ef57e357491839f5fd9f4dc281593a81a9e4d79a24f295c
+    x-checker-data:
+      name: flask
+      packagetype: bdist_wheel
+      type: pypi
+  - type: file
+    url: https://files.pythonhosted.org/packages/04/96/92447566d16df59b2a776c0fb82dbc4d9e07cd95062562af01e408583fc4/itsdangerous-2.2.0-py3-none-any.whl
+    sha256: c6242fc49e35958c8b15141343aa660db5fc54d4f13a1db01a3f5891b98700ef
+    x-checker-data:
+      name: itsdangerous
+      packagetype: bdist_wheel
+      type: pypi
+#  - type: file
+#    url: https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl
+#    sha256: 85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67
+#    x-checker-data:
+#      name: jinja2
+#      packagetype: bdist_wheel
+#      type: pypi
+  - type: file
+    url: https://files.pythonhosted.org/packages/52/24/ab44c871b0f07f491e5d2ad12c9bd7358e527510618cb1b803a88e986db1/werkzeug-3.1.3-py3-none-any.whl
+    sha256: 54b78bf3716d19a65be4fceccc0d1d7b89e608834989dfae50ea87564639213e
+    x-checker-data:
+      name: werkzeug
+      packagetype: bdist_wheel
+      type: pypi
+- name: python3-geographiclib
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "geographiclib" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/9f/5a/a26132406f1f40cf51ea349a5f11b0a46cec02a2031ff82e391c2537247a/geographiclib-2.0-py3-none-any.whl
+    sha256: 6b7225248e45ff7edcee32becc4e0a1504c606ac5ee163a5656d482e0cd38734
+    x-checker-data:
+      name: geographiclib
+      packagetype: bdist_wheel
+      type: pypi
+- name: python3-isort
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "isort" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/c1/11/114d0a5f4dabbdcedc1125dee0888514c3c3b16d3e9facad87ed96fad97c/isort-6.0.1-py3-none-any.whl
+    sha256: 2dc5d7f65c9678d94c88dfc29161a320eec67328bc97aad576874cb4be1e9615
+    x-checker-data:
+      name: isort
+      packagetype: bdist_wheel
+      type: pypi
+- name: python3-markupsafe
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "markupsafe" --no-build-isolation
+  sources:
+  - *id001
+- name: python3-pip-system-certs
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "pip-system-certs" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/99/ce/608bbe82759363d6e752dd370daf066be3be8e7ffdb79838501ed6104173/pip_system_certs-5.2-py3-none-any.whl
+    sha256: e6ef3e106d4d02313e33955c2bcc4c2b143b2da07ef91e28a6805a0c1c512126
+    x-checker-data:
+      name: pip_system_certs
+      packagetype: bdist_wheel
+      type: pypi
+- name: python3-waitress
+  buildsystem: simple
+  build-commands:
+  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
+    --prefix=${FLATPAK_DEST} "waitress" --no-build-isolation
+  sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/8d/57/a27182528c90ef38d82b636a11f606b0cbb0e17588ed205435f8affe3368/waitress-3.0.2-py3-none-any.whl
+    sha256: c56d67fd6e87c2ee598b76abdd4e96cfad1f24cacdea5078d382b1f9d7b5ed2e
+    x-checker-data:
+      name: waitress
+      packagetype: bdist_wheel
+      type: pypi
 name: kadas-bindings

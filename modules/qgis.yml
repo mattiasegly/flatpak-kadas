@@ -2,29 +2,28 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
-    #branch: master
-    tag: final-3_40_8
-    commit: efaf8952e0e15a22a6cddda589d362f70ed238d1
+    tag: final-3_44_0
+    commit: 5d9ba037df19afd6ff0822d5e4aeef2db5ea2045
     x-checker-data:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)$
-      versions: {<: '3_41'}
+      versions: {<: '3_45'}
   - type: shell
     commands:
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g'
-        cmake/FindSIP.py                                                                           #force install sip files to /app instead of /usr
+      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g' cmake/FindSIP.py #force install sip files to /app instead of /usr
       - sed -i 's/qgis\/\${module}/qgis\/bindings\/\${module}/g' python/CMakeLists.txt #force install sip files to bindings folder
-      - sed -i 's/set(SIP_CONCAT_PARTS 22)/set(SIP_CONCAT_PARTS 10)/g' CMakeLists.txt #try to "significantly speed up the build"
+      - sed -i 's/set(SIP_CONCAT_PARTS 25)/set(SIP_CONCAT_PARTS 10)/g' CMakeLists.txt #try to "significantly speed up the build"
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
   - -DCMAKE_BUILD_TYPE=Release
   - -DCMAKE_PREFIX_PATH=/app;/usr
-  - -DUSE_CCACHE=ON
   - -DWITH_QTWEBKIT=FALSE
   - -DWITH_PDAL=FALSE
+  - -DWITH_EPT=FALSE
+  - -DWITH_COPC=FALSE
   - -DWITH_DRACO=FALSE
   - -DGRASS_PREFIX8=/app/grass84
   - -DBINDINGS_GLOBAL_INSTALL=TRUE #solved with python_sitearch fix

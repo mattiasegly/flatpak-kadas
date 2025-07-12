@@ -1,0 +1,11 @@
+# KADAS bindings
+# https://github.com/kadas-albireo/kadas-albireo2/blob/main/vcpkg/vcpkg.json
+
+autopep8
+ephem
+flask
+geographiclib
+isort
+markupsafe
+pip-system-certs
+waitress
