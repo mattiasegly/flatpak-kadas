@@ -22,8 +22,6 @@ config-opts:
   - -DCMAKE_PREFIX_PATH=/app;/usr
   - -DWITH_QTWEBKIT=FALSE
   - -DWITH_PDAL=FALSE
-  - -DWITH_EPT=FALSE
-  - -DWITH_COPC=FALSE
   - -DWITH_DRACO=FALSE
   - -DGRASS_PREFIX8=/app/grass84
   - -DBINDINGS_GLOBAL_INSTALL=TRUE #solved with python_sitearch fix
