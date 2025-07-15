@@ -3,7 +3,7 @@ sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
     branch: main
-    commit: dd4436725dfd20fde4e5a1fa1725e3ac192b6be2
+    commit: 2c1ab410ab5dab11db999edbfb343467ec8aeeab
   - type: shell
     commands:
       - EPOCH=$(date +%s) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml #set date
@@ -12,9 +12,12 @@ sources:
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/SET(SIP_CONCAT_PARTS 17)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
       - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <zonedetect.h>/g' kadas/core/kadascoordinateutils.cpp #find zonedetect.h
-      - sed -i 's/#include <QSqlDatabase>/#include <\/usr\/include\/QtSql\/QSqlDatabase>/g' /app/include/qgis/qgsauthmanager.h #find QtSql stuff
-      - sed -i 's/#include <QSqlError>/#include <\/usr\/include\/QtSql\/QSqlError>/g' /app/include/qgis/qgsauthmanager.h #find QtSql stuff
-      - sed -i 's/#include <QSqlQuery>/#include <\/usr\/include\/QtSql\/QSqlQuery>/g' /app/include/qgis/qgsauthmanager.h #find QtSql stuff
+      - sed -i 's/#include <QSqlDatabase>/#include <\/usr\/include\/QtSql\/QSqlDatabase>/g'
+        /app/include/qgis/qgsauthmanager.h                                                                                     #find QtSql stuff
+      - sed -i 's/#include <QSqlError>/#include <\/usr\/include\/QtSql\/QSqlError>/g'
+        /app/include/qgis/qgsauthmanager.h                                                                               #find QtSql stuff
+      - sed -i 's/#include <QSqlQuery>/#include <\/usr\/include\/QtSql\/QSqlQuery>/g'
+        /app/include/qgis/qgsauthmanager.h                                                                               #find QtSql stuff
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
