@@ -3,7 +3,7 @@ sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
     branch: main
-    commit: 23c57484ca8f9db166c61adf1ab600acd28bb632
+    commit: 87c720c1bc02f969865ebbf4f7c0fc1e82893f8b
   - type: shell
     commands:
       - EPOCH=$(date +%s) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml #set date
