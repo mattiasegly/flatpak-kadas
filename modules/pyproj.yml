@@ -6,7 +6,7 @@ sources:
     x-checker-data:
       type: pypi
       name: pyproj
-      versions: {=: '3.7.1'}
+      versions: {==: '3.7.1'}
 buildsystem: simple
 builddir: true
 build-commands:
