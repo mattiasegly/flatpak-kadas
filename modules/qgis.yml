@@ -8,8 +8,14 @@ sources:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)$
       versions: {<: '3_45'}
+
+  - type: file
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/flagDegreesUseUntranslatedStringSuffix.patch
+    sha256: 9470b0cf904ed2655838a9096005b1e422d5be998c68b8da89dc0372fe0cccdb
+
   - type: shell
     commands:
+      - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch #apply patch to fix kadas build
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g'
         cmake/FindSIP.py                                                                           #force install sip files to /app instead of /usr
