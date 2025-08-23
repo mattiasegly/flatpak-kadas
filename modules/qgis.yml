@@ -2,20 +2,25 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
-    tag: final-3_44_2
-    commit: f30453dede3ce4323740f28ba6830da81edc9ce8
+    tag: final-3_44_0
+    commit: 5d9ba037df19afd6ff0822d5e4aeef2db5ea2045
     x-checker-data:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)$
-      versions: {<: '3_45'}
+      versions: {==: '3_44_0'}
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/flagDegreesUseUntranslatedStringSuffix.patch
     sha256: 9470b0cf904ed2655838a9096005b1e422d5be998c68b8da89dc0372fe0cccdb
 
+  - type: file
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/sync_2d_3d.patch
+    sha256: 01c97b4a846eb119efe97092cb8370aab8b3c5e6b77c918eda743780a030e169
+
   - type: shell
     commands:
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch #apply patch to fix kadas build
+      - patch -p1 <sync_2d_3d.patch #apply patch to fix kadas build
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g'
         cmake/FindSIP.py                                                                           #force install sip files to /app instead of /usr
