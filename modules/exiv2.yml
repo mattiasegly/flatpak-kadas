@@ -2,8 +2,8 @@ name: exiv2
 sources:
   - type: git
     url: https://github.com/Exiv2/exiv2.git
-    tag: v0.28.6
-    commit: 4654b52fb2026d1565570dbe411017d9431a7f40
+    tag: v0.28.7
+    commit: afcb7a8ba84a7de36d2f1ee7689394e078697956
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
