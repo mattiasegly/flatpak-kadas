@@ -4,6 +4,12 @@ sources:
     url: https://github.com/kadas-albireo/kadas-albireo2.git
     branch: main
     commit: d4176aa1eff28f3b62009e480a87e99e8c403626
+
+  - type: file
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/ac0400fe6d8af6a688cb7064ba102b001df9b86c/share/geodata/dtm_swiss_only.tif
+    sha256: 95bf6afbc0841d8c0d963bca97e4ff838dff2c9fd26ce82fdc564ece3725d736
+    dest: share/geodata/
+
   - type: shell
     commands:
       - EPOCH=$(date +%s) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml #set date
