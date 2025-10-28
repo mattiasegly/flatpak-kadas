@@ -33,6 +33,14 @@ sources:
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/wcsSpatialExtentSettings.patch
     sha256: 429a0b20cf8e34d531e22e3782475b3d224628f1ac887f3f771514e310d3f724
 
+  #- type: file
+  #  url: https://github.com/kadas-albireo/kadas-albireo2/raw/025783a2a62a23baba48b5c289f3a76a8674681f/vcpkg/ports/qgis/sync_2d_3d.patch
+  #  sha256: 01c97b4a846eb119efe97092cb8370aab8b3c5e6b77c918eda743780a030e169
+
+  #- type: file
+  #  url: https://github.com/kadas-albireo/kadas-albireo2/raw/025783a2a62a23baba48b5c289f3a76a8674681f/vcpkg/ports/qgis/fix3dnavigation2.patch
+  #  sha256: 0a4000cf2b173bcdd17f3fd69421ca725c8e42fa65b19d69492fecd906d96f28
+
   - type: shell
     commands:
       - patch -p1 <ui-hdrs-install.patch
@@ -41,9 +49,11 @@ sources:
       - patch -p1 <3dchunkloaderconcurrency.patch
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
       - patch -p1 <wcsSpatialExtentSettings.patch
+      #- patch -p1 <sync_2d_3d.patch #fix QgsCameraController?
+      #- patch -p1 <fix3dnavigation2.patch #fix QgsCameraController?
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g'
-        cmake/FindSIP.py                                                                           #force install sip files to /app instead of /usr
+        cmake/FindSIP.py #force install sip files to /app instead of /usr
       - sed -i 's/qgis\/\${module}/qgis\/bindings\/\${module}/g' python/CMakeLists.txt #force install sip files to bindings folder
       - sed -i 's/set(SIP_CONCAT_PARTS 25)/set(SIP_CONCAT_PARTS 10)/g' CMakeLists.txt #try to "significantly speed up the build"
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
