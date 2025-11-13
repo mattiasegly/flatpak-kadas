@@ -3,7 +3,7 @@ sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
     branch: main
-    commit: f0ab78032c81663c1c753e139bc8123b92f168bf
+    commit: fe8c2134c2860232adc39f7e4cb05ef06e608dbf
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/ac0400fe6d8af6a688cb7064ba102b001df9b86c/share/geodata/dtm_swiss_only.tif
