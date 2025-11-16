@@ -1,17 +1,35 @@
 name: proj-data
 sources:
-  - type: git
-    url: https://github.com/OSGeo/PROJ-data.git
-    tag: 1.23.0
-    commit: a186f7c5f095412a9c5b3a4d967e9fb8ed7c6d46
-    x-checker-data:
-      type: git
+  #- type: git
+  #  url: https://github.com/OSGeo/PROJ-data.git
+  #  tag: 1.23.0
+  #  commit: a186f7c5f095412a9c5b3a4d967e9fb8ed7c6d46
+  #  x-checker-data:
+  #    type: git
+
+  - type: file
+    url: https://github.com/OSGeo/PROJ-data/raw/refs/tags/1.23.0/se_lantmateriet/se_lantmateriet_SWEN17_RH2000.tif
+    sha256: c5160019c9d2f64e0379e7725be795952b5005759e6f51e5322f6607af92a5a3
+
+  - type: file
+    url: https://github.com/OSGeo/PROJ-data/raw/refs/tags/1.23.0/ch_swisstopo/ch_swisstopo_CHENyx06a.tif
+    sha256: 986d81da9445bdd4cbc3b5e36d8ccdad757d7e09246da68040dd21e53bdfbe40
+
+  - type: file
+    url: https://github.com/OSGeo/PROJ-data/raw/refs/tags/1.23.0/ch_swisstopo/ch_swisstopo_CHENyx06_ETRS.tif
+    sha256: 2b12094e8c043645d85ae5f08a475bdd342249a1ff3c15e38fef0090cd4c4723
+
 buildsystem: simple
 builddir: true
 build-commands:
   #- find . -type f -iname "*.tif" -exec mv {} /app/share/proj \; #all
 
-  #cherry picking
-  - mv se_lantmateriet/se_lantmateriet_SWEN17_RH2000.tif /app/share/proj
-  - mv ch_swisstopo/ch_swisstopo_CHENyx06a.tif /app/share/proj
-  - mv ch_swisstopo/ch_swisstopo_CHENyx06_ETRS.tif /app/share/proj
+  #cherry picking from git source
+  #- mv se_lantmateriet/se_lantmateriet_SWEN17_RH2000.tif /app/share/proj
+  #- mv ch_swisstopo/ch_swisstopo_CHENyx06a.tif /app/share/proj
+  #- mv ch_swisstopo/ch_swisstopo_CHENyx06_ETRS.tif /app/share/proj
+
+  #move individual files
+  - mv se_lantmateriet_SWEN17_RH2000.tif /app/share/proj
+  - mv ch_swisstopo_CHENyx06a.tif /app/share/proj
+  - mv ch_swisstopo_CHENyx06_ETRS.tif /app/share/proj
