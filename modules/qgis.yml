@@ -10,23 +10,44 @@ sources:
       versions: {==: '3_44_0'}
 
   - type: file
-    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/flagDegreesUseUntranslatedStringSuffix.patch
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/tags/v2.3.0/vcpkg/ports/qgis/mesh.patch
+    sha256: c4cebb0a3f3861a9232ff874874764940b6e65f9ba765b37e9d1496af92220d0
+
+  - type: file
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/tags/v2.3.0/vcpkg/ports/qgis/3dfrustumfix.patch
+    sha256: df894e88e92d4504c8c9a9fbf2f728552f1dffe445596544e71a05252c92e3ce
+
+  - type: file
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/tags/v2.3.0/vcpkg/ports/qgis/3dchunkloaderconcurrency.patch
+    sha256: 7f1d0b9b774b11c5e3d640dbcc33cc18d05498ae4ba969af7300b4b797edf067
+
+  - type: file
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/tags/v2.3.0/vcpkg/ports/qgis/flagDegreesUseUntranslatedStringSuffix.patch
     sha256: 9470b0cf904ed2655838a9096005b1e422d5be998c68b8da89dc0372fe0cccdb
 
   - type: file
-    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/sync_2d_3d.patch
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/tags/v2.3.0/vcpkg/ports/qgis/wcsSpatialExtentSettings.patch
+    sha256: 429a0b20cf8e34d531e22e3782475b3d224628f1ac887f3f771514e310d3f724
+
+  - type: file
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/tags/v2.3.0/vcpkg/ports/qgis/sync_2d_3d.patch
     sha256: 01c97b4a846eb119efe97092cb8370aab8b3c5e6b77c918eda743780a030e169
 
   - type: shell
     commands:
-      - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch #apply patch to fix kadas build
-      - patch -p1 <sync_2d_3d.patch #apply patch to fix kadas build
+      - patch -p1 <mesh.patch
+      - patch -p1 <3dfrustumfix.patch
+      - patch -p1 <3dchunkloaderconcurrency.patch
+      - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
+      - patch -p1 <wcsSpatialExtentSettings.patch
+      - patch -p1 <sync_2d_3d.patch
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g'
-        cmake/FindSIP.py                                                                           #force install sip files to /app instead of /usr
+        cmake/FindSIP.py #force install sip files to /app instead of /usr
       - sed -i 's/qgis\/\${module}/qgis\/bindings\/\${module}/g' python/CMakeLists.txt #force install sip files to bindings folder
       - sed -i 's/set(SIP_CONCAT_PARTS 25)/set(SIP_CONCAT_PARTS 10)/g' CMakeLists.txt #try to "significantly speed up the build"
       - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
+
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
