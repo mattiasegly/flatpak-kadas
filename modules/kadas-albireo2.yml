@@ -25,7 +25,6 @@ sources:
       - sed -i 's/#include <QSqlQuery>/#include <\/usr\/include\/QtSql\/QSqlQuery>/g'
         /app/include/qgis/qgsauthmanager.h #find QtSql stuff
       - sed -i '/find_package(GeographicLib REQUIRED)/a\find_package(exiv2 REQUIRED)'
-      - sed -i '/find_package(GeographicLib REQUIRED)/a\find_package(exiv2 REQUIRED)'
         kadas/gui/CMakeLists.txt #find Exiv2
       - sed -i 's/#include <qgis/qgsnetworklogger.h>/#include <\/app\/lib\/debug\/source\/qgis\/src\/app\/devtools\/networklogger\/qgsnetworklogger.h>/g' kadas/app/kadasapplication.cpp #find qgsnetworklogger.h
       - sed -i '/symbolForFeature( feature, QgsRenderContext() )->color();/i QgsRenderContext
