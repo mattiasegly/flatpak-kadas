@@ -49,8 +49,8 @@ sources:
       - patch -p1 <3dchunkloaderconcurrency.patch
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
       - patch -p1 <wcsSpatialExtentSettings.patch
-      #- patch -p1 <sync_2d_3d.patch #fix QgsCameraController?
-      #- patch -p1 <fix3dnavigation2.patch #fix QgsCameraController?
+      #- patch -p1 <sync_2d_3d.patch #fix QgsCameraController? Didn't work...
+      #- patch -p1 <fix3dnavigation2.patch #fix QgsCameraController? Didn't work...
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g'
         cmake/FindSIP.py #force install sip files to /app instead of /usr
