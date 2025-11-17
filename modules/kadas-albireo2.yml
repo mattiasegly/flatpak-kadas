@@ -2,11 +2,11 @@ name: kadas-albireo2
 sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
-    #branch: main
-    #commit: d142d2c7e8c09626b8edc0020d28f3a1b733e8ee
+    branch: main
+    commit: 4929168890fcc2953be66e898c1c56d52e14826e
 
     #commit: f2fa3d24c5fdb0ebeb40926b70bb7d0c19e93cf9 #Worked!
-    commit: a738fd0ae904e3bbfddeffe99386d90ebbfeebb5 ##Failed! /kadas-albireo2/commit/a738fd0ae904e3bbfddeffe99386d90ebbfeebb5
+    #commit: a738fd0ae904e3bbfddeffe99386d90ebbfeebb5 ##Worked! /kadas-albireo2/commit/a738fd0ae904e3bbfddeffe99386d90ebbfeebb5
       #Upgraded QGIS to specific commit /kadas-albireo2/commit/687dda92b087becf19e44ad0b38a2a407028b9a5
       #Added QGIS test headers patch /kadas-albireo2/commit/f2fa3d24c5fdb0ebeb40926b70bb7d0c19e93cf9
 
@@ -22,13 +22,13 @@ sources:
       - DATE=$(date '+%Y%m%d%H%M') && sed -i "s/201911010130/$DATE/g" share/settings_patch.ini #cosmetic
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/SET(SIP_CONCAT_PARTS 17)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
-      - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <zonedetect.h>/g' kadas/core/kadascoordinateutils.cpp #find zonedetect.h
       - sed -i '/find_package(GeographicLib REQUIRED)/a\find_package(exiv2 REQUIRED)'
         kadas/gui/CMakeLists.txt #find Exiv2
 
+      - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <zonedetect.h>/g' kadas/core/kadascoordinateutils.cpp #find zonedetect.h
       - git grep -l '#include <qgis/' | xargs sed -i 's/#include <qgis\//#include </g' #nuclear fix for removing superfluous qgis folder
-      - sed -i 's/#include <qgsnetworklogger.h>/#include <\/app\/lib\/debug\/source\/qgis\/src\/app\/devtools\/networklogger\/qgsnetworklogger.h>/g' kadas/app/kadasapplication.cpp #find qgsnetworklogger.h
-      
+        #same for others; exiv, quazip, svg2svgt?
+
       - sed -i 's/#include <QSqlDatabase>/#include <\/usr\/include\/QtSql\/QSqlDatabase>/g'
         /app/include/qgis/qgsauthmanager.h #find QtSql stuff
       - sed -i 's/#include <QSqlError>/#include <\/usr\/include\/QtSql\/QSqlError>/g'
