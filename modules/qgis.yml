@@ -2,12 +2,12 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
+    commit: 25d28abfdad830c079d5bab019e5a78e320dd09b #Upgraded QGIS to specific commit /kadas-albireo2/commit/687dda92b087becf19e44ad0b38a2a407028b9a5
     #tag: final-3_44_0
     #commit: 5d9ba037df19afd6ff0822d5e4aeef2db5ea2045
-    commit: 25d28abfdad830c079d5bab019e5a78e320dd09b #Upgraded QGIS to specific commit /kadas-albireo2/commit/687dda92b087becf19e44ad0b38a2a407028b9a5
-    x-checker-data:
-      type: git
-      tag-pattern: final-(\d+_\d+_\d+)$
+    #x-checker-data:
+      #type: git
+      #tag-pattern: final-(\d+_\d+_\d+)$
       #versions: {==: '3_44_0'}
 
   - type: file
@@ -41,7 +41,7 @@ sources:
   - type: shell
     commands:
       - patch -p1 <ui-hdrs-install.patch
-      #- patch -p1 <test-hdrs-install.patch
+      - patch -p1 <test-hdrs-install.patch
       - patch -p1 <mesh.patch
       - patch -p1 <3dfrustumfix.patch
       - patch -p1 <3dchunkloaderconcurrency.patch
