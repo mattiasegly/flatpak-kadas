@@ -4,12 +4,13 @@ sources:
     url: https://github.com/qgis/QGIS.git
     #tag: final-3_44_0
     #commit: 5d9ba037df19afd6ff0822d5e4aeef2db5ea2045
-    commit: 25d28abfdad830c079d5bab019e5a78e320dd09b #Upgraded QGIS to specific commit /kadas-albireo2/commit/687dda92b087becf19e44ad0b38a2a407028b9a5
+    commit: 108203c541ebdc3c6b7304932e16eb03205a878e #Upgraded QGIS to specific commit /kadas-albireo2/commit/687dda92b087becf19e44ad0b38a2a407028b9a5
     x-checker-data:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)$
       #versions: {==: '3_44_0'}
 
+    tag: final-3_44_4
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/ui-hdrs-install.patch
     sha256: d456087feff5c83f7c55b1bcb283ce9d6bc65938909a3b8e8013ef66f1eacd57
