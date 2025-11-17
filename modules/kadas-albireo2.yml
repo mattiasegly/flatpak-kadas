@@ -2,8 +2,13 @@ name: kadas-albireo2
 sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
-    branch: main
-    commit: d142d2c7e8c09626b8edc0020d28f3a1b733e8ee
+    #branch: main
+    #commit: d142d2c7e8c09626b8edc0020d28f3a1b733e8ee
+
+    #commit: f2fa3d24c5fdb0ebeb40926b70bb7d0c19e93cf9 #Worked!
+    commit: a738fd0ae904e3bbfddeffe99386d90ebbfeebb5 ##Failed! /kadas-albireo2/commit/a738fd0ae904e3bbfddeffe99386d90ebbfeebb5
+      #Upgraded QGIS to specific commit /kadas-albireo2/commit/687dda92b087becf19e44ad0b38a2a407028b9a5
+      #Prepared QGIS test headers patch /kadas-albireo2/commit/f2fa3d24c5fdb0ebeb40926b70bb7d0c19e93cf9
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/ac0400fe6d8af6a688cb7064ba102b001df9b86c/share/geodata/dtm_swiss_only.tif

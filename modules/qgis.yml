@@ -2,16 +2,21 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
-    tag: final-3_44_0
-    commit: 5d9ba037df19afd6ff0822d5e4aeef2db5ea2045
+    #tag: final-3_44_0
+    #commit: 5d9ba037df19afd6ff0822d5e4aeef2db5ea2045
+    commit: 25d28abfdad830c079d5bab019e5a78e320dd09b #Upgraded QGIS to specific commit /kadas-albireo2/commit/687dda92b087becf19e44ad0b38a2a407028b9a5
     x-checker-data:
       type: git
       tag-pattern: final-(\d+_\d+_\d+)$
-      versions: {==: '3_44_0'}
+      #versions: {==: '3_44_0'}
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/ui-hdrs-install.patch
     sha256: d456087feff5c83f7c55b1bcb283ce9d6bc65938909a3b8e8013ef66f1eacd57
+
+  - type: file
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/test-hdrs-install.patch
+    sha256: 07e2fa8537b6e9f2574f61436459ff7b6faba5c26e84ea2b10da966f2230a9fc
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/mesh.patch
@@ -33,24 +38,15 @@ sources:
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/wcsSpatialExtentSettings.patch
     sha256: 429a0b20cf8e34d531e22e3782475b3d224628f1ac887f3f771514e310d3f724
 
-  #- type: file
-  #  url: https://github.com/kadas-albireo/kadas-albireo2/raw/025783a2a62a23baba48b5c289f3a76a8674681f/vcpkg/ports/qgis/sync_2d_3d.patch
-  #  sha256: 01c97b4a846eb119efe97092cb8370aab8b3c5e6b77c918eda743780a030e169
-
-  #- type: file
-  #  url: https://github.com/kadas-albireo/kadas-albireo2/raw/025783a2a62a23baba48b5c289f3a76a8674681f/vcpkg/ports/qgis/fix3dnavigation2.patch
-  #  sha256: 0a4000cf2b173bcdd17f3fd69421ca725c8e42fa65b19d69492fecd906d96f28
-
   - type: shell
     commands:
       - patch -p1 <ui-hdrs-install.patch
+      #- patch -p1 <test-hdrs-install.patch
       - patch -p1 <mesh.patch
       - patch -p1 <3dfrustumfix.patch
       - patch -p1 <3dchunkloaderconcurrency.patch
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
       - patch -p1 <wcsSpatialExtentSettings.patch
-      #- patch -p1 <sync_2d_3d.patch #fix QgsCameraController? Didn't work...
-      #- patch -p1 <fix3dnavigation2.patch #fix QgsCameraController? Didn't work...
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g'
         cmake/FindSIP.py #force install sip files to /app instead of /usr

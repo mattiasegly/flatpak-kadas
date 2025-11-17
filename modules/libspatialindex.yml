@@ -2,10 +2,11 @@ name: libspatialindex
 sources:
   - type: git
     url: https://github.com/libspatialindex/libspatialindex.git
-    tag: 2.1.0
-    commit: 175b56a9541e76982d13dbbf0c9b8f0b8d752619
+    tag: 2.0.0
+    commit: 4a3bd449b9f2858d31a4619ba60bae6d1d30b77d
     x-checker-data:
       type: git
+      versions: {==: '2.0.0'} #Issue with version 2.1.0 /libspatialindex/issues/276
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
