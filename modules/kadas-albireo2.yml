@@ -3,7 +3,7 @@ sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
     branch: main
-    commit: 4929168890fcc2953be66e898c1c56d52e14826e
+    commit: 2e5149077527ab8bf47001044725216b13d60917
 
     #commit: f2fa3d24c5fdb0ebeb40926b70bb7d0c19e93cf9 #Worked!
     #commit: a738fd0ae904e3bbfddeffe99386d90ebbfeebb5 ##Worked! /kadas-albireo2/commit/a738fd0ae904e3bbfddeffe99386d90ebbfeebb5
@@ -26,7 +26,8 @@ sources:
         kadas/gui/CMakeLists.txt #find Exiv2
 
       - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <zonedetect.h>/g' kadas/core/kadascoordinateutils.cpp #find zonedetect.h
-      - git grep -l '#include <qgis/' | xargs sed -i 's/#include <qgis\//#include </g' #nuclear fix for removing superfluous qgis folder
+      - git grep -l '#include <qgis/' | xargs sed -i 's/#include <qgis\//#include
+        </g'                                                                           #nuclear fix for removing superfluous qgis folder
         #same for others; exiv, quazip, svg2svgt?
 
       - sed -i 's/#include <QSqlDatabase>/#include <\/usr\/include\/QtSql\/QSqlDatabase>/g'
@@ -35,7 +36,6 @@ sources:
         /app/include/qgis/qgsauthmanager.h #find QtSql stuff
       - sed -i 's/#include <QSqlQuery>/#include <\/usr\/include\/QtSql\/QSqlQuery>/g'
         /app/include/qgis/qgsauthmanager.h #find QtSql stuff
-      
       - sed -i '/symbolForFeature( feature, QgsRenderContext() )->color();/i QgsRenderContext
         context;' kadas/app/kadasapplayerhandling.cpp #fix QgsRenderContext
       - sed -i 's/symbolForFeature( feature, QgsRenderContext() )->color();/symbolForFeature(
