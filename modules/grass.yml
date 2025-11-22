@@ -2,8 +2,8 @@ name: grass
 sources:
   - type: git
     url: https://github.com/OSGeo/grass.git
-    tag: 8.4.1
-    commit: 45ca3179ab0c450329d5ea410fce1b47b6bffbc8
+    tag: 8.4.2
+    commit: 9519c048f6781f6ed5dedbcf6aa8d16bb67a2f26
     x-checker-data:
       type: git
 buildsystem: simple
