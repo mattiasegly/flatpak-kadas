@@ -5,11 +5,6 @@ sources:
     branch: main
     commit: ebc1ff14c001196663352a4387df28961539391d
 
-    #commit: f2fa3d24c5fdb0ebeb40926b70bb7d0c19e93cf9 #Worked!
-    #commit: a738fd0ae904e3bbfddeffe99386d90ebbfeebb5 ##Worked! /kadas-albireo2/commit/a738fd0ae904e3bbfddeffe99386d90ebbfeebb5
-      #Upgraded QGIS to specific commit /kadas-albireo2/commit/687dda92b087becf19e44ad0b38a2a407028b9a5
-      #Added QGIS test headers patch /kadas-albireo2/commit/f2fa3d24c5fdb0ebeb40926b70bb7d0c19e93cf9
-
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/ac0400fe6d8af6a688cb7064ba102b001df9b86c/share/geodata/dtm_swiss_only.tif
     sha256: 95bf6afbc0841d8c0d963bca97e4ff838dff2c9fd26ce82fdc564ece3725d736
@@ -26,8 +21,7 @@ sources:
         kadas/gui/CMakeLists.txt #find Exiv2
 
       - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <zonedetect.h>/g' kadas/core/kadascoordinateutils.cpp #find zonedetect.h
-      - git grep -l '#include <qgis/' | xargs sed -i 's/#include <qgis\//#include
-        </g'                                                                           #nuclear fix for removing superfluous qgis folder
+      - git grep -l '#include <qgis/' | xargs sed -i 's/#include <qgis\//#include</g' #nuclear fix for removing superfluous qgis folder
         #same for others; exiv, quazip, svg2svgt?
 
       - sed -i 's/#include <QSqlDatabase>/#include <\/usr\/include\/QtSql\/QSqlDatabase>/g'
@@ -36,10 +30,6 @@ sources:
         /app/include/qgis/qgsauthmanager.h #find QtSql stuff
       - sed -i 's/#include <QSqlQuery>/#include <\/usr\/include\/QtSql\/QSqlQuery>/g'
         /app/include/qgis/qgsauthmanager.h #find QtSql stuff
-      - sed -i '/symbolForFeature( feature, QgsRenderContext() )->color();/i QgsRenderContext
-        context;' kadas/app/kadasapplayerhandling.cpp #fix QgsRenderContext
-      - sed -i 's/symbolForFeature( feature, QgsRenderContext() )->color();/symbolForFeature(
-        feature, context )->color();/g' kadas/app/kadasapplayerhandling.cpp #fix QgsRenderContext
 
 buildsystem: cmake-ninja
 builddir: true
