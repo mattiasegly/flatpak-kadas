@@ -6,7 +6,7 @@ sources:
     commit: 1d7403f97886002ad2d0ef3f0377b49a0725a3c2
     x-checker-data:
       type: git
-      tag-pattern: uriparser-(\d+.\d+.\d+)$
+      tag-pattern: uriparser-([\d.]+)$
 buildsystem: cmake-ninja
 builddir: true
 config-opts:

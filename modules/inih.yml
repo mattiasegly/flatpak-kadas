@@ -6,6 +6,6 @@ sources:
     commit: 26254ee9de7681f8825433415443e7116ff24b98
     x-checker-data:
       type: git
-      tag-pattern: r(\d+)$
+      tag-pattern: r([\d]+)$
 buildsystem: meson
 builddir: true

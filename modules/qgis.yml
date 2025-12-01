@@ -7,7 +7,7 @@ sources:
     #commit: 5d9ba037df19afd6ff0822d5e4aeef2db5ea2045
     #x-checker-data:
       #type: git
-      #tag-pattern: final-(\d+_\d+_\d+)$
+      #tag-pattern: final-([\d_]+)$
       #versions: {==: '3_44_0'}
 
   - type: file

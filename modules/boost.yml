@@ -6,7 +6,7 @@ sources:
     commit: ef7fea34711a189472893b88205b1dd3c275677b
     x-checker-data:
       type: git
-      tag-pattern: boost-(\d+.\d+.\d+)$
+      tag-pattern: boost-([\d.]+)$
 buildsystem: simple
 builddir: true
 build-commands:
