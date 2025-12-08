@@ -113,5 +113,7 @@ modules:
   - modules/quazip.yml
   - modules/gdbcrashhandler.yml
 
+  - modules/oras.yml
+
   - modules/kadas-bindings.yaml
   - modules/kadas-albireo2.yml

@@ -1,0 +1,12 @@
+name: oras
+sources:
+  - type: file
+    url: https://github.com/oras-project/oras/releases/download/v1.3.0/oras_1.3.0_linux_amd64.tar.gz
+    sha256: 6cdc692f929100feb08aa8de584d02f7bcc30ec7d88bc2adc2054d782db57c64
+buildsystem: simple
+builddir: true
+build-commands:
+  - mkdir -p oras-install/
+  - tar -zxf oras*.tar.gz -C oras-install/
+  - mv oras-install/oras /app/bin
+  - rm -rf oras*.tar.gz oras-install/
