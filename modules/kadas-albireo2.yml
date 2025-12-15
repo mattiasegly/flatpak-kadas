@@ -2,8 +2,8 @@ name: kadas-albireo2
 sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
-    branch: main
-    commit: e29621efdd62b5c714a2514b04cb194d2f184e57
+    tag: v2.3.18
+    commit: d15560b367e436453d4ce8f498e833ea50335ccb
 
   - type: shell
     commands:
@@ -11,9 +11,9 @@ sources:
 
   - type: shell
     commands:
-      - EPOCH=$(date +%s) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml #set date
-      - VERSION=$(date -I) && sed -i "s/v2.0.0-rc1/$VERSION/g" com.sourcepole.kadas.appdata.xml #set version
-      - DATE=$(date '+%Y%m%d%H%M') && sed -i "s/201911010130/$DATE/g" share/settings_patch.ini #cosmetic
+      - EPOCH=1765407600 && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml #set date
+      - VERSION=v2.3.18 && sed -i "s/v2.0.0-rc1/$VERSION/g" com.sourcepole.kadas.appdata.xml #set version
+      - DATE=202512110000 && sed -i "s/201911010130/$DATE/g" share/settings_patch.ini #cosmetic
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/SET(SIP_CONCAT_PARTS 17)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
       - sed -i '/find_package(GeographicLib REQUIRED)/a\find_package(exiv2 REQUIRED)'
