@@ -1,8 +1,8 @@
 name: pathspec
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/ca/bc/f35b8446f4531a7cb215605d100cd88b7ac6f44ab3fc94870c120ab3adbf/pathspec-0.12.1.tar.gz
-    sha256: a482d51503a1ab33b1c67a6c3813a26953dbdc71c31dacaef9a838c4e29f5712
+    url: https://files.pythonhosted.org/packages/c2/97/39352be14d20d377a387828daf9d3f765fad1ff29bd49913d5bbf4cefe61/pathspec-1.0.0.tar.gz
+    sha256: 9ada63a23541746b0cf7d5672a39ea77eac31dd23a80470be90df83537512131
     x-checker-data:
       type: pypi
       name: pathspec
