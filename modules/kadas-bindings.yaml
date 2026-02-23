@@ -62,8 +62,8 @@ modules:
           packagetype: bdist_wheel
           type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/ec/f9/7f9263c5695f4bd0023734af91bedb2ff8209e8de6ead162f35d8dc762fd/flask-3.1.2-py3-none-any.whl
-        sha256: ca1d8112ec8a6158cc29ea4858963350011b5c846a414cdb7a954aa9e967d03c
+        url: https://files.pythonhosted.org/packages/7f/9c/34f6962f9b9e9c71f6e5ed806e0d0ff03c9d1b0b2340088a0cf4bce09b18/flask-3.1.3-py3-none-any.whl
+        sha256: f4bcbefc124291925f1a26446da31a5178f9483862233b23c0c96a20701f670c
         x-checker-data:
           name: flask
           packagetype: bdist_wheel
@@ -83,8 +83,8 @@ modules:
 #      packagetype: bdist_wheel
 #      type: pypi
       - type: file
-        url: https://files.pythonhosted.org/packages/ad/e4/8d97cca767bcc1be76d16fb76951608305561c6e056811587f36cb1316a8/werkzeug-3.1.5-py3-none-any.whl
-        sha256: 5111e36e91086ece91f93268bb39b4a35c1e6f1feac762c9c822ded0a4e322dc
+        url: https://files.pythonhosted.org/packages/4d/ec/d58832f89ede95652fd01f4f24236af7d32b70cab2196dfcc2d2fd13c5c2/werkzeug-3.1.6-py3-none-any.whl
+        sha256: 7ddf3357bb9564e407607f988f683d72038551200c704012bb9a4c523d42f131
         x-checker-data:
           name: werkzeug
           packagetype: bdist_wheel
@@ -109,8 +109,8 @@ modules:
         --prefix=${FLATPAK_DEST} "isort" --no-build-isolation
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/7f/ed/e3705d6d02b4f7aea715a353c8ce193efd0b5db13e204df895d38734c244/isort-7.0.0-py3-none-any.whl
-        sha256: 1bcabac8bc3c36c7fb7b98a76c8abb18e0f841a3ba81decac7691008592499c1
+        url: https://files.pythonhosted.org/packages/74/ea/cf3aad99dd12c026e2d6835d559efb6fc50ccfd5b46d42d5fec2608b116a/isort-8.0.0-py3-none-any.whl
+        sha256: 184916a933041c7cf718787f7e52064f3c06272aff69a5cb4dc46497bd8911d9
         x-checker-data:
           name: isort
           packagetype: bdist_wheel
