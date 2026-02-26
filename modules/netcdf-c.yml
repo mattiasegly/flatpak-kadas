@@ -2,8 +2,8 @@ name: netcdf-c
 sources:
   - type: git
     url: https://github.com/Unidata/netcdf-c.git
-    tag: v4.9.3
-    commit: 3a6b1debf1557f07b606ce3653e44f0d711203be
+    tag: v4.10.0
+    commit: 80c6d3fbe3ee5b80014b0078c17b737b7e14d80c
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
