@@ -3,7 +3,7 @@ sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
     branch: main
-    commit: 61f3c4416db4497c48bea95a64c64e57a240643b
+    commit: 699da8b7ea681cd5095128dbd5e40a499f69328a
 
   - type: shell
     commands:
