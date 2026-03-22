@@ -5,7 +5,7 @@ sources:
     sha256: 19c8bf9957bcce7d69c4dbc2d0b2ef13de1984d53f50a59012e6dbbad0af67c6
     x-checker-data:
       type: pypi
-      name: MarkupSafe
+      name: pip-system-certs
 buildsystem: simple
 builddir: true
 build-commands:
