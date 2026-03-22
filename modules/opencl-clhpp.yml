@@ -1,0 +1,17 @@
+name: opencl-clhpp
+sources:
+  - type: git
+    url: https://github.com/KhronosGroup/OpenCL-CLHPP.git
+    tag: v2025.07.22
+    commit: 2a608428f725cad7903ef55e1ce5b995895838f5
+    x-checker-data:
+      type: git
+    disable-fsckobjects: true #error: disallowed submodule url: https://github.com:throwtheswitch/unity.git
+buildsystem: cmake-ninja
+builddir: true
+config-opts:
+  - -DCMAKE_BUILD_TYPE=Release
+  - -DCMAKE_PREFIX_PATH=/app;/usr
+  - -DBUILD_DOCS=OFF
+  - -DBUILD_EXAMPLES=OFF
+  - -DBUILD_TESTING=OFF

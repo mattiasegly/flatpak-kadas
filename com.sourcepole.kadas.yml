@@ -58,6 +58,7 @@ modules:
   - modules/freexl.yml
   - modules/libspatialite.yml
   - modules/opencl-headers.yml
+  - modules/opencl-clhpp.yml
   - modules/libaec.yml
   - modules/hdf5.yml
   - modules/netcdf-c.yml
