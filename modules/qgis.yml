@@ -2,17 +2,11 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
-    commit: e1a48d4f4cbfc5808c7edd0dc255337ee031420f #see /kadas-albireo2/vcpkg/ports/qgis/portfile.cmake
-    #tag: final-3_44_0
-    #commit: 5d9ba037df19afd6ff0822d5e4aeef2db5ea2045
-    #x-checker-data:
-      #type: git
-      #tag-pattern: final-([\d_]+)$
-      #versions: {==: '3_44_0'}
+    commit: 2beb446a1dcb04e6e9c3490e1e1e138367664374 #see /kadas-albireo2/vcpkg/ports/qgis/portfile.cmake
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/mesh.patch
-    sha256: c4cebb0a3f3861a9232ff874874764940b6e65f9ba765b37e9d1496af92220d0
+    sha256: 6e8a19b92b81d477672951eb8f8323dfab914ed1ab1dce1a5e56bab43e42d223
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/3dfrustumfix.patch
@@ -28,7 +22,7 @@ sources:
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/wcsSpatialExtentSettings.patch
-    sha256: 429a0b20cf8e34d531e22e3782475b3d224628f1ac887f3f771514e310d3f724
+    sha256: 55c6e42d53be436dfa81650d5fd1111329fafffa16fb22720e4f21dd662bd914
 
   - type: shell
     commands:
@@ -37,27 +31,20 @@ sources:
       - patch -p1 <3dchunkloaderconcurrency.patch
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
       - patch -p1 <wcsSpatialExtentSettings.patch
-      - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.12\/site-packages"/g'
+      - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.13\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
+      - sed -i 's/sysconfig.get_path.*/"\/app\/lib\/python3.13\/site-packages"/g'
         cmake/FindSIP.py #force install sip files to /app instead of /usr
       - sed -i 's/qgis\/\${module}/qgis\/bindings\/\${module}/g' python/CMakeLists.txt #force install sip files to bindings folder
-      - sed -i 's/set(SIP_CONCAT_PARTS 25)/set(SIP_CONCAT_PARTS 10)/g' CMakeLists.txt #try to "significantly speed up the build"
-      - sed -i 's/SET(SIP_CONCAT_PARTS 16)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
+      - sed -i 's/SET(SIP_CONCAT_PARTS 28)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
 
 buildsystem: cmake-ninja
 builddir: true
 config-opts:
   - -DCMAKE_BUILD_TYPE=Release
   - -DCMAKE_PREFIX_PATH=/app;/usr
-  - -DBUILD_WITH_QT6=FALSE
-  - -DWITH_QTWEBENGINE=FALSE
-  - -DWITH_QTWEBKIT=FALSE
   - -DWITH_PDAL=FALSE
   - -DWITH_DRACO=FALSE
   - -DGRASS_PREFIX8=/app/grass84
   - -DBINDINGS_GLOBAL_INSTALL=TRUE #solved with python_sitearch fix
   - -DSIP_GLOBAL_INSTALL=TRUE #installs core.sip
-  - -DHAS_KDE_QT5_PDF_TRANSFORM_FIX=TRUE
-  - -DHAS_KDE_QT5_SMALL_CAPS_FIX=TRUE
-  - -DHAS_KDE_QT5_FONT_STRETCH_FIX=TRUE
   - -DENABLE_TESTS=FALSE

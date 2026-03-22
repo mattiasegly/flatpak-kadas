@@ -1,0 +1,12 @@
+name: pycodestyle
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/11/e0/abfd2a0d2efe47670df87f3e3a0e2edda42f055053c85361f19c0e2c1ca8/pycodestyle-2.14.0.tar.gz
+    sha256: c4b5b517d278089ff9d0abdec919cd97262a3367449ea1c8b49b91529167b783
+    x-checker-data:
+      type: pypi
+      name: pycodestyle
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

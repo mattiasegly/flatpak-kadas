@@ -1,0 +1,12 @@
+name: werkzeug
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/61/f1/ee81806690a87dab5f5653c1f146c92bc066d7f4cebc603ef88eb9e13957/werkzeug-3.1.6.tar.gz
+    sha256: 210c6bede5a420a913956b4791a7f4d6843a43b6fcee4dfa08a65e93007d0d25
+    x-checker-data:
+      type: pypi
+      name: Werkzeug
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

@@ -11,6 +11,5 @@ builddir: true
 config-opts:
   - -DCMAKE_BUILD_TYPE=Release
   - -DCMAKE_PREFIX_PATH=/app;/usr
-  - -DBUILD_SHARED_LIBS=ON
-  - -DLIBSECRET_SUPPORT=OFF
+  - -DBUILD_WITH_QT6=ON
   - -DBUILD_TRANSLATIONS=OFF

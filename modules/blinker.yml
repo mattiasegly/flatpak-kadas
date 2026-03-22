@@ -1,0 +1,12 @@
+name: blinker
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/21/28/9b3f50ce0e048515135495f198351908d99540d69bfdc8c1d15b73dc55ce/blinker-1.9.0.tar.gz
+    sha256: b4ce2265a7abece45e7cc896e98dbebe6cead56bcf805a3d23136d145f5445bf
+    x-checker-data:
+      type: pypi
+      name: blinker
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

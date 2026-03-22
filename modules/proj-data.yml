@@ -1,12 +1,5 @@
 name: proj-data
 sources:
-  #- type: git
-  #  url: https://github.com/OSGeo/PROJ-data.git
-  #  tag: 1.23.0
-  #  commit: a186f7c5f095412a9c5b3a4d967e9fb8ed7c6d46
-  #  x-checker-data:
-  #    type: git
-
   - type: file
     url: https://github.com/OSGeo/PROJ-data/raw/refs/tags/1.23.0/se_lantmateriet/se_lantmateriet_SWEN17_RH2000.tif
     sha256: c5160019c9d2f64e0379e7725be795952b5005759e6f51e5322f6607af92a5a3
@@ -22,14 +15,6 @@ sources:
 buildsystem: simple
 builddir: true
 build-commands:
-  #- find . -type f -iname "*.tif" -exec mv {} /app/share/proj \; #all
-
-  #cherry picking from git source
-  #- mv se_lantmateriet/se_lantmateriet_SWEN17_RH2000.tif /app/share/proj
-  #- mv ch_swisstopo/ch_swisstopo_CHENyx06a.tif /app/share/proj
-  #- mv ch_swisstopo/ch_swisstopo_CHENyx06_ETRS.tif /app/share/proj
-
-  #move individual files
   - mv se_lantmateriet_SWEN17_RH2000.tif /app/share/proj
   - mv ch_swisstopo_CHENyx06a.tif /app/share/proj
   - mv ch_swisstopo_CHENyx06_ETRS.tif /app/share/proj

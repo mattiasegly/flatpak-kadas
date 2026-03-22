@@ -1,0 +1,12 @@
+name: autopep8
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/50/d8/30873d2b7b57dee9263e53d142da044c4600a46f2d28374b3e38b023df16/autopep8-2.3.2.tar.gz
+    sha256: 89440a4f969197b69a995e4ce0661b031f455a9f776d2c5ba3dbd83466931758
+    x-checker-data:
+      type: pypi
+      name: autopep8
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .

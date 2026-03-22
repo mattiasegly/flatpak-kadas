@@ -1,0 +1,12 @@
+name: py-geographiclib
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/df/78/4892343230a9d29faa1364564e525307a37e54ad776ea62c12129dbba704/geographiclib-2.1.tar.gz
+    sha256: 6a6545e6262d0ed3522e13c515713718797e37ed8c672c31ad7b249f372ef108
+    x-checker-data:
+      type: pypi
+      name: geographiclib
+buildsystem: simple
+builddir: true
+build-commands:
+  - pip3 install --verbose --no-index --no-build-isolation --prefix /app .
