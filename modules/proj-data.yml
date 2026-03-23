@@ -13,15 +13,15 @@ sources:
     sha256: 2b12094e8c043645d85ae5f08a475bdd342249a1ff3c15e38fef0090cd4c4723
 
   - type: file
-    url: https://github.com/OSGeo/proj-datumgrid/raw/heads/master/europe/SWEN17_RH2000.gtx
+    url: https://github.com/OSGeo/proj-datumgrid/raw/refs/heads/master/europe/SWEN17_RH2000.gtx
     sha256: 86ea0ff37304358e184375e8c820799a5586f3a9e5c3142742b57c755c6de370
 
   - type: file
-    url: https://github.com/OSGeo/proj-datumgrid/raw/heads/master/europe/CHENyx06a.gsb
+    url: https://github.com/OSGeo/proj-datumgrid/raw/refs/heads/master/europe/CHENyx06a.gsb
     sha256: 627255fa2ac09a42399e30b2c89db2f73267e22da8b87ee64b62205e685e9313
 
   - type: file
-    url: https://github.com/OSGeo/proj-datumgrid/raw/heads/master/europe/CHENyx06_ETRS.gsb
+    url: https://github.com/OSGeo/proj-datumgrid/raw/refs/heads/master/europe/CHENyx06_ETRS.gsb
     sha256: 40bc3b0b93e2b3b0d5122fa661819484e57189bfc1ccffd423fd47ba800a7355
 
 buildsystem: simple
