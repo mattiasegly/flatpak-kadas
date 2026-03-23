@@ -8,11 +8,11 @@ sources:
       name: QScintilla
   - type: shell
     commands:
-      - sed -i 's/\$\$\[QT_INSTALL_LIBS\]/\/app\/lib/g' src/qscintilla.pro
-      - sed -i 's/\$\$\[QT_INSTALL_HEADERS\]/\/app\/include/g' src/qscintilla.pro
-      - sed -i 's/\$\$\[QT_INSTALL_TRANSLATIONS\]/\/app\/share\/qt\/translations/g' src/qscintilla.pro
-      - sed -i 's/\$\$\[QT_INSTALL_DATA\]/\/app\/share\/qt/g' src/qscintilla.pro
-      - sed -i 's/\$\$\[QT_HOST_DATA\]/\/app\/lib\/qt/g' src/qscintilla.pro
+      - sed -i 's|\$\$\[QT_INSTALL_LIBS\]|/app/lib|g' src/qscintilla.pro
+      - sed -i 's|\$\$\[QT_INSTALL_HEADERS\]|/app/include|g' src/qscintilla.pro
+      - sed -i 's|\$\$\[QT_INSTALL_TRANSLATIONS\]|/app/share/qt/translations|g' src/qscintilla.pro
+      - sed -i 's|\$\$\[QT_INSTALL_DATA\]|/app/share/qt|g' src/qscintilla.pro
+      - sed -i 's|\$\$\[QT_HOST_DATA\]|/app/lib/qt|g' src/qscintilla.pro
 buildsystem: qmake
 builddir: true
 subdir: src
