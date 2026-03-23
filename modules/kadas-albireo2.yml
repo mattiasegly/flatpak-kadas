@@ -3,7 +3,7 @@ sources:
   - type: git
     url: https://github.com/kadas-albireo/kadas-albireo2.git
     branch: main
-    commit: acbe83cb75ac63e6b624c512aeaf53c2bf4a4a98
+    commit: ca3cdef4a0a05fc0b667a9147592bcf922a4bb21
 
   - type: shell
     commands:
@@ -18,7 +18,6 @@ sources:
       - sed -i 's/SET(SIP_CONCAT_PARTS 17)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
       - sed -i '/find_package(GeographicLib REQUIRED)/a\find_package(exiv2 REQUIRED)'
         kadas/gui/CMakeLists.txt #find Exiv2
- 
 #      - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <zonedetect.h>/g' kadas/core/kadascoordinateutils.cpp #find zonedetect.h
 #      - git grep -l '#include <qgis/' | xargs sed -i 's/#include <qgis\//#include</g' #nuclear fix for removing superfluous qgis folder
         #same for others; exiv, quazip?
