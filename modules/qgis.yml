@@ -44,6 +44,7 @@ config-opts:
   - -DCMAKE_PREFIX_PATH=/app;/usr
   - -DWITH_PDAL=FALSE
   - -DWITH_DRACO=FALSE
+  - -DWITH_GEOGRAPHICLIB=TRUE
   - -DGRASS_PREFIX8=/app/grass84
   - -DBINDINGS_GLOBAL_INSTALL=TRUE #solved with python_sitearch fix
   - -DSIP_GLOBAL_INSTALL=TRUE #installs core.sip
