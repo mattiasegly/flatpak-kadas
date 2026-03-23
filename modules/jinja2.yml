@@ -5,7 +5,7 @@ sources:
     sha256: 0137fb05990d35f1275a587e9aee6d56da821fc83491a0fb838183be43f66d6d
     x-checker-data:
       type: pypi
-      name: jinja2
+      name: Jinja2
 buildsystem: simple
 builddir: true
 build-commands:

@@ -14,14 +14,14 @@ sources:
       - EPOCH=$(date +%s) && sed -i "s/1580472000/$EPOCH/g" com.sourcepole.kadas.appdata.xml #set date
       - VERSION=$(date -I) && sed -i "s/v2.0.0-rc1/$VERSION/g" com.sourcepole.kadas.appdata.xml #set version
       - DATE=$(date '+%Y%m%d%H%M') && sed -i "s/201911010130/$DATE/g" share/settings_patch.ini #cosmetic
-      - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.13\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
+      - git grep -l '${Python_SITEARCH}' | xargs sed -i 's/\${Python_SITEARCH}/\/app\/lib\/python3.12\/site-packages/g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's/SET(SIP_CONCAT_PARTS 17)/SET(SIP_CONCAT_PARTS 10)/g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
-#      - sed -i '/find_package(GeographicLib REQUIRED)/a\find_package(exiv2 REQUIRED)'
-#        kadas/gui/CMakeLists.txt #find Exiv2
-
+      - sed -i '/find_package(GeographicLib REQUIRED)/a\find_package(exiv2 REQUIRED)'
+        kadas/gui/CMakeLists.txt #find Exiv2
+ 
 #      - sed -i 's/#include <zonedetect\/zonedetect.h>/#include <zonedetect.h>/g' kadas/core/kadascoordinateutils.cpp #find zonedetect.h
 #      - git grep -l '#include <qgis/' | xargs sed -i 's/#include <qgis\//#include</g' #nuclear fix for removing superfluous qgis folder
-        #same for others; exiv, quazip, svg2svgt?
+        #same for others; exiv, quazip?
 
 #      - sed -i 's/#include <QSqlDatabase>/#include <\/usr\/include\/QtSql\/QSqlDatabase>/g'
 #        /app/include/qgis/qgsauthmanager.h #find QtSql stuff

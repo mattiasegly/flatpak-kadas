@@ -9,6 +9,9 @@ sources:
       pattern: <link>(https://sourceforge.net/.+/qwt-(\d+\.\d+\.\d+).zip)/download</link>
   - type: shell
     commands:
+      - grep -rlZ "qt5" . | xargs -0 sed -i 's/qt5/qt6/g' #crude fixes for hardcoded Qt5 dependencies in Qwt source
+      - grep -rlZ "Qt5" . | xargs -0 sed -i 's/Qt5/Qt6/g'
+      - grep -rlZ "QT5" . | xargs -0 sed -i 's/QT5/QT6/g'
       - sed -i 's/\$\$\[QT_INSTALL_PREFIX\]/\/app/g' qwtconfig.pri
       - sed -i 's/usr\/local\/qwt-\$\$QWT_VERSION/app/g' qwtconfig.pri
       - sed -i '/QwtExamples/s/^/#/g' qwtconfig.pri

@@ -1,9 +1,9 @@
 app-id: com.sourcepole.kadas
 runtime: org.kde.Platform
-runtime-version: "6.10"
+runtime-version: "6.8"
 sdk: org.kde.Sdk
 base: com.riverbankcomputing.PyQt.BaseApp
-base-version: "6.10"
+base-version: "6.8"
 command: kadas
 rename-icon: kadas
 
@@ -17,8 +17,8 @@ finish-args:
   - --filesystem=home
   - --env=LD_LIBRARY_PATH=/app/lib:/app/grass84/lib
   - --env=PROJ_DATA=/app/share/proj
-  - --env=PYTHONPATH=/app/lib/python3.13/site-packages
-  - --env=PYTHONPYCACHEPREFIX=/app/lib/python3.13/site-packages/pycache
+  - --env=PYTHONPATH=/app/lib/python3.12/site-packages
+  - --env=PYTHONPYCACHEPREFIX=/app/lib/python3.12/site-packages/pycache
 
 cleanup:
   - /include
@@ -35,8 +35,8 @@ cleanup-commands:
 build-options:
   env:
     PROJ_DATA: /app/share/proj
-    PYTHONPATH: /app/lib/python3.13/site-packages:/usr/lib/python3.13/site-packages
-    PYTHONPYCACHEPREFIX: /app/lib/python3.13/site-packages/pycache
+    PYTHONPATH: /app/lib/python3.12/site-packages:/usr/lib/python3.12/site-packages
+    PYTHONPYCACHEPREFIX: /app/lib/python3.12/site-packages/pycache
 
 modules:
 #QGIS Requirements
@@ -102,15 +102,10 @@ modules:
   - modules/owslib.yml
   - modules/pyproj.yml
 
-#QGIS
-  - modules/qgis.yml
-
 #KADAS Requirements
   - modules/geographiclib.yml
   - modules/zonedetect.yml
   - modules/quazip.yml
-# - modules/svg2svgt.yml #no Qt6
-# - modules/gdbcrashhandler.yml #no Qt6
 
 #KADAS Bindings
   - modules/pycodestyle.yml
@@ -126,6 +121,9 @@ modules:
   - modules/markupsafe.yml
   - modules/pip-system-certs.yml
   - modules/waitress.yml
+
+#QGIS
+  - modules/qgis.yml
 
 #KADAS
   - modules/oras.yml

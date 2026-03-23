@@ -12,4 +12,5 @@ config-opts:
   - -DCMAKE_BUILD_TYPE=Release
   - -DCMAKE_PREFIX_PATH=/app;/usr
   - -DBUILD_WITH_QT6=ON
+  - -DLIBSECRET_SUPPORT=OFF #header file not included in platform 6.8, included in 6.10
   - -DBUILD_TRANSLATIONS=OFF
