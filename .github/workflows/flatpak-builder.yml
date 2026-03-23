@@ -7,7 +7,7 @@ jobs:
     name: Flatpak Builder
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-5.15-24.08
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.8
       options: --privileged
 
     steps:
