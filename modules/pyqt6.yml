@@ -1,0 +1,12 @@
+name: pyqt6
+sources:
+  - type: archive
+    url: https://files.pythonhosted.org/packages/96/03/e756f52e8b0d7bb5527baf8c46d59af0746391943bdb8655acba22ee4168/pyqt6-6.10.2.tar.gz
+    sha256: 6c0db5d8cbb9a3e7e2b5b51d0ff3f283121fa27b864db6d2f35b663c9be5cc83
+    x-checker-data:
+      type: pypi
+      name: PyQt6
+buildsystem: simple
+builddir: true
+build-commands:
+  - sip-install --confirm-license --qt-shared --no-designer-plugin --no-qml-plugin --jobs 3 --concatenate 1 --verbose --target-dir /app/lib/python3.13/site-packages --scripts-dir /app/bin --api-dir /app/share/qt/qsci/api/python

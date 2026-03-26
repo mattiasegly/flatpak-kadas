@@ -31,8 +31,8 @@ sources:
       - patch -p1 <3dchunkloaderconcurrency.patch
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
       - patch -p1 <wcsSpatialExtentSettings.patch
-      - git grep -l '${Python_SITEARCH}' | xargs sed -i 's|\${Python_SITEARCH}|/app/lib/python3.12/site-packages|g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
-      - sed -i 's|sysconfig.get_path.*|"/app/lib/python3.12/site-packages"|g' cmake/FindSIP.py #force install sip files to /app instead of /usr
+      - git grep -l '${Python_SITEARCH}' | xargs sed -i 's|\${Python_SITEARCH}|/app/lib/python3.13/site-packages|g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
+      - sed -i 's|sysconfig.get_path.*|"/app/lib/python3.13/site-packages"|g' cmake/FindSIP.py #force install sip files to /app instead of /usr
       - sed -i 's|qgis/\${module}|qgis/bindings/\${module}|g' python/CMakeLists.txt #force install sip files to bindings folder
       - sed -i 's|SET(SIP_CONCAT_PARTS 28)|SET(SIP_CONCAT_PARTS 10)|g' cmake/SIPMacros.cmake #try to "significantly speed up the build"
 
