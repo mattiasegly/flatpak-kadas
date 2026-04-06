@@ -2,7 +2,7 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
-    commit: 2beb446a1dcb04e6e9c3490e1e1e138367664374 #see /kadas-albireo2/vcpkg/ports/qgis/portfile.cmake
+    commit: 94bfab5842ac14d80ca9de7e206e678783481ab8 #see /kadas-albireo2/vcpkg/ports/qgis/portfile.cmake
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/mesh.patch
