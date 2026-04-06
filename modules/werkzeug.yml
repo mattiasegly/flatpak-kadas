@@ -1,8 +1,8 @@
 name: werkzeug
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/b5/43/76ded108b296a49f52de6bac5192ca1c4be84e886f9b5c9ba8427d9694fd/werkzeug-3.1.7.tar.gz
-    sha256: fb8c01fe6ab13b9b7cdb46892b99b1d66754e1d7ab8e542e865ec13f526b5351
+    url: https://files.pythonhosted.org/packages/dd/b2/381be8cfdee792dd117872481b6e378f85c957dd7c5bca38897b08f765fd/werkzeug-3.1.8.tar.gz
+    sha256: 9bad61a4268dac112f1c5cd4630a56ede601b6ed420300677a869083d70a4c44
     x-checker-data:
       type: pypi
       name: Werkzeug
