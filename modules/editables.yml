@@ -1,8 +1,8 @@
 name: editables
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/37/4a/986d35164e2033ddfb44515168a281a7986e260d344cf369c3f52d4c3275/editables-0.5.tar.gz
-    sha256: 309627d9b5c4adc0e668d8c6fa7bac1ba7c8c5d415c2d27f60f081f8e80d1de2
+    url: https://files.pythonhosted.org/packages/82/f8/02a4e9a0cb961b0feeb431ac96b231c157ecdcbbeacafe9e2fdb4b1dde39/editables-0.6.tar.gz
+    sha256: 1163834902381c4613787951c5914800fdf155ae08848a373b8ea5006780977c
     x-checker-data:
       type: pypi
       name: editables
