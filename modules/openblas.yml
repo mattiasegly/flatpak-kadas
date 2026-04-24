@@ -2,8 +2,8 @@ name: openblas
 sources:
   - type: git
     url: https://github.com/xianyi/OpenBLAS.git
-    tag: v0.3.32
-    commit: 8cecf899e21d99f9d8766ed34bfeeb3e2992c844
+    tag: v0.3.33
+    commit: 62bcfb0dc9f1cfa685fc04135c50e2780c303137
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
