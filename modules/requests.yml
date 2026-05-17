@@ -1,8 +1,8 @@
 name: requests
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/5f/a4/98b9c7c6428a668bf7e42ebb7c79d576a1c3c1e3ae2d47e674b468388871/requests-2.33.1.tar.gz
-    sha256: 18817f8c57c6263968bc123d237e3b8b08ac046f5456bd1e307ee8f4250d3517
+    url: https://files.pythonhosted.org/packages/ac/c3/e2a2b89f2d3e2179abd6d00ebd70bff6273f37fb3e0cc209f48b39d00cbf/requests-2.34.2.tar.gz
+    sha256: f288924cae4e29463698d6d60bc6a4da69c89185ad1e0bcc4104f584e960b9ed
     x-checker-data:
       type: pypi
       name: requests
