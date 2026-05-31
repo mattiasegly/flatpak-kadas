@@ -2,8 +2,8 @@ name: opencl-headers
 sources:
   - type: git
     url: https://github.com/KhronosGroup/OpenCL-Headers.git
-    tag: v2025.07.22
-    commit: 8a97ebc88daa3495d6f57ec10bb515224400186f
+    tag: v2026.05.29
+    commit: 6fe718c31a45fe25151362a72ef041c3a1047cbd
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
