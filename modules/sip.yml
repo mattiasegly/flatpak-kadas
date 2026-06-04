@@ -1,8 +1,8 @@
 name: sip
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/d0/5f/d6dc58565d2d174064b545f8b3bef7b6117d25ee06181d5560cc290bd344/sip-6.15.0.tar.gz
-    sha256: 3920f26515456ee21114a1f8282144f8c156b1aabc3b44424155d5f81396025f
+    url: https://files.pythonhosted.org/packages/02/b1/79bff1c49a9e19ffe0211cb8905cc514c3f6b8f3f7ae55a40403d346c076/sip-6.15.3.tar.gz
+    sha256: bb2516983f9f716d321e5157c00d0de0c12422eba73b8f43a44610a0f6622438
     x-checker-data:
       type: pypi
       name: sip
