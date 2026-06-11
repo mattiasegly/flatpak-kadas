@@ -1,8 +1,8 @@
 name: meson-python
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/32/98/7fe5d1bf741c03c6eea04b6245737dbd79657d4f9200e82fcbb4cc12637b/meson_python-0.19.0.tar.gz
-    sha256: 9959d198aa69b57fcfd354a34518c6f795b781a73ed0656f4d01660160cc2553
+    url: https://files.pythonhosted.org/packages/8b/f0/d794d7ed8a843a8a8947768f3b329d1e8601222dc95d930f4a5f9706cd6c/meson_python-0.20.0.tar.gz
+    sha256: 6d9726ae6cd37e22f210c74b364b30180a68c20442e97ff09f3c566a414af738
     x-checker-data:
       type: pypi
       name: meson-python
