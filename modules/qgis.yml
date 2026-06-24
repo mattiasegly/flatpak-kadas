@@ -24,10 +24,6 @@ sources:
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/wcsSpatialExtentSettings.patch
     sha256: 55c6e42d53be436dfa81650d5fd1111329fafffa16fb22720e4f21dd662bd914
 
-  - type: file
-    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/bigobj-vectorlayer.patch
-    sha256: 684b120a8acfdf597b12cf6e4011967cb3341c9d7c2db6e8eaaa365efe8e967b
-
   - type: shell
     commands:
       - patch -p1 <mesh.patch
@@ -35,7 +31,6 @@ sources:
       - patch -p1 <3dchunkloaderconcurrency.patch
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
       - patch -p1 <wcsSpatialExtentSettings.patch
-      - patch -p1 <bigobj-vectorlayer.patch
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's|\${Python_SITEARCH}|/app/lib/python3.13/site-packages|g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's|sysconfig.get_path.*|"/app/lib/python3.13/site-packages"|g' cmake/FindSIP.py #force install sip files to /app instead of /usr
       - sed -i 's|qgis/\${module}|qgis/bindings/\${module}|g' python/CMakeLists.txt #force install sip files to bindings folder
