@@ -36,6 +36,9 @@ config-opts:
   - -DINSTALL_DTM=ON
   - -DINSTALL_ALBIREO_SETTINGS=ON
 
+post-install:
+  - rm -r /app/share/kadas/python/plugins/kadas_ephem
+
 build-options:
   build-args:
     - --share=network #needed for downloading file with oras
