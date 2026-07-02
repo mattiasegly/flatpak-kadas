@@ -2,8 +2,8 @@ name: quazip
 sources:
   - type: git
     url: https://github.com/stachenov/quazip.git
-    tag: v1.7.1
-    commit: 0c80bd1482a81655765a02beb7b42a52996f1dc6
+    tag: v1.7.2
+    commit: 3108956647d02547615d4b9aca71b0c517f6dda1
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
