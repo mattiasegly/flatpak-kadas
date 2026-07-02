@@ -2,15 +2,15 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
-    commit: 7a8d78b0a6e382474300d0d64d6d08f2dfcc8460 #see /kadas-albireo2/vcpkg/ports/qgis/portfile.cmake
+    commit: 9e439cdbb9ba5501046600b97a0526c933bdd03d #see /kadas-albireo2/vcpkg/ports/qgis/portfile.cmake
+
+  - type: file
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/crssync.patch
+    sha256: 047f7053f7b077a050af92a3b3a651bec874b1dc3101e6aebb2fba53107165bc
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/mesh.patch
     sha256: 6e8a19b92b81d477672951eb8f8323dfab914ed1ab1dce1a5e56bab43e42d223
-
-  - type: file
-    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/3dfrustumfix.patch
-    sha256: df894e88e92d4504c8c9a9fbf2f728552f1dffe445596544e71a05252c92e3ce
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/3dchunkloaderconcurrency.patch
@@ -24,13 +24,18 @@ sources:
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/wcsSpatialExtentSettings.patch
     sha256: 55c6e42d53be436dfa81650d5fd1111329fafffa16fb22720e4f21dd662bd914
 
+  - type: file
+    url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/annotation-item-rotation.patch
+    sha256: af8b38c63b9172ffbb8f1878d2dd208d7cc52e36dac9a12802fcd8cc67863eb7
+
   - type: shell
     commands:
+      - patch -p1 <crssync.patch
       - patch -p1 <mesh.patch
-      - patch -p1 <3dfrustumfix.patch
       - patch -p1 <3dchunkloaderconcurrency.patch
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
       - patch -p1 <wcsSpatialExtentSettings.patch
+      - patch -p1 <annotation-item-rotation.patch
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's|\${Python_SITEARCH}|/app/lib/python3.13/site-packages|g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's|sysconfig.get_path.*|"/app/lib/python3.13/site-packages"|g' cmake/FindSIP.py #force install sip files to /app instead of /usr
       - sed -i 's|qgis/\${module}|qgis/bindings/\${module}|g' python/CMakeLists.txt #force install sip files to bindings folder
