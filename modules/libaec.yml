@@ -1,7 +1,7 @@
 name: libaec
 sources:
   - type: git
-    url: https://gitlab.dkrz.de/k202009/libaec.git
+    url: https://github.com/Deutsches-Klimarechenzentrum/libaec.git
     tag: v1.1.7
     commit: 0c4c01463d2c64a112a61271d317b74efb660608
     x-checker-data:
