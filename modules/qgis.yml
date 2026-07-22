@@ -69,7 +69,7 @@ config-opts:
   - -DWITH_DRACO=FALSE
   - -DWITH_QTWEBENGINE=FALSE
   - -DWITH_GEOGRAPHICLIB=TRUE
-  - -DGRASS_PREFIX8=/app/grass84
+  - -DGRASS_PREFIX8=/app/grass85
   - -DBINDINGS_GLOBAL_INSTALL=TRUE #solved with python_sitearch fix
   - -DSIP_GLOBAL_INSTALL=TRUE #installs core.sip
   - -DENABLE_TESTS=FALSE
