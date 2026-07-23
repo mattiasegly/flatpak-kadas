@@ -2,16 +2,17 @@ name: tcl
 sources:
   - type: git
     url: https://github.com/tcltk/tcl.git
-    tag: core-9-0-4
-    commit: c655b4770b1d6d32a8cbffd6cef59db6029fe19e
+    tag: core-8-6-18
+    commit: 515167c897a7c8066abfbd71e8fe7bd8bf3569de
     x-checker-data:
       type: git
       tag-pattern: core-([\d-]+)$
+      versions: {<: '9'} #postgresql doesn't support tcl 9
 buildsystem: simple
 builddir: true
 subdir: unix
 build-commands:
-  - ./configure --prefix=/app --enable-64bit --enable-shared --disable-symbols
+  - ./configure --prefix=/app --enable-threads --enable-shared --disable-symbols --enable-64bit
   - make
   - make install
 post-install:
