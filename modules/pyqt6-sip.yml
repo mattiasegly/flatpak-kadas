@@ -1,12 +1,12 @@
 name: pyqt6-sip
 sources:
   - type: archive
-    url: https://files.pythonhosted.org/packages/0d/e9/d1b97154cec1d6c8a3d93fb6565d1463bc528fa5103491d626d07a451c7c/pyqt6_sip-13.10.3.tar.gz
-    sha256: 630895b3827e2c3b4e072089157985691fe4210d64340e71141f93775ea4ae51
+    url: https://files.pythonhosted.org/packages/90/24/a753e1af94b9ae5b2da63d4598457308da3cdbf0838c959381db086ccc86/pyqt6_sip-13.11.1.tar.gz
+    sha256: 869c5b48afe38e55b1ee0dd72182b0886e968cc509b98023ff50010b013ce1be
     x-checker-data:
       type: pypi
       name: PyQt6-sip
-      versions: {<: '13.11'}
+      versions: {<: '13.12'}
 buildsystem: simple
 builddir: true
 build-commands:
