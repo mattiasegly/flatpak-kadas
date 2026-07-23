@@ -2,17 +2,16 @@ name: tcl
 sources:
   - type: git
     url: https://github.com/tcltk/tcl.git
-    tag: core-8-6-18
-    commit: 515167c897a7c8066abfbd71e8fe7bd8bf3569de
+    tag: core-9-0-4
+    commit: c655b4770b1d6d32a8cbffd6cef59db6029fe19e
     x-checker-data:
       type: git
       tag-pattern: core-([\d-]+)$
-      versions: {<: '9'}
 buildsystem: simple
 builddir: true
 subdir: unix
 build-commands:
-  - ./configure --prefix=/app --enable-64bit
+  - ./configure --prefix=/app --enable-64bit --enable-shared --disable-symbols
   - make
   - make install
 post-install:
