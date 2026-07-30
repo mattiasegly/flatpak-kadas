@@ -13,7 +13,7 @@ finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --filesystem=home
-  - --env=LD_LIBRARY_PATH=/app/lib:/app/grass84/lib
+  - --env=LD_LIBRARY_PATH=/app/lib:/app/grass85/lib
   - --env=PROJ_DATA=/app/share/proj
   - --env=PYTHONPATH=/app/lib/python3.13/site-packages
   - --env=PYTHONPYCACHEPREFIX=/app/lib/python3.13/site-packages/pycache
