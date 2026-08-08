@@ -2,8 +2,8 @@ name: swig
 sources:
   - type: git
     url: https://github.com/swig/swig.git
-    tag: v4.4.1
-    commit: c7b01379fa00ff152bc22d4dd0e0d5bb862282d9
+    tag: v4.5.0
+    commit: d598176759f5d199e288cf78413cfaa3bf84449f
     x-checker-data:
       type: git
 buildsystem: simple
