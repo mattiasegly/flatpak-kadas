@@ -90,6 +90,8 @@ modules:
   - modules/pathspec.yml
   - modules/editables.yml
   - modules/trove-classifiers.yml
+  - modules/poetry-core.yml
+  - modules/tomlkit.yml
   - modules/hatchling.yml
   - modules/hatch-vcs.yml
   - modules/pygments.yml
