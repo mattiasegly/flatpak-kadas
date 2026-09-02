@@ -4,6 +4,8 @@ sources:
     url: https://github.com/OSGeo/gdal.git
     tag: v3.12.4
     commit: 0e3e27c90f57130232d215d783ff49cc332cd950
+    x-checker-data:
+      type: git
 buildsystem: cmake-ninja
 builddir: true #recommended
 config-opts:
