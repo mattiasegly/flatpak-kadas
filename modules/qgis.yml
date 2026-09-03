@@ -48,7 +48,7 @@ sources:
       - patch -p1 <3dchunkloaderconcurrency.patch
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
       - patch -p1 <wcsSpatialExtentSettings.patch
-      - patch -p1 <oauth2NoEmptyClientSecret.patch
+#      - patch -p1 <oauth2NoEmptyClientSecret.patch
       - patch -p1 <elevation_controller_range.patch
       - patch -p1 <annotation-3d-picture-billboards.patch
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's|\${Python_SITEARCH}|/app/lib/python3.13/site-packages|g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
