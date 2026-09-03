@@ -123,6 +123,7 @@ modules:
   - modules/werkzeug.yml
   - modules/flask.yml
   - modules/py-geographiclib.yml
+  - modules/mypy-extensions.yml
   - modules/isort.yml
   - modules/markupsafe.yml
   - modules/pip-system-certs.yml
