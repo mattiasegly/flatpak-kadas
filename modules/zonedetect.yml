@@ -3,7 +3,7 @@ sources:
   - type: git
     url: https://github.com/BertoldVdb/ZoneDetect.git
     branch: master
-    commit: 082fa6b14815340d0f0d9e23b1ded318ba77c82c
+    commit: 81ede727f8771eda507150a95237cc8c518666d6
 buildsystem: simple
 builddir: true
 subdir: library
