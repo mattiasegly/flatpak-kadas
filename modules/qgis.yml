@@ -35,12 +35,12 @@ sources:
   - type: shell
     commands:
       - patch -p1 <crssync.patch
-      - patch -p1 <markersymbol_rubberband.patch
+#     - patch -p1 <markersymbol_rubberband.patch
       - patch -p1 <mesh.patch
       - patch -p1 <3dchunkloaderconcurrency.patch
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
       - patch -p1 <wcsSpatialExtentSettings.patch
-      - patch -p1 <oauth2NoEmptyClientSecret.patch
+#     - patch -p1 <oauth2NoEmptyClientSecret.patch
       - git grep -l '${Python_SITEARCH}' | xargs sed -i 's|\${Python_SITEARCH}|/app/lib/python3.13/site-packages|g' #crude fix for forcing cmake setting site-packages to /app instead of /usr
       - sed -i 's|sysconfig.get_path.*|"/app/lib/python3.13/site-packages"|g' cmake/FindSIP.py #force install sip files to /app instead of /usr
       - sed -i 's|qgis/\${module}|qgis/bindings/\${module}|g' python/CMakeLists.txt #force install sip files to bindings folder
