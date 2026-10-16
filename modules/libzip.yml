@@ -2,8 +2,8 @@ name: libzip
 sources:
   - type: git
     url: https://github.com/nih-at/libzip.git
-    tag: v1.12
-    commit: b26af3afd67e6b01e1e38a446ecb950e47fff146
+    tag: v1.12.1
+    commit: 8e037534ccd62f444abbe4ce265443ee74bbfeb3
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
