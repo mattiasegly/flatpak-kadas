@@ -2,8 +2,8 @@ name: uriparser
 sources:
   - type: git
     url: https://github.com/uriparser/uriparser.git
-    tag: uriparser-1.0.2
-    commit: 9b2bed92f5deecf740819f9bf27724bee2fe9c12
+    tag: uriparser-1.0.3
+    commit: fe754ef0d62c882747222c4455cb028b03dca33b
     x-checker-data:
       type: git
       tag-pattern: uriparser-([\d.]+)$
