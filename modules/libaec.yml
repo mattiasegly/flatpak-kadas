@@ -2,8 +2,8 @@ name: libaec
 sources:
   - type: git
     url: https://github.com/Deutsches-Klimarechenzentrum/libaec.git
-    tag: v1.1.7
-    commit: 0c4c01463d2c64a112a61271d317b74efb660608
+    tag: v1.1.8
+    commit: f495d5328a6bc17f93356c4784ef0065f3c4806e
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
