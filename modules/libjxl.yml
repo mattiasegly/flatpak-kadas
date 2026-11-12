@@ -2,8 +2,8 @@ name: libjxl
 sources:
   - type: git
     url: https://github.com/libjxl/libjxl.git
-    tag: v0.12.0
-    commit: a7a9c787341cf703dede03c2009fa460cae5e5df
+    tag: v0.13.0
+    commit: 5a7da83447212fe4900fc29ce97430b881caa67e
     x-checker-data:
       type: git
 buildsystem: cmake-ninja
