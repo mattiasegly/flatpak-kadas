@@ -10,7 +10,7 @@ sources:
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/markersymbol_rubberband.patch
-    sha256: ba17c0d1ac6565d49af3a6e741a634274dfcd7c52a0a25556d55c5148aab9249
+    sha256: ec3f270ca2f2572f57900154bade12eec773f98d40ff045cd803416615fc2643
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/mesh.patch
