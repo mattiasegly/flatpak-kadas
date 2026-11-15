@@ -94,6 +94,7 @@ modules:
   - modules/tomlkit.yml
   - modules/hatchling.yml
   - modules/hatch-vcs.yml
+  - modules/hatch-fancy-pypi-readme.yml
   - modules/pygments.yml
   - modules/urllib3.yml
   - modules/idna.yml
@@ -101,6 +102,7 @@ modules:
   - modules/certifi.yml
   - modules/requests.yml
   - modules/six.yml
+  - modules/tzdata.yml
   - modules/python-dateutil.yml
   - modules/pyyaml.yml
   - modules/pytz.yml
