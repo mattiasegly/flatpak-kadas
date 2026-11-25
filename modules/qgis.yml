@@ -2,7 +2,7 @@ name: qgis
 sources:
   - type: git
     url: https://github.com/qgis/QGIS.git
-    commit: 4595d764ccf8149604def9a249232f9c2a9f608a #see /kadas-albireo2/vcpkg/ports/qgis/portfile.cmake
+    commit: a747bce53bbc8fe19ba2ea545cad60dca09fc164 #see /kadas-albireo2/vcpkg/ports/qgis/portfile.cmake
 
   - type: file
     url: https://github.com/kadas-albireo/kadas-albireo2/raw/refs/heads/main/vcpkg/ports/qgis/crssync.patch
