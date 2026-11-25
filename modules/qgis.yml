@@ -27,7 +27,7 @@ sources:
   - type: shell
     commands:
       - patch -p1 <crssync.patch
-#     - patch -p1 <markersymbol_rubberband.patch
+      - patch -p1 <markersymbol_rubberband.patch
       - patch -p1 <mesh.patch
       - patch -p1 <flagDegreesUseUntranslatedStringSuffix.patch
       - patch -p1 <wcsSpatialExtentSettings.patch
